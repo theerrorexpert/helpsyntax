@@ -1,0 +1,2 @@
+$ mysqld --version
+/usr/sbin/mysqld  Ver 8.0.24 for Linux on x86_64 (MySQL Community Server - GPL)

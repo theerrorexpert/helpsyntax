@@ -1,0 +1,13 @@
+$ mysqld --help
+mysqld  Ver 8.0.24 for Linux on x86_64 (MySQL Community Server - GPL)
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Starts the MySQL database server.
+
+Usage: mysqld [OPTIONS]
+
+For more help options (several pages), use mysqld --verbose --help.
