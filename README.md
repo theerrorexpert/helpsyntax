@@ -1,13 +1,14 @@
 # the.error.expert helpsyntax
 
-Most product have a help syntax that can be displayed to help the operator.
+Most software products with a command-line interface (CLI)  have a help syntax
+that can be displayed to help the operator.
 
 If you wish to submit an error report for a product and it does not exist here,
 please help our community by submitting details of the product you are
 reporting an error for. 
 
 Create a pull request (PR) for this repository after gathering content from 
-this helper script.
+this helper script to add product content to the proposed/ directory.
 	
 ```
 $ cd proposed
@@ -21,4 +22,4 @@ including this in your PR.
 Your PR should in the description include the name of your product, a
 public URL and ideally the output of this command.
 
-Thank you for contributing to the.error.expert
+Thank you for contributing to **the.error.expert**
