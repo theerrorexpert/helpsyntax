@@ -1,0 +1,17 @@
+Usage: brew extract [--version=] [--force] formula tap
+
+Look through repository history to find the most recent version of formula and
+create a copy in tap. Specifically, the command will create the new formula
+file at tap/Formula/formula@version.rb. If the tap is not installed
+yet, attempt to install/clone the tap before continuing. To extract a formula
+from a tap that is not homebrew/core use its fully-qualified form of
+user/repo/formula.
+
+      --version                    Extract the specified version of formula
+                                   instead of the most recent.
+  -f, --force                      Overwrite the destination formula if it
+                                   already exists.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

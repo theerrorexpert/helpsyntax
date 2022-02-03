@@ -1,0 +1,23 @@
+Usage: brew pr-publish [options] pull_request [...]
+
+Publish bottles for a pull request with GitHub Actions. Requires write access to
+the repository.
+
+      --autosquash                 If supported on the target tap, automatically
+                                   reformat and reword commits in the pull
+                                   request to our preferred format. (disabled;
+                                   replaced by --no-autosquash to opt out)
+      --no-autosquash              Skip automatically reformatting and rewording
+                                   commits in the pull request to the preferred
+                                   format, even if supported on the target tap.
+      --branch                     Branch to publish to (default: master).
+      --message                    Message to include when autosquashing
+                                   revision bumps, deletions, and rebuilds.
+      --tap                        Target tap repository (default:
+                                   homebrew/core).
+      --workflow                   Target workflow filename (default:
+                                   publish-commit-bottles.yml).
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

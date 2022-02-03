@@ -1,0 +1,2 @@
+export EXTRA_HELP_COMMANDS="generate-extra-help-commands.sh"
+export EXTRA_HELP_ARGS="commands"

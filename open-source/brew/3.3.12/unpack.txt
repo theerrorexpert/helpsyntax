@@ -1,0 +1,18 @@
+Usage: brew unpack [options] formula [...]
+
+Unpack the source files for formula into subdirectories of the current working
+directory.
+
+      --destdir                    Create subdirectories in the directory named
+                                   by path instead.
+      --patch                      Patches for formula will be applied to the
+                                   unpacked source.
+  -g, --git                        Initialise a Git repository in the unpacked
+                                   source. This is useful for creating patches
+                                   for the software.
+  -f, --force                      Overwrite the destination directory if it
+                                   already exists.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

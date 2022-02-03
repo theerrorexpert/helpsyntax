@@ -1,0 +1,10 @@
+Usage: brew vendor-gems [--update=]
+
+Install and commit Homebrew's vendored gems.
+
+      --update                     Update all vendored Gems to the latest
+                                   version.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

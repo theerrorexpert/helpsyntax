@@ -1,0 +1,17 @@
+Usage: brew test [options] installed_formula [...]
+
+Run the test method provided by an installed formula. There is no standard
+output or return code, but generally it should notify the user if something is
+wrong with the installed formula.
+
+Example: brew install jruby && brew test jruby
+
+  -f, --force                      Test formulae even if they are unlinked.
+      --HEAD                       Test the head version of a formula.
+      --keep-tmp                   Retain the temporary files created for the
+                                   test.
+      --retry                      Retry if a testing fails.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

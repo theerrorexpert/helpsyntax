@@ -1,0 +1,13 @@
+Usage: brew missing [--hide=] [formula ...]
+
+Check the given formula kegs for missing dependencies. If no formula are
+provided, check all kegs. Will exit with a non-zero status if any kegs are found
+to be missing dependencies.
+
+      --hide                       Act as if none of the specified hidden are
+                                   installed. hidden should be a
+                                   comma-separated list of formulae.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

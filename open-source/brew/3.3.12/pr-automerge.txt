@@ -1,0 +1,28 @@
+Usage: brew pr-automerge [options]
+
+Find pull requests that can be automatically merged using brew pr-publish.
+
+      --tap                        Target tap repository (default:
+                                   homebrew/core).
+      --with-label                 Pull requests must have this label.
+      --without-labels             Pull requests must not have these labels
+                                   (default: do not merge, new formula,
+                                   automerge-skip).
+      --without-approval           Pull requests do not require approval to be
+                                   merged.
+      --publish                    Run brew pr-publish on matching pull
+                                   requests.
+      --autosquash                 Instruct brew pr-publish to automatically
+                                   reformat and reword commits in the pull
+                                   request to our preferred format. (disabled;
+                                   replaced by --no-autosquash to opt out)
+      --no-autosquash              Instruct brew pr-publish to skip
+                                   automatically reformatting and rewording
+                                   commits in the pull request to the preferred
+                                   format.
+      --ignore-failures            Include pull requests that have failing
+                                   status checks.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

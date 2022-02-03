@@ -1,0 +1,31 @@
+Usage: brew fetch [options] formula|cask [...]
+
+Download a bottle (if available) or source packages for formulae and binaries
+for casks. For files, also print SHA-256 checksums.
+
+      --bottle-tag                 Download a bottle for given tag.
+      --HEAD                       Fetch HEAD version instead of stable version.
+  -f, --force                      Remove a previously cached version and
+                                   re-fetch.
+  -v, --verbose                    Do a verbose VCS checkout, if the URL
+                                   represents a VCS. This is useful for seeing
+                                   if an existing VCS cache has been updated.
+      --retry                      Retry if downloading fails or re-download if
+                                   the checksum of a previously cached version
+                                   no longer matches.
+      --deps                       Also download dependencies for any listed
+                                   formula.
+  -s, --build-from-source          Download source packages rather than a
+                                   bottle.
+      --build-bottle               Download source packages (for eventual
+                                   bottling) rather than a bottle.
+      --force-bottle               Download a bottle if it exists for the
+                                   current or newest version of macOS, even if
+                                   it would not be used during installation.
+      --[no-]quarantine            Disable/enable quarantining of downloads
+                                   (default: enabled).
+      --formula, --formulae        Treat all named arguments as formulae.
+      --cask, --casks              Treat all named arguments as casks.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -h, --help                       Show this message.

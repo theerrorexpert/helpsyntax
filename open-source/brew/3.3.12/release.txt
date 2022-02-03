@@ -1,0 +1,18 @@
+Usage: brew release [--major] [--minor]
+
+Create a new draft Homebrew/brew release with the appropriate version number and
+release notes.
+
+By default, brew release will bump the patch version number. Pass --major or
+--minor to bump the major or minor version numbers, respectively. The command
+will fail if the previous major or minor release was made less than one month
+ago.
+
+Requires write access to the Homebrew/brew repository.
+
+      --major                      Create a major release.
+      --minor                      Create a minor release.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

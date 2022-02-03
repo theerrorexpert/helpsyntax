@@ -1,0 +1,12 @@
+Usage: brew update-license-data [--fail-if-not-changed]
+
+Update SPDX license data in the Homebrew repository.
+
+      --fail-if-not-changed        Return a failing status code if current
+                                   license data's version is the same as the
+                                   upstream. This can be used to notify CI when
+                                   the SPDX license data is out of date.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

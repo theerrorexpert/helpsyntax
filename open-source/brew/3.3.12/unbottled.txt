@@ -1,0 +1,14 @@
+Usage: brew unbottled [options] [formula ...]
+
+Show the unbottled dependents of formulae.
+
+      --tag                        Use the specified bottle tag (e.g. big_sur)
+                                   instead of the current OS.
+      --dependents                 Skip getting analytics data and sort by
+                                   number of dependents instead.
+      --total                      Print the number of unbottled and total
+                                   formulae.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

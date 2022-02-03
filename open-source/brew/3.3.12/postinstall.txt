@@ -1,0 +1,8 @@
+Usage: brew postinstall installed_formula [...]
+
+Rerun the post-install steps for formula.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

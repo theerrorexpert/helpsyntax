@@ -1,0 +1,11 @@
+Usage: brew --repository, --repo [tap ...]
+
+Display where Homebrew's git repository is located.
+
+If user/repo are provided, display where tap user/repo's directory
+is located.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

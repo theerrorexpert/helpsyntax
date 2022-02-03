@@ -1,0 +1,8 @@
+Usage: brew sponsors
+
+Update the list of GitHub Sponsors in the Homebrew/brew README.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

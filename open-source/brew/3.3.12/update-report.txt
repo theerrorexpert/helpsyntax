@@ -1,0 +1,13 @@
+Usage: brew update-report [--preinstall] [--force]
+
+The Ruby implementation of brew update. Never called manually.
+
+      --preinstall                 Run in 'auto-update' mode (faster, less
+                                   output).
+  -f, --force                      Treat installed and updated formulae as if
+                                   they are from the same taps and migrate them
+                                   anyway.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

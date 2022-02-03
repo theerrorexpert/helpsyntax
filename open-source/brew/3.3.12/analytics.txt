@@ -1,0 +1,18 @@
+Usage: brew analytics [subcommand]
+
+Control Homebrew's anonymous aggregate user behaviour analytics. Read more at
+https://docs.brew.sh/Analytics.
+
+brew analytics [state]:
+    Display the current state of Homebrew's analytics.
+
+brew analytics (on|off):
+    Turn Homebrew's analytics on or off respectively.
+
+brew analytics regenerate-uuid:
+    Regenerate the UUID used for Homebrew's analytics.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

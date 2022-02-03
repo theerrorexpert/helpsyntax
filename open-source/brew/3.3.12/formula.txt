@@ -1,0 +1,8 @@
+Usage: brew formula formula [...]
+
+Display the path where formula is located.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

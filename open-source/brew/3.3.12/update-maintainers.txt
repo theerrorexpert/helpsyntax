@@ -1,0 +1,8 @@
+Usage: brew update-maintainers
+
+Update the list of maintainers in the Homebrew/brew README.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

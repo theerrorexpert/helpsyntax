@@ -1,0 +1,17 @@
+Usage: brew bump-revision [options] formula [...]
+
+Create a commit to increment the revision of formula. If no revision is
+present, "revision 1" will be added.
+
+  -n, --dry-run                    Print what would be done rather than doing
+                                   it.
+      --remove-bottle-block        Remove the bottle block in addition to
+                                   bumping the revision.
+      --write-only                 Make the expected file modifications without
+                                   taking any Git actions.
+      --message                    Append message to the default commit
+                                   message.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

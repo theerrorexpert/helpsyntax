@@ -1,0 +1,8 @@
+Usage: brew command command [...]
+
+Display the path to the file being used when invoking brew cmd.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

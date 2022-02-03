@@ -1,0 +1,19 @@
+Usage: brew desc [options] formula|text|/regex/ [...]
+
+Display formula's name and one-line description. Formula descriptions are
+cached; the cache is created on the first search, making that search slower than
+subsequent ones.
+
+  -s, --search                     Search both names and descriptions for
+                                   text. If text is flanked by slashes, it
+                                   is interpreted as a regular expression.
+  -n, --name                       Search just names for text. If text is
+                                   flanked by slashes, it is interpreted as a
+                                   regular expression.
+  -d, --description                Search just descriptions for text. If
+                                   text is flanked by slashes, it is
+                                   interpreted as a regular expression.
+      --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

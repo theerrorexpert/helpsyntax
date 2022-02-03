@@ -1,0 +1,9 @@
+Usage: brew unpin installed_formula [...]
+
+Unpin formula, allowing them to be upgraded by brew upgrade formula. See
+also pin.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

@@ -1,0 +1,25 @@
+Usage: brew style [options] [file|tap|formula|cask ...]
+
+Check formulae or files for conformance to Homebrew style guidelines.
+
+Lists of file, tap and formula may not be combined. If none are provided,
+style will run style checks on the whole Homebrew library, including core code
+and all formulae.
+
+      --fix                        Fix style violations automatically using
+                                   RuboCop's auto-correct feature.
+      --display-cop-names          Include the RuboCop cop name for each
+                                   violation in the output.
+      --reset-cache                Reset the RuboCop cache.
+      --formula, --formulae        Treat all named arguments as formulae.
+      --cask, --casks              Treat all named arguments as casks.
+      --only-cops                  Specify a comma-separated cops list to
+                                   check for violations of only the listed
+                                   RuboCop cops.
+      --except-cops                Specify a comma-separated cops list to skip
+                                   checking for violations of the listed RuboCop
+                                   cops.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

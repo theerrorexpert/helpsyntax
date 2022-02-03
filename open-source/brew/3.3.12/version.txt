@@ -1,0 +1,3 @@
+Homebrew 3.3.12
+Homebrew/homebrew-core (git revision 4030589009b; last commit 2022-01-29)
+Homebrew/homebrew-cask (git revision e63eccb7c5; last commit 2022-01-29)

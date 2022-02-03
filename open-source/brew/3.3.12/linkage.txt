@@ -1,0 +1,20 @@
+Usage: brew linkage [options] [installed_formula ...]
+
+Check the library links from the given formula kegs. If no formula are
+provided, check all kegs. Raises an error if run on uninstalled formulae.
+
+      --test                       Show only missing libraries and exit with a
+                                   non-zero status if any missing libraries are
+                                   found.
+      --strict                     Exit with a non-zero status if any undeclared
+                                   dependencies with linkage are found.
+      --reverse                    For every library that a keg references,
+                                   print its dylib path followed by the binaries
+                                   that link to it.
+      --cached                     Print the cached linkage values stored in
+                                   HOMEBREW_CACHE, set by a previous brew
+                                   linkage run.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

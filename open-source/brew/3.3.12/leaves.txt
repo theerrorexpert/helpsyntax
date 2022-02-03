@@ -1,0 +1,12 @@
+Usage: brew leaves [--installed-on-request] [--installed-as-dependency]
+
+List installed formulae that are not dependencies of another installed formula.
+
+  -r, --installed-on-request       Only list leaves that were manually
+                                   installed.
+  -p, --installed-as-dependency    Only list leaves that were installed as
+                                   dependencies.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

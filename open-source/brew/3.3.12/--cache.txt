@@ -1,0 +1,20 @@
+Usage: brew --cache [options] [formula|cask ...]
+
+Display Homebrew's download cache. See also HOMEBREW_CACHE.
+
+If formula is provided, display the file or directory used to cache formula.
+
+  -s, --build-from-source          Show the cache file used when building from
+                                   source.
+      --force-bottle               Show the cache file used when pouring a
+                                   bottle.
+      --bottle-tag                 Show the cache file used when pouring a
+                                   bottle for the given tag.
+      --HEAD                       Show the cache file used when building from
+                                   HEAD.
+      --formula, --formulae        Only show cache files for formulae.
+      --cask, --casks              Only show cache files for casks.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

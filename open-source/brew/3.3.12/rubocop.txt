@@ -1,0 +1,10 @@
+Usage: brew install-bundler-gems [--groups=]
+
+Install Homebrew's Bundler gems.
+
+      --groups                     Installs the specified comma-separated list
+                                   of gem groups (default: last used).
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

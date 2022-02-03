@@ -1,0 +1,20 @@
+Usage: brew bump [options] [formula|cask ...]
+
+Display out-of-date brew formulae and the latest version available. If the
+returned current and livecheck versions differ or when querying specific
+formulae, also displays whether a pull request has been opened with the URL.
+
+      --full-name                  Print formulae/casks with fully-qualified
+                                   names.
+      --no-pull-requests           Do not retrieve pull requests from GitHub.
+      --formula, --formulae        Check only formulae.
+      --cask, --casks              Check only casks.
+      --open-pr                    Open a pull request for the new version if
+                                   there are none already open.
+      --limit                      Limit number of package results returned.
+      --start-with                 Letter or word that the list of package
+                                   results should alphabetically follow.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

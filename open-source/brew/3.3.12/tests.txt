@@ -1,0 +1,21 @@
+Usage: brew tests [options]
+
+Run Homebrew's unit and integration tests.
+
+      --coverage                   Generate code coverage reports.
+      --generic                    Run only OS-agnostic tests.
+      --no-compat                  Do not load the compatibility layer when
+                                   running tests.
+      --online                     Include tests that use the GitHub API and
+                                   tests that use any of the taps for official
+                                   external commands.
+      --byebug                     Enable debugging using byebug.
+      --only                       Run only test_script_spec.rb. Appending
+                                   :line_number will start at a specific
+                                   line.
+      --seed                       Randomise tests with the specified value
+                                   instead of a random seed.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

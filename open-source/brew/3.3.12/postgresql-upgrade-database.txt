@@ -1,0 +1,8 @@
+Usage: brew postgresql-upgrade-database
+
+Upgrades the database for the postgresql formula.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

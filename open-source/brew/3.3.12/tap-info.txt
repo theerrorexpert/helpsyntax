@@ -1,0 +1,16 @@
+Usage: brew tap-info [--installed] [--json] [tap ...]
+
+Show detailed information about one or more taps.
+
+If no tap names are provided, display brief statistics for all installed taps.
+
+      --installed                  Show information on each installed tap.
+      --json                       Print a JSON representation of tap.
+                                   Currently the default and only accepted value
+                                   for version is v1. See the docs for
+                                   examples of using the JSON output:
+                                   https://docs.brew.sh/Querying-Brew
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

@@ -1,0 +1,14 @@
+Usage: brew options [options] [formula ...]
+
+Show install options specific to formula.
+
+      --compact                    Show all options on a single line separated
+                                   by spaces.
+      --installed                  Show options for formulae that are currently
+                                   installed.
+      --all                        Show options for all available formulae.
+      --command                    Show options for the specified command.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

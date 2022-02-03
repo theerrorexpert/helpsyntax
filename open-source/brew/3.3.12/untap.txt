@@ -1,0 +1,10 @@
+Usage: brew untap [--force] tap [...]
+
+Remove a tapped formula repository.
+
+  -f, --force                      Untap even if formulae or casks from this tap
+                                   are currently installed.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

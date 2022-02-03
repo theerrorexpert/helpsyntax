@@ -1,0 +1,10 @@
+Usage: brew cat [--formula] [--cask] formula|cask
+
+Display the source of a formula or cask.
+
+      --formula, --formulae        Treat all named arguments as formulae.
+      --cask, --casks              Treat all named arguments as casks.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

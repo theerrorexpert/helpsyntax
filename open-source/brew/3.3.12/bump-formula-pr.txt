@@ -1,0 +1,64 @@
+Usage: brew bump-formula-pr [options] [formula]
+
+Create a pull request to update formula with a new URL or a new tag.
+
+If a URL is specified, the SHA-256 checksum of the new download should also
+be specified. A best effort to determine the SHA-256 and formula name will
+be made if either or both values are not supplied by the user.
+
+If a tag is specified, the Git commit revision corresponding to that tag
+should also be specified. A best effort to determine the revision will be made
+if the value is not supplied by the user.
+
+If a version is specified, a best effort to determine the URL and SHA-256
+or the tag and revision will be made if both values are not supplied by the
+user.
+
+Note: this command cannot be used to transition a formula from a
+URL-and-SHA-256 style specification into a tag-and-revision style specification,
+nor vice versa. It must use whichever style specification the formula already
+uses.
+
+  -n, --dry-run                    Print what would be done rather than doing
+                                   it.
+      --write-only                 Make the expected file modifications without
+                                   taking any Git actions.
+      --commit                     When passed with --write-only, generate a
+                                   new commit after writing changes to the
+                                   formula file.
+      --no-audit                   Don't run brew audit before opening the PR.
+      --strict                     Run brew audit --strict before opening the
+                                   PR.
+      --online                     Run brew audit --online before opening the
+                                   PR.
+      --no-browse                  Print the pull request URL instead of opening
+                                   in a browser.
+      --no-fork                    Don't try to fork the repository.
+      --mirror                     Use the specified URL as a mirror URL. If
+                                   URL is a comma-separated list of URLs,
+                                   multiple mirrors will be added.
+      --fork-org                   Use the specified GitHub organization for
+                                   forking.
+      --version                    Use the specified version to override the
+                                   value parsed from the URL or tag. Note that
+                                   --version=0 can be used to delete an
+                                   existing version override from a formula if
+                                   it has become redundant.
+      --message                    Append message to the default pull request
+                                   message.
+      --url                        Specify the URL for the new download. If a
+                                   URL is specified, the SHA-256 checksum of
+                                   the new download should also be specified.
+      --sha256                     Specify the SHA-256 checksum of the new
+                                   download.
+      --tag                        Specify the new git commit tag for the
+                                   formula.
+      --revision                   Specify the new commit revision
+                                   corresponding to the specified git tag or
+                                   specified version.
+  -f, --force                      Ignore duplicate open PRs. Remove all mirrors
+                                   if --mirror was not specified.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

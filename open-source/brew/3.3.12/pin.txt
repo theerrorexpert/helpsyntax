@@ -1,0 +1,9 @@
+Usage: brew pin installed_formula [...]
+
+Pin the specified formula, preventing them from being upgraded when issuing
+the brew upgrade formula command. See also unpin.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

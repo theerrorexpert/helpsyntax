@@ -1,0 +1,16 @@
+Usage: brew gist-logs [options] formula
+
+Upload logs for a failed build of formula to a new Gist. Presents an error
+message if no logs are found.
+
+      --with-hostname              Include the hostname in the Gist.
+  -n, --new-issue                  Automatically create a new issue in the
+                                   appropriate GitHub repository after creating
+                                   the Gist.
+  -p, --private                    The Gist will be marked private and will not
+                                   appear in listings but will be accessible
+                                   with its link.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

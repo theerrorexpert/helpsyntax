@@ -1,0 +1,24 @@
+Usage: brew dispatch-build-bottle [options] formula [...]
+
+Build bottles for these formulae with GitHub Actions.
+
+      --tap                        Target tap repository (default:
+                                   homebrew/core).
+      --timeout                    Build timeout (in minutes, default: 60).
+      --issue                      If specified, post a comment to this issue
+                                   number if the job fails.
+      --macos                      Version(s) of macOS the bottle should be
+                                   built for.
+      --workflow                   Dispatch specified workflow (default:
+                                   dispatch-build-bottle.yml).
+      --upload                     Upload built bottles.
+      --linux                      Dispatch bottle for Linux (using GitHub
+                                   runners).
+      --linux-self-hosted          Dispatch bottle for Linux (using self-hosted
+                                   runner).
+      --linux-wheezy               Use Debian Wheezy container for building the
+                                   bottle on Linux.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

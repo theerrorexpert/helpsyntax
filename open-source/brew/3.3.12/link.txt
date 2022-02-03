@@ -1,0 +1,17 @@
+Usage: brew link, ln [options] installed_formula [...]
+
+Symlink all of formula's installed files into Homebrew's prefix. This is done
+automatically when you install formulae but can be useful for DIY installations.
+
+      --overwrite                  Delete files that already exist in the prefix
+                                   while linking.
+  -n, --dry-run                    List files which would be linked or deleted
+                                   by brew link --overwrite without actually
+                                   linking or deleting any files.
+  -f, --force                      Allow keg-only formulae to be linked.
+      --HEAD                       Link the HEAD version of the formula if it is
+                                   installed.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

@@ -1,0 +1,11 @@
+Usage: brew --caskroom [cask ...]
+
+Display Homebrew's Caskroom path.
+
+If cask is provided, display the location in the Caskroom where cask would
+be installed, without any sort of versioned directory as the last path.
+
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

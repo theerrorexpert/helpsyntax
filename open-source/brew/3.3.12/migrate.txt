@@ -1,0 +1,14 @@
+Usage: brew migrate [--force] [--dry-run] installed_formula [...]
+
+Migrate renamed packages to new names, where formula are old names of
+packages.
+
+  -f, --force                      Treat installed formula and provided
+                                   formula as if they are from the same taps
+                                   and migrate them anyway.
+  -n, --dry-run                    Show what would be migrated, but do not
+                                   actually migrate anything.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

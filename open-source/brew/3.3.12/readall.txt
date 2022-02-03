@@ -1,0 +1,14 @@
+Usage: brew readall [--aliases] [--syntax] [tap ...]
+
+Import all items from the specified tap, or from all installed taps if none is
+provided. This can be useful for debugging issues across all items when making
+significant changes to formula.rb, testing the performance of loading all
+items or checking if any current formulae/casks have Ruby issues.
+
+      --aliases                    Verify any alias symlinks in each tap.
+      --syntax                     Syntax-check all of Homebrew's Ruby files (if
+                                   no tap is passed).
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

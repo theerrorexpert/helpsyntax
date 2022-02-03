@@ -1,0 +1,11 @@
+Usage: brew irb [--examples] [--pry]
+
+Enter the interactive Homebrew Ruby shell.
+
+      --examples                   Show several examples.
+      --pry                        Use Pry instead of IRB. Implied if
+                                   HOMEBREW_PRY is set.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.

@@ -1,0 +1,12 @@
+Usage: brew bump-unversioned-casks [options] cask|tap [...]
+
+Check all casks with unversioned URLs in a given tap for updates.
+
+  -n, --dry-run                    Do everything except caching state and
+                                   opening pull requests.
+      --limit                      Maximum runtime in minutes.
+      --state-file                 File for caching state.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -v, --verbose                    Make some output more verbose.
+  -h, --help                       Show this message.
