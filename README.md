@@ -1,7 +1,5 @@
 # Product Syntax Help - the.error.expert
 
-................................................................................
-
 Most software products with a command-line interface (CLI) have the ability to
 display the syntax of available comamnds and options to help the operator.
 
@@ -42,6 +40,7 @@ export EXTRA_HELP_ARGS="commands"
 ```
 
 Your PR should in the description include the name of your product, a
-public URL for the product and all generated content.
+public URL for the product and all generated content, ideally create a
+README.md similar to other products.
 
 Thank you for contributing to **the.error.expert**
