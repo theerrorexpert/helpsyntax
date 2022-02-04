@@ -1,0 +1,54 @@
+To load completions:
+
+Bash:
+
+  $ source <(pscale completion bash)
+
+  # To load completions for each session, execute once:
+  # Linux:
+  $ pscale completion bash > /etc/bash_completion.d/pscale
+  # macOS:
+  $ pscale completion bash > /usr/local/etc/bash_completion.d/pscale
+
+Zsh:
+
+  # If shell completion is not already enabled in your environment,
+  # you will need to enable it.  You can execute the following once:
+
+  $ echo "autoload -U compinit; compinit" >> ~/.zshrc
+
+  # To load completions for each session, execute once:
+  $ pscale completion zsh > "${fpath[1]}/_yourprogram"
+
+  # You will need to start a new shell for this setup to take effect.
+
+fish:
+
+  $ pscale completion fish | source
+
+  # To load completions for each session, execute once:
+  $ pscale completion fish > ~/.config/fish/completions/pscale.fish
+
+PowerShell:
+
+  PS> pscale completion powershell | Out-String | Invoke-Expression
+
+  # To load completions for every new session, run:
+  PS> pscale completion powershell > pscale.ps1
+  # and source this file from your PowerShell profile.
+
+Usage:
+  pscale completion [bash|zsh|fish|powershell]
+
+Flags:
+  -h, --help   help for completion
+
+Global Flags:
+      --api-token string          The API token to use for authenticating against the PlanetScale API.
+      --api-url string            The base URL for the PlanetScale API. (default "https://api.planetscale.com/")
+      --config string             Config file (default is $HOME/.config/planetscale/pscale.yml)
+      --debug                     Enable debug mode
+  -f, --format string             Show output in a specific format. Possible values: [human, json, csv] (default "human")
+      --no-color                  Disable color output
+      --service-token string      Service Token for authenticating.
+      --service-token-id string   The Service Token ID for authenticating.

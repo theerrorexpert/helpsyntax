@@ -1,0 +1,20 @@
+Signup for a new PlanetScale account
+
+Usage:
+  pscale signup <action> [flags]
+
+Aliases:
+  signup, register, sign-up
+
+Flags:
+  -h, --help   help for signup
+
+Global Flags:
+      --api-token string          The API token to use for authenticating against the PlanetScale API.
+      --api-url string            The base URL for the PlanetScale API. (default "https://api.planetscale.com/")
+      --config string             Config file (default is $HOME/.config/planetscale/pscale.yml)
+      --debug                     Enable debug mode
+  -f, --format string             Show output in a specific format. Possible values: [human, json, csv] (default "human")
+      --no-color                  Disable color output
+      --service-token string      Service Token for authenticating.
+      --service-token-id string   The Service Token ID for authenticating.
