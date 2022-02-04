@@ -26,8 +26,8 @@ type ${PRODUCT} >/dev/null 2>&1 || (echo "ERROR: ${PRODUCT} not found in path" &
 
 # This process assumes you have navigated to the appropiate product+version for output
 TMP_FILE="${TMP_DIR}/${PRODUCT}.tmp.$$"
-${PRODUCT} ${ARGS} ${HELP_ARG} > ${TMP_FILE}  2>/dev/null || (echo "ERROR: '${PRODUCT} ${ARGS}' is an invalid command, skipping" && exit 0)
-[ ! -s "${TMP_FILE}" ] && echo "ERROR: '${PRODUCT} ${ARGS}' produced no output" && exit 1
+${PRODUCT} ${ARGS} ${HELP_ARG} | col -bx  > ${TMP_FILE}  2>/dev/null || (echo "ERROR: '${PRODUCT} ${ARGS}' is an invalid command, skipping" && exit 0)
+[ ! -s "${TMP_FILE}" ] && echo "ERROR: '${PRODUCT} ${ARGS}' produced no output" && exit 0
 
 FORMATTED_FILE=$(tr -d ' ' <<< ${ARGS}).txt
 echo "Creating '${FORMATTED_FILE}'"
