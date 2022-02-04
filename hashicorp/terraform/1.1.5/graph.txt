@@ -1,0 +1,23 @@
+Usage: terraform [global options] graph [options]
+
+  Produces a representation of the dependency graph between different
+  objects in the current configuration and state.
+
+  The graph is presented in the DOT language. The typical program that can
+  read this format is GraphViz, but many web services are also available
+  to read this format.
+
+Options:
+
+  -plan=tfplan     Render graph using the specified plan file instead of the
+                   configuration in the current directory.
+
+  -draw-cycles     Highlight any cycles in the graph with colored edges.
+                   This helps when diagnosing cycle errors.
+
+  -type=plan       Type of graph to output. Can be: plan, plan-refresh-only,
+                   plan-destroy, or apply. By default Terraform chooses
+				   "plan", or "apply" if you also set the -plan=... option.
+
+  -module-depth=n  (deprecated) In prior versions of Terraform, specified the
+				   depth of modules to show in the output.
