@@ -1,0 +1,10 @@
+Usage: packer console [options] [TEMPLATE]
+
+  Creates a console for testing variable interpolation.
+  If a template is provided, this command will load the template and any
+  variables defined therein into its context to be referenced during
+  interpolation.
+
+Options:
+  -var 'key=value'       Variable for templates, can be used multiple times.
+  -var-file=path         JSON or HCL2 file containing user variables.

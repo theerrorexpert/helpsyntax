@@ -1,0 +1,8 @@
+==> Downloading https://ghcr.io/v2/homebrew/core/packer/manifests/1.7.10
+==> Downloading https://ghcr.io/v2/homebrew/core/packer/blobs/sha256:e92e0e7206ecd1ba19e91f59b26cfc5815d86bd25e2af9ea470547ed6dfb095f
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:e92e0e7206ecd1ba19e91f59b26cfc5815d86bd25e2af9ea470547ed6dfb095f?se=2022-02-04T14%3A30%3A00Z&sig=UlEL7mmqaLaXO3xzt7MAjsalLqceSyI2kAilqNYCUJo%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Pouring packer--1.7.10.catalina.bottle.tar.gz
+🍺  /usr/local/Cellar/packer/1.7.10: 8 files, 172.6MB
+==> Running `brew cleanup packer`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).

@@ -1,0 +1,9 @@
+build
+console
+fix
+fmt
+hcl2_upgrade
+init
+inspect
+validate
+version
