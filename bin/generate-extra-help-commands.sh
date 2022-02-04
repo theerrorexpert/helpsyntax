@@ -22,7 +22,7 @@ create_extra_commands_file() {
   local ARGS="$2"
 
   TMP_FILE="${TMP_DIR}/${PRODUCT}.tmp.$$"
-  ${PRODUCT} ${ARGS} > ${TMP_FILE}  2>/dev/null || (echo "ERROR: '${PRODUCT} ${ARGS}' is an invalid command" && exit 1)
+  ${PRODUCT} ${ARGS} | awk '{print $1}' > ${TMP_FILE}  2>/dev/null || (echo "ERROR: '${PRODUCT} ${ARGS}' is an invalid command" && exit 1)
   [ ! -s "${TMP_FILE}" ] && echo "ERROR: '${PRODUCT} ${ARGS}' produced no output" && exit 1
 
   # Varying project cleanup

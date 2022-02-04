@@ -1,0 +1,12 @@
+Usage: vagrant vbguest [vm-name] [--do start|rebuild|install] [--status] [-f|--force] [-b|--auto-reboot] [-R|--no-remote] [--iso VBoxGuestAdditions.iso] [--no-cleanup]
+
+        --do COMMAND                 Manually `start`, `rebuild` or `install` GuestAdditions.
+        --status                     Print current GuestAdditions status and exit.
+    -f, --force                      Whether to force the installation. (Implied by --do start|rebuild|install)
+    -b, --auto-reboot                Allow rebooting the VM after installation. (when GuestAdditions won't start)
+    -R, --no-remote                  Do not attempt do download the iso file from a webserver
+        --iso file_or_uri            Full path or URI to the VBoxGuestAdditions.iso
+        --no-cleanup                 Do not run cleanup tasks after installation. (for debugging)
+        --[no-]provision             Enable or disable provisioning
+        --provision-with x,y,z       Enable only certain provisioners, by type or by name.
+    -h, --help                       Print this help

@@ -1,0 +1,21 @@
+Usage: vagrant cap [options] TYPE NAME [args]
+
+This is an advanced command. If you don't know what this
+does and you aren't explicitly trying to use it, you probably
+don't want to use this.
+
+This command checks or executes arbitrary capabilities that
+Vagrant has for hosts, guests, and providers.
+
+Options:
+
+        --check                      Only checks for a capability, does not execute
+    -t, --target=TARGET              Target guest to run against (if applicable)
+        --[no-]color                 Enable or disable color output
+        --machine-readable           Enable machine readable output
+    -v, --version                    Display Vagrant version
+        --debug                      Enable debug output
+        --timestamp                  Enable timestamps on log output
+        --debug-timestamp            Enable debug output with timestamps
+        --no-tty                     Enable non-interactive output
+    -h, --help                       Print this help

@@ -1,0 +1,17 @@
+Usage: vagrant docker-exec [options] [name] -- <command> [args]
+
+Options:
+
+        --[no-]detach                Run in the background
+    -i, --[no-]interactive           Keep STDIN open even if not attached
+    -t, --[no-]tty                   Allocate a pty
+    -u, --user USER                  User or UID
+        --[no-]prefix                Prefix output with machine names
+        --[no-]color                 Enable or disable color output
+        --machine-readable           Enable machine readable output
+    -v, --version                    Display Vagrant version
+        --debug                      Enable debug output
+        --timestamp                  Enable timestamps on log output
+        --debug-timestamp            Enable debug output with timestamps
+        --no-tty                     Enable non-interactive output
+    -h, --help                       Print this help
