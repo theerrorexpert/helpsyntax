@@ -29,8 +29,9 @@ TMP_FILE="${TMP_DIR}/${PRODUCT}.tmp.$$"
 ${PRODUCT} ${ARGS} ${HELP_ARG} | col -bx  > ${TMP_FILE}  2>/dev/null || (echo "ERROR: '${PRODUCT} ${ARGS}' is an invalid command, skipping" && exit 0)
 [ ! -s "${TMP_FILE}" ] && echo "ERROR: '${PRODUCT} ${ARGS}' produced no output" && exit 0
 
-FORMATTED_FILE=$(tr -d ' ' <<< ${ARGS}).txt
+FORMATTED_FILE=$(tr ' ' '/' <<< ${ARGS}).txt
 echo "Creating '${FORMATTED_FILE}'"
+mkdir -p $(dirname ${FORMATTED_FILE})
 mv ${TMP_FILE} ${FORMATTED_FILE}
 
 rm -f ${TMP_FILE}
