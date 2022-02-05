@@ -1,0 +1,7 @@
+rds-data batch-execute-statement
+rds-data begin-transaction
+rds-data commit-transaction
+rds-data execute-sql
+rds-data execute-statement
+rds-data help
+rds-data rollback-transaction

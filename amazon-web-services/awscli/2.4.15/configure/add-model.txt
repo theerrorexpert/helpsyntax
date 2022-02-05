@@ -1,0 +1,44 @@
+ADD-MODEL()                                                        ADD-MODEL()
+
+
+
+NAME
+       add-model -
+
+DESCRIPTION
+       Adds a service JSON model to the appropriate location in ~/.aws/models.
+       Once the model gets added, CLI commands and Boto3 clients will be imme-
+       diately available for the service JSON model provided.
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            add-model
+          --service-model <value>
+          [--service-name <value>]
+
+OPTIONS
+       --service-model (string) The contents of the service JSON model.
+
+       --service-name  (string) Overrides the default name used by the service
+       JSON model to generate CLI service commands and Boto3 clients.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       Add a model
+
+       The following command adds a service  model  from  a  file  named  ser-
+       vice.json:
+
+          aws configure add-model --service-model file://service.json
+
+       Adding  a  model  replaces existing commands for the service defined in
+       the model. To leave existing commands as-is, specify a  different  ser-
+       vice name to use for the new commands:
+
+          aws configure add-model --service-model file://service.json --service-name service2
+
+
+
+                                                                   ADD-MODEL()

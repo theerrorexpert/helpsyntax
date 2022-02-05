@@ -1,0 +1,11 @@
+rum create-app-monitor
+rum delete-app-monitor
+rum get-app-monitor
+rum get-app-monitor-data
+rum help
+rum list-app-monitors
+rum list-tags-for-resource
+rum put-rum-events
+rum tag-resource
+rum untag-resource
+rum update-app-monitor

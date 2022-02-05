@@ -1,0 +1,14 @@
+synthetics create-canary
+synthetics delete-canary
+synthetics describe-canaries
+synthetics describe-canaries-last-run
+synthetics describe-runtime-versions
+synthetics get-canary
+synthetics get-canary-runs
+synthetics help
+synthetics list-tags-for-resource
+synthetics start-canary
+synthetics stop-canary
+synthetics tag-resource
+synthetics untag-resource
+synthetics update-canary

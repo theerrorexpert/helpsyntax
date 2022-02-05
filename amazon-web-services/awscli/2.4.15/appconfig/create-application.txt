@@ -1,0 +1,104 @@
+CREATE-APPLICATION()                                      CREATE-APPLICATION()
+
+
+
+NAME
+       create-application -
+
+DESCRIPTION
+       Creates  an  application. An application in AppConfig is a logical unit
+       of code that provides capabilities for your customers. For example,  an
+       application  can be a microservice that runs on Amazon EC2 instances, a
+       mobile application installed by your users,  a  serverless  application
+       using Amazon API Gateway and Lambda, or any system you run on behalf of
+       others.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-application
+          --name <value>
+          [--description <value>]
+          [--tags <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --name (string)
+          A name for the application.
+
+       --description (string)
+          A description of the application.
+
+       --tags (map)
+          Metadata to assign to the application. Tags help organize and  cate-
+          gorize  your  AppConfig resources. Each tag consists of a key and an
+          optional value, both of which you define.
+
+          key -> (string)
+
+          value -> (string)
+
+       Shorthand Syntax:
+
+          KeyName1=string,KeyName2=string
+
+       JSON Syntax:
+
+          {"string": "string"
+            ...}
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To create an application
+
+       The following create-application example creates an application in  AWS
+       AppConfig.
+
+          aws appconfig create-application \
+              --name "example-application" \
+              --description "An application used for creating an example."
+
+       Output:
+
+          {
+              "Description": "An application used for creating an example.",
+              "Id": "339ohji",
+              "Name": "example-application"
+          }
+
+       For more information, see Step 1: Creating an AWS AppConfig application
+       in the AWS AppConfig User Guide.
+
+OUTPUT
+       Id -> (string)
+          The application ID.
+
+       Name -> (string)
+          The application name.
+
+       Description -> (string)
+          The description of the application.
+
+
+
+                                                          CREATE-APPLICATION()

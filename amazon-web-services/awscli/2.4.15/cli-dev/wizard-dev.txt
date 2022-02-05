@@ -1,0 +1,27 @@
+WIZARD-DEV()                                                      WIZARD-DEV()
+
+
+
+NAME
+       wizard-dev -
+
+DESCRIPTION
+       Internal  command from developing, testing and debugging wizards.  This
+       command is not intended for normal end usage. Do not rely on this  com-
+       mand,  backwards  compatibility is not guaranteed.  This command may be
+       removed in future versions.
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            wizard-dev
+          [--run-wizard <value>]
+
+OPTIONS
+       --run-wizard (string) Run a wizard given a wizard file.
+
+       See 'aws help' for descriptions of global parameters.
+
+
+
+                                                                  WIZARD-DEV()

@@ -1,0 +1,15 @@
+support add-attachments-to-set
+support add-communication-to-case
+support create-case
+support describe-attachment
+support describe-cases
+support describe-communications
+support describe-services
+support describe-severity-levels
+support describe-trusted-advisor-check-refresh-statuses
+support describe-trusted-advisor-check-result
+support describe-trusted-advisor-check-summaries
+support describe-trusted-advisor-checks
+support help
+support refresh-trusted-advisor-check
+support resolve-case

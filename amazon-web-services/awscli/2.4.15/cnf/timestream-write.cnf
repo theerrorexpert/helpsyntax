@@ -1,0 +1,16 @@
+timestream-write create-database
+timestream-write create-table
+timestream-write delete-database
+timestream-write delete-table
+timestream-write describe-database
+timestream-write describe-endpoints
+timestream-write describe-table
+timestream-write help
+timestream-write list-databases
+timestream-write list-tables
+timestream-write list-tags-for-resource
+timestream-write tag-resource
+timestream-write untag-resource
+timestream-write update-database
+timestream-write update-table
+timestream-write write-records

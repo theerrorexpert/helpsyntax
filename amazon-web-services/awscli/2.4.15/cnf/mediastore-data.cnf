@@ -1,0 +1,6 @@
+mediastore-data delete-object
+mediastore-data describe-object
+mediastore-data get-object
+mediastore-data help
+mediastore-data list-items
+mediastore-data put-object

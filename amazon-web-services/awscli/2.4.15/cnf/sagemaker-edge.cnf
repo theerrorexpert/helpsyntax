@@ -1,0 +1,3 @@
+sagemaker-edge get-device-registration
+sagemaker-edge help
+sagemaker-edge send-heartbeat

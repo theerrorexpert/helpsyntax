@@ -1,0 +1,10 @@
+polly delete-lexicon
+polly describe-voices
+polly get-lexicon
+polly get-speech-synthesis-task
+polly help
+polly list-lexicons
+polly list-speech-synthesis-tasks
+polly put-lexicon
+polly start-speech-synthesis-task
+polly synthesize-speech

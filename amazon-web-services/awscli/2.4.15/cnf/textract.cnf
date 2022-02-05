@@ -1,0 +1,11 @@
+textract analyze-document
+textract analyze-expense
+textract analyze-id
+textract detect-document-text
+textract get-document-analysis
+textract get-document-text-detection
+textract get-expense-analysis
+textract help
+textract start-document-analysis
+textract start-document-text-detection
+textract start-expense-analysis

@@ -1,0 +1,129 @@
+ADD-ATTACHMENTS-TO-SET()                              ADD-ATTACHMENTS-TO-SET()
+
+
+
+NAME
+       add-attachments-to-set -
+
+DESCRIPTION
+       Adds one or more attachments to an attachment set.
+
+       An attachment set is a temporary container for attachments that you add
+       to a case or case communication. The set is available for 1 hour  after
+       it's  created.  The expiryTime returned in the response is when the set
+       expires.
+
+       NOTE:
+
+          o You must have a Business, Enterprise On-Ramp, or  Enterprise  Sup-
+            port plan to use the Amazon Web Services Support API.
+
+          o If  you  call  the Amazon Web Services Support API from an account
+            that does not have a Business, Enterprise On-Ramp,  or  Enterprise
+            Support  plan,  the  SubscriptionRequiredException  error  message
+            appears. For information about changing  your  support  plan,  see
+            Amazon Web Services Support .
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            add-attachments-to-set
+          [--attachment-set-id <value>]
+          --attachments <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --attachment-set-id (string)
+          The  ID  of  the attachment set. If an attachmentSetId is not speci-
+          fied, a new attachment set is created, and the  ID  of  the  set  is
+          returned  in  the  response. If an attachmentSetId is specified, the
+          attachments are added to the specified set, if it exists.
+
+       --attachments (list)
+          One or more attachments to add to the set. You can add up  to  three
+          attachments per set. The size limit is 5 MB per attachment.
+
+          In the Attachment object, use the data parameter to specify the con-
+          tents of the attachment file. In the previous  request  syntax,  the
+          value  for  data  appear  as  blob  ,  which  is  represented  as  a
+          base64-encoded string. The value for fileName is  the  name  of  the
+          attachment, such as troubleshoot-screenshot.png .
+
+          (structure)
+              An  attachment  to a case communication. The attachment consists
+              of the file name and the content of the file.
+
+              fileName -> (string)
+                 The name of the attachment file.
+
+              data -> (blob)
+                 The content of the attachment file.
+
+       Shorthand Syntax:
+
+          fileName=string,data=blob ...
+
+       JSON Syntax:
+
+          [
+            {
+              "fileName": "string",
+              "data": blob
+            }
+            ...
+          ]
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To add an attachment to a set
+
+       The following add-attachments-to-set example adds an  image  to  a  set
+       that you can then specify for a support case in your AWS account.
+
+          aws support add-attachments-to-set \
+              --attachment-set-id "as-2f5a6faa2a4a1e600-mu-nk5xQlBr70-G1cUos5LZkd38KOAHZa9BMDVzNEXAMPLE" \
+              --attachments fileName=troubleshoot-screenshot.png,data=base64-encoded-string
+
+       Output:
+
+          {
+              "attachmentSetId": "as-2f5a6faa2a4a1e600-mu-nk5xQlBr70-G1cUos5LZkd38KOAHZa9BMDVzNEXAMPLE",
+              "expiryTime": "2020-05-14T17:04:40.790+0000"
+          }
+
+       For  more  information,  see  Case  management  in the AWS Support User
+       Guide.
+
+OUTPUT
+       attachmentSetId -> (string)
+          The ID of the attachment set. If an attachmentSetId was  not  speci-
+          fied,  a  new  attachment  set  is created, and the ID of the set is
+          returned in the response. If an attachmentSetId was  specified,  the
+          attachments are added to the specified set, if it exists.
+
+       expiryTime -> (string)
+          The time and date when the attachment set expires.
+
+
+
+                                                      ADD-ATTACHMENTS-TO-SET()

@@ -1,0 +1,8 @@
+configure add-model
+configure get
+configure import
+configure list
+configure list-profiles
+configure set
+configure sso
+configure wizard

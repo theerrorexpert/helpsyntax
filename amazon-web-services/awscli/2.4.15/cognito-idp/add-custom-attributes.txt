@@ -1,0 +1,151 @@
+ADD-CUSTOM-ATTRIBUTES()                                ADD-CUSTOM-ATTRIBUTES()
+
+
+
+NAME
+       add-custom-attributes -
+
+DESCRIPTION
+       Adds additional user attributes to the user pool schema.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            add-custom-attributes
+          --user-pool-id <value>
+          --custom-attributes <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --user-pool-id (string)
+          The  user  pool  ID  for  the user pool where you want to add custom
+          attributes.
+
+       --custom-attributes (list)
+          An array of custom attributes, such as Mutable and Name.
+
+          (structure)
+              Contains information about the schema attribute.
+
+              Name -> (string)
+                 A schema attribute of the name type.
+
+              AttributeDataType -> (string)
+                 The attribute data type.
+
+              DeveloperOnlyAttribute -> (boolean)
+
+                 NOTE:
+                     We recommend that you use  WriteAttributes  in  the  user
+                     pool  client to control how attributes can be mutated for
+                     new use cases instead of using DeveloperOnlyAttribute .
+
+                 Specifies whether the attribute type is developer only.  This
+                 attribute  can  only  be  modified by an administrator. Users
+                 will not be able to modify this attribute using their  access
+                 token.  For  example,  DeveloperOnlyAttribute can be modified
+                 using AdminUpdateUserAttributes but cannot be  updated  using
+                 UpdateUserAttributes.
+
+              Mutable -> (boolean)
+                 Specifies  whether the value of the attribute can be changed.
+
+                 For any user pool attribute  that's  mapped  to  an  identity
+                 provider  attribute,  you  must  set this parameter to true .
+                 Amazon Cognito updates mapped attributes when users  sign  in
+                 to  your  application  through  an  identity  provider. If an
+                 attribute is immutable, Amazon Cognito throws an  error  when
+                 it  attempts  to  update the attribute. For more information,
+                 see Specifying Identity Provider Attribute Mappings for  Your
+                 User Pool .
+
+              Required -> (boolean)
+                 Specifies  whether  a user pool attribute is required. If the
+                 attribute is required and the user does not provide a  value,
+                 registration or sign-in will fail.
+
+              NumberAttributeConstraints -> (structure)
+                 Specifies  the  constraints  for  an  attribute of the number
+                 type.
+
+                 MinValue -> (string)
+                     The minimum value of an attribute that is of  the  number
+                     data type.
+
+                 MaxValue -> (string)
+                     The  maximum  value of an attribute that is of the number
+                     data type.
+
+              StringAttributeConstraints -> (structure)
+                 Specifies the constraints for  an  attribute  of  the  string
+                 type.
+
+                 MinLength -> (string)
+                     The minimum length.
+
+                 MaxLength -> (string)
+                     The maximum length.
+
+       Shorthand Syntax:
+
+          Name=string,AttributeDataType=string,DeveloperOnlyAttribute=boolean,Mutable=boolean,Required=boolean,NumberAttributeConstraints={MinValue=string,MaxValue=string},StringAttributeConstraints={MinLength=string,MaxLength=string} ...
+
+       JSON Syntax:
+
+          [
+            {
+              "Name": "string",
+              "AttributeDataType": "String"|"Number"|"DateTime"|"Boolean",
+              "DeveloperOnlyAttribute": true|false,
+              "Mutable": true|false,
+              "Required": true|false,
+              "NumberAttributeConstraints": {
+                "MinValue": "string",
+                "MaxValue": "string"
+              },
+              "StringAttributeConstraints": {
+                "MinLength": "string",
+                "MaxLength": "string"
+              }
+            }
+            ...
+          ]
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To add a custom attribute
+
+       This  example adds a custom attribute CustomAttr1 to a user pool. It is
+       a String type, and requires a minimum of 1 character and a  maximum  of
+       15. It is not required.
+
+       Command:
+
+          aws cognito-idp add-custom-attributes --user-pool-id us-west-2_aaaaaaaaa --custom-attributes Name="CustomAttr1",AttributeDataType="String",DeveloperOnlyAttribute=false,Required=false,StringAttributeConstraints="{MinLength=1,MaxLength=15}"
+
+OUTPUT
+       None
+
+
+
+                                                       ADD-CUSTOM-ATTRIBUTES()

@@ -1,0 +1,8 @@
+iot-data delete-thing-shadow
+iot-data get-retained-message
+iot-data get-thing-shadow
+iot-data help
+iot-data list-named-shadows-for-thing
+iot-data list-retained-messages
+iot-data publish
+iot-data update-thing-shadow

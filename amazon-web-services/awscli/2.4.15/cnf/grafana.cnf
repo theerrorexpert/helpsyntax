@@ -1,0 +1,12 @@
+grafana associate-license
+grafana create-workspace
+grafana delete-workspace
+grafana describe-workspace
+grafana describe-workspace-authentication
+grafana disassociate-license
+grafana help
+grafana list-permissions
+grafana list-workspaces
+grafana update-permissions
+grafana update-workspace
+grafana update-workspace-authentication

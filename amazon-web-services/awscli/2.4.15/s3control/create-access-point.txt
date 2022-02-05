@@ -1,0 +1,212 @@
+CREATE-ACCESS-POINT()                                    CREATE-ACCESS-POINT()
+
+
+
+NAME
+       create-access-point -
+
+DESCRIPTION
+       Creates  an  access  point and associates it with the specified bucket.
+       For more information, see Managing Data Access with  Amazon  S3  Access
+       Points in the Amazon S3 User Guide .
+
+       NOTE:
+          S3 on Outposts only supports VPC-style access points.
+
+          For more information, see Accessing Amazon S3 on Outposts using vir-
+          tual private cloud (VPC) only access points in the  Amazon  S3  User
+          Guide .
+
+       All  Amazon S3 on Outposts REST API requests for this action require an
+       additional parameter of x-amz-outpost-id to be passed with the  request
+       and  an S3 on Outposts endpoint hostname prefix instead of s3-control .
+       For an example of the request syntax for Amazon  S3  on  Outposts  that
+       uses  the  S3  on  Outposts endpoint hostname prefix and the x-amz-out-
+       post-id derived using the access point ARN, see the Examples section.
+
+       The following actions are related to CreateAccessPoint :
+
+       o GetAccessPoint
+
+       o DeleteAccessPoint
+
+       o ListAccessPoints
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-access-point
+          --account-id <value>
+          --name <value>
+          --bucket <value>
+          [--vpc-configuration <value>]
+          [--public-access-block-configuration <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --account-id (string)
+          The Amazon Web Services account ID for the owner of the  bucket  for
+          which you want to create an access point.
+
+       --name (string)
+          The name you want to assign to this access point.
+
+       --bucket (string)
+          The  name of the bucket that you want to associate this access point
+          with.
+
+          For using this parameter with Amazon S3 on Outposts  with  the  REST
+          API, you must specify the name and the x-amz-outpost-id as well.
+
+          For  using  this  parameter  with S3 on Outposts with the Amazon Web
+          Services SDK and CLI,  you  must  specify  the  ARN  of  the  bucket
+          accessed         in         the        format        arn:aws:s3-out-
+          posts:<Region>:<account-id>:outpost/<out-
+          post-id>/bucket/<my-bucket-name> . For example, to access the bucket
+          reports through outpost my-outpost owned by account 123456789012  in
+          Region   us-west-2   ,  use  the  URL  encoding  of  arn:aws:s3-out-
+          posts:us-west-2:123456789012:outpost/my-outpost/bucket/reports . The
+          value must be URL encoded.
+
+       --vpc-configuration (structure)
+          If you include this field, Amazon S3 restricts access to this access
+          point to requests from the specified virtual private cloud (VPC).
+
+          NOTE:
+              This is required for creating an access point for Amazon  S3  on
+              Outposts buckets.
+
+          VpcId -> (string)
+              If  this  field  is specified, this access point will only allow
+              connections from the specified VPC ID.
+
+       Shorthand Syntax:
+
+          VpcId=string
+
+       JSON Syntax:
+
+          {
+            "VpcId": "string"
+          }
+
+       --public-access-block-configuration (structure)
+          The PublicAccessBlock configuration that you want to  apply  to  the
+          access point.
+
+          BlockPublicAcls -> (boolean)
+              Specifies  whether  Amazon S3 should block public access control
+              lists (ACLs) for buckets in this account. Setting  this  element
+              to TRUE causes the following behavior:
+
+              o PUT  Bucket acl and PUT Object acl calls fail if the specified
+                ACL is public.
+
+              o PUT Object calls fail if the request includes a public ACL.
+
+              o PUT Bucket calls fail if the request includes a public ACL.
+
+              Enabling this setting doesn't affect existing policies or  ACLs.
+
+              This is not supported for Amazon S3 on Outposts.
+
+          IgnorePublicAcls -> (boolean)
+              Specifies  whether Amazon S3 should ignore public ACLs for buck-
+              ets in this account. Setting this element to TRUE causes  Amazon
+              S3  to ignore all public ACLs on buckets in this account and any
+              objects that they contain.
+
+              Enabling this setting doesn't  affect  the  persistence  of  any
+              existing  ACLs  and  doesn't  prevent new public ACLs from being
+              set.
+
+              This is not supported for Amazon S3 on Outposts.
+
+          BlockPublicPolicy -> (boolean)
+              Specifies whether Amazon S3 should block public bucket  policies
+              for buckets in this account. Setting this element to TRUE causes
+              Amazon S3 to reject calls to PUT Bucket policy if the  specified
+              bucket policy allows public access.
+
+              Enabling this setting doesn't affect existing bucket policies.
+
+              This is not supported for Amazon S3 on Outposts.
+
+          RestrictPublicBuckets -> (boolean)
+              Specifies  whether Amazon S3 should restrict public bucket poli-
+              cies for buckets in this account. Setting this element  to  TRUE
+              restricts  access to buckets with public policies to only Amazon
+              Web Service principals and authorized users within this account.
+
+              Enabling  this  setting  doesn't affect previously stored bucket
+              policies, except that public and cross-account access within any
+              public  bucket  policy,  including non-public delegation to spe-
+              cific accounts, is blocked.
+
+              This is not supported for Amazon S3 on Outposts.
+
+       Shorthand Syntax:
+
+          BlockPublicAcls=boolean,IgnorePublicAcls=boolean,BlockPublicPolicy=boolean,RestrictPublicBuckets=boolean
+
+       JSON Syntax:
+
+          {
+            "BlockPublicAcls": true|false,
+            "IgnorePublicAcls": true|false,
+            "BlockPublicPolicy": true|false,
+            "RestrictPublicBuckets": true|false
+          }
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To create an access point
+
+       The following create-access-point example creates an access point named
+       finance-ap  for  the  bucket  business-records in account 123456789012.
+       Before running this example, replace  the  access  point  name,  bucket
+       name, and account number with appropriate values for your use case.
+
+          aws s3control create-access-point \
+              --account-id 123456789012 \
+              --bucket business-records \
+              --name finance-ap
+
+       This command produces no output.
+
+       For  more  information, see Creating Access Points in the Amazon Simple
+       Storage Service Developer Guide.
+
+OUTPUT
+       AccessPointArn -> (string)
+          The ARN of the access point.
+
+          NOTE:
+              This is only supported by Amazon S3 on Outposts.
+
+       Alias -> (string)
+          The name or alias of the access point.
+
+
+
+                                                         CREATE-ACCESS-POINT()

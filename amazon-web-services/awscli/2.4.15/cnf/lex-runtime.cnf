@@ -1,0 +1,6 @@
+lex-runtime delete-session
+lex-runtime get-session
+lex-runtime help
+lex-runtime post-content
+lex-runtime post-text
+lex-runtime put-session

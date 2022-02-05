@@ -1,0 +1,132 @@
+GET-CLIP()                                                          GET-CLIP()
+
+
+
+NAME
+       get-clip -
+
+DESCRIPTION
+       Downloads  an  MP4 file (clip) containing the archived, on-demand media
+       from the specified video stream over the specified time range.
+
+       Both the StreamName and the StreamARN parameters are optional, but  you
+       must  specify either the StreamName or the StreamARN when invoking this
+       API operation.
+
+       As a prerequisite to using GetCLip API, you  must  obtain  an  endpoint
+       using GetDataEndpoint , specifying GET_CLIP forthe APIName parameter.
+
+       An  Amazon Kinesis video stream has the following requirements for pro-
+       viding data through MP4:
+
+       o The media must contain h.264 or h.265 encoded video and,  optionally,
+         AAC  or  G.711  encoded  audio. Specifically, the codec ID of track 1
+         should be V_MPEG/ISO/AVC (for h.264) or V_MPEGH/ISO/HEVC (for H.265).
+         Optionally,  the  codec  ID  of  track 2 should be A_AAC (for AAC) or
+         A_MS/ACM (for G.711).
+
+       o Data retention must be greater than 0.
+
+       o The video track of each fragment must contain codec private  data  in
+         the  Advanced  Video Coding (AVC) for H.264 format and HEVC for H.265
+         format.  For  more  information,  see  MPEG-4  specification  ISO/IEC
+         14496-15 . For information about adapting stream data to a given for-
+         mat, see NAL Adaptation Flags .
+
+       o The audio track (if present) of each fragment must contain codec pri-
+         vate  data  in the AAC format (AAC specification ISO/IEC 13818-7 ) or
+         the MS Wave format .
+
+       You can monitor the amount of outgoing  data  by  monitoring  the  Get-
+       Clip.OutgoingBytes  Amazon  CloudWatch  metric.  For  information about
+       using CloudWatch to monitor Kinesis Video Streams, see Monitoring Kine-
+       sis  Video  Streams . For pricing information, see Amazon Kinesis Video
+       Streams Pricing and AWS Pricing . Charges for outgoing AWS data  apply.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            get-clip
+          [--stream-name <value>]
+          [--stream-arn <value>]
+          --clip-fragment-selector <value>
+          <outfile>
+
+OPTIONS
+       --stream-name (string)
+          The name of the stream for which to retrieve the media clip.
+
+          You must specify either the StreamName or the StreamARN.
+
+       --stream-arn (string)
+          The  Amazon  Resource Name (ARN) of the stream for which to retrieve
+          the media clip.
+
+          You must specify either the StreamName or the StreamARN.
+
+       --clip-fragment-selector (structure)
+          The time range of the requested clip and the  source  of  the  time-
+          stamps.
+
+          FragmentSelectorType -> (string)
+              The origin of the timestamps to use (Server or Producer).
+
+          TimestampRange -> (structure)
+              The range of timestamps to return.
+
+              StartTimestamp -> (timestamp)
+                 The  starting  timestamp in the range of timestamps for which
+                 to return fragments.
+
+                 Only fragments that start exactly at or after  StartTimestamp
+                 are  included  in  the  session.  Fragments that start before
+                 StartTimestamp and continue past it aren't  included  in  the
+                 session.  If  FragmentSelectorType  is SERVER_TIMESTAMP , the
+                 StartTimestamp must be later than the stream head.
+
+              EndTimestamp -> (timestamp)
+                 The end of the timestamp range for the requested media.
+
+                 This value must be within 24 hours of  the  specified  Start-
+                 Timestamp  ,  and  it  must  be later than the StartTimestamp
+                 value.   If   FragmentSelectorType   for   the   request   is
+                 SERVER_TIMESTAMP , this value must be in the past.
+
+                 This  value is inclusive. The EndTimestamp is compared to the
+                 (starting) timestamp of the fragment.  Fragments  that  start
+                 before  the  EndTimestamp  value  and  continue  past  it are
+                 included in the session.
+
+       Shorthand Syntax:
+
+          FragmentSelectorType=string,TimestampRange={StartTimestamp=timestamp,EndTimestamp=timestamp}
+
+       JSON Syntax:
+
+          {
+            "FragmentSelectorType": "PRODUCER_TIMESTAMP"|"SERVER_TIMESTAMP",
+            "TimestampRange": {
+              "StartTimestamp": timestamp,
+              "EndTimestamp": timestamp
+            }
+          }
+
+       outfile (string) Filename where the content will be saved
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       ContentType -> (string)
+          The content type of the media in the requested clip.
+
+       Payload -> (blob)
+          Traditional MP4 file that contains the media clip from the specified
+          video  stream. The output will contain the first 100 MB or the first
+          200 fragments from the specified start timestamp. For more  informa-
+          tion, see Kinesis Video Streams Limits .
+
+
+
+                                                                    GET-CLIP()

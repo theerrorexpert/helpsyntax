@@ -1,0 +1,161 @@
+CREATE-APPLICATION()                                      CREATE-APPLICATION()
+
+
+
+NAME
+       create-application -
+
+DESCRIPTION
+       Adds an application that is created from a resource group.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-application
+          [--resource-group-name <value>]
+          [--ops-center-enabled | --no-ops-center-enabled]
+          [--cwe-monitor-enabled | --no-cwe-monitor-enabled]
+          [--ops-item-sns-topic-arn <value>]
+          [--tags <value>]
+          [--auto-config-enabled | --no-auto-config-enabled]
+          [--auto-create | --no-auto-create]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --resource-group-name (string)
+          The name of the resource group.
+
+       --ops-center-enabled | --no-ops-center-enabled (boolean)
+          When  set to true , creates opsItems for any problems detected on an
+          application.
+
+       --cwe-monitor-enabled | --no-cwe-monitor-enabled (boolean)
+          Indicates whether Application  Insights  can  listen  to  CloudWatch
+          events  for the application resources, such as instance terminated ,
+          failed deployment , and others.
+
+       --ops-item-sns-topic-arn (string)
+          The SNS topic provided to Application Insights that is associated to
+          the created opsItem. Allows you to receive notifications for updates
+          to the opsItem.
+
+       --tags (list)
+          List of tags to add to the application. tag key (Key ) and an  asso-
+          ciated  tag  value  (Value ). The maximum length of a tag key is 128
+          characters. The maximum length of a tag value is 256 characters.
+
+          (structure)
+              An object that defines the tags associated with an  application.
+              A  tag  is a label that you optionally define and associate with
+              an  application.  Tags  can  help  you  categorize  and   manage
+              resources in different ways, such as by purpose, owner, environ-
+              ment, or other criteria.
+
+              Each tag consists of a required tag key and  an  associated  tag
+              value  ,  both of which you define. A tag key is a general label
+              that acts as a category for a more specific  tag  value.  A  tag
+              value  acts as a descriptor within a tag key. A tag key can con-
+              tain as many as 128 characters. A tag value can contain as  many
+              as  256  characters. The characters can be Unicode letters, dig-
+              its, white space, or one of the following symbols: _ . : /  =  +
+              -. The following additional restrictions apply to tags:
+
+              o Tag keys and values are case sensitive.
+
+              o For  each associated resource, each tag key must be unique and
+                it can have only one value.
+
+              o The aws: prefix is reserved for use by AWS; you cant use it in
+                any tag keys or values that you define. In addition, you can't
+                edit or remove tag keys or values that use this prefix.
+
+              Key -> (string)
+                 One part of a key-value pair that defines a tag. The  maximum
+                 length  of a tag key is 128 characters. The minimum length is
+                 1 character.
+
+              Value -> (string)
+                 The optional part of a key-value pair that defines a tag. The
+                 maximum  length of a tag value is 256 characters. The minimum
+                 length is 0 characters. If you don't want an  application  to
+                 have  a  specific  tag  value, don't specify a value for this
+                 parameter.
+
+       Shorthand Syntax:
+
+          Key=string,Value=string ...
+
+       JSON Syntax:
+
+          [
+            {
+              "Key": "string",
+              "Value": "string"
+            }
+            ...
+          ]
+
+       --auto-config-enabled | --no-auto-config-enabled (boolean)
+
+       --auto-create | --no-auto-create (boolean)
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       ApplicationInfo -> (structure)
+          Information about the application.
+
+          ResourceGroupName -> (string)
+              The name of the resource group used for the application.
+
+          LifeCycle -> (string)
+              The lifecycle of the application.
+
+          OpsItemSNSTopicArn -> (string)
+              The SNS topic provided to Application Insights that  is  associ-
+              ated  to  the  created opsItems to receive SNS notifications for
+              opsItem updates.
+
+          OpsCenterEnabled -> (boolean)
+              Indicates whether Application Insights will create opsItems  for
+              any problem detected by Application Insights for an application.
+
+          CWEMonitorEnabled -> (boolean)
+              Indicates whether Application Insights can listen to  CloudWatch
+              events  for  the  application resources, such as instance termi-
+              nated , failed deployment , and others.
+
+          Remarks -> (string)
+              The issues on the user side that block Application Insights from
+              successfully monitoring an application. Example remarks include:
+
+              o Configuring application, detected 1 Errors, 3 Warnings
+
+              o Configuring application, detected 1 Unconfigured Components
+
+          AutoConfigEnabled -> (boolean)
+
+          DiscoveryType -> (string)
+
+
+
+                                                          CREATE-APPLICATION()

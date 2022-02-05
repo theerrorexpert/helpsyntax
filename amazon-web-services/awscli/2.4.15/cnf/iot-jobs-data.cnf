@@ -1,0 +1,5 @@
+iot-jobs-data describe-job-execution
+iot-jobs-data get-pending-job-executions
+iot-jobs-data help
+iot-jobs-data start-next-pending-job-execution
+iot-jobs-data update-job-execution

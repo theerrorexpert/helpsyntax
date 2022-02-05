@@ -1,0 +1,16 @@
+appintegrations create-data-integration
+appintegrations create-event-integration
+appintegrations delete-data-integration
+appintegrations delete-event-integration
+appintegrations get-data-integration
+appintegrations get-event-integration
+appintegrations help
+appintegrations list-data-integration-associations
+appintegrations list-data-integrations
+appintegrations list-event-integration-associations
+appintegrations list-event-integrations
+appintegrations list-tags-for-resource
+appintegrations tag-resource
+appintegrations untag-resource
+appintegrations update-data-integration
+appintegrations update-event-integration

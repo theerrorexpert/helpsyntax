@@ -1,0 +1,93 @@
+DESCRIBE-ACCELERATOR-OFFERINGS()              DESCRIBE-ACCELERATOR-OFFERINGS()
+
+
+
+NAME
+       describe-accelerator-offerings -
+
+DESCRIPTION
+       Describes  the  locations  in  which a given accelerator type or set of
+       types is present in a given region.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            describe-accelerator-offerings
+          --location-type <value>
+          [--accelerator-types <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --location-type (string)
+          The location type that you want to describe accelerator type  offer-
+          ings  for.  It  can assume the following values: region: will return
+          the accelerator type offering  at  the  regional  level.  availabil-
+          ity-zone:  will  return  the accelerator type offering at the avail-
+          ability zone level. availability-zone-id: will return the  accelera-
+          tor  type  offering  at  the  availability  zone level returning the
+          availability zone id.
+
+          Possible values:
+
+          o region
+
+          o availability-zone
+
+          o availability-zone-id
+
+       --accelerator-types (list)
+          The list of accelerator types to describe.
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       acceleratorTypeOfferings -> (list)
+          The list of accelerator type offerings for a specific location.
+
+          (structure)
+              The offering for an Elastic Inference Accelerator type.
+
+              acceleratorType -> (string)
+                 The name of the Elastic Inference Accelerator type.
+
+              locationType -> (string)
+                 The location type for the offering. It can assume the follow-
+                 ing  values:  region:  defines  that  the  offering is at the
+                 regional level. availability-zone: defines that the  offering
+                 is  at  the  availability  zone  level. availability-zone-id:
+                 defines that the offering is at the availability zone  level,
+                 defined by the availability zone id.
+
+              location -> (string)
+                 The  location  for  the  offering.  It will return either the
+                 region, availability zone or availability  zone  id  for  the
+                 offering depending on the locationType value.
+
+
+
+                                              DESCRIBE-ACCELERATOR-OFFERINGS()

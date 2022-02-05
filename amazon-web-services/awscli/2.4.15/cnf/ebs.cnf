@@ -1,0 +1,7 @@
+ebs complete-snapshot
+ebs get-snapshot-block
+ebs help
+ebs list-changed-blocks
+ebs list-snapshot-blocks
+ebs put-snapshot-block
+ebs start-snapshot

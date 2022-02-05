@@ -1,0 +1,9 @@
+rbin create-rule
+rbin delete-rule
+rbin get-rule
+rbin help
+rbin list-rules
+rbin list-tags-for-resource
+rbin tag-resource
+rbin untag-resource
+rbin update-rule

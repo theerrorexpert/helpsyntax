@@ -1,0 +1,10 @@
+mobile create-project
+mobile delete-project
+mobile describe-bundle
+mobile describe-project
+mobile export-bundle
+mobile export-project
+mobile help
+mobile list-bundles
+mobile list-projects
+mobile update-project

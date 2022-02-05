@@ -1,0 +1,333 @@
+PUT-BUCKET-LIFECYCLE()                                  PUT-BUCKET-LIFECYCLE()
+
+
+
+NAME
+       put-bucket-lifecycle -
+
+DESCRIPTION
+       WARNING:
+          For      an     updated     version     of     this     API,     see
+          PutBucketLifecycleConfiguration . This version has been  deprecated.
+          Existing  lifecycle configurations will work. For new lifecycle con-
+          figurations, use the updated API.
+
+       Creates a new lifecycle configuration for the  bucket  or  replaces  an
+       existing  lifecycle configuration. For information about lifecycle con-
+       figuration, see Object Lifecycle Management in the Amazon S3 User Guide
+       .
+
+       By  default,  all  Amazon S3 resources, including buckets, objects, and
+       related subresources (for example, lifecycle configuration and  website
+       configuration)  are  private.  Only  the resource owner, the Amazon Web
+       Services account that created the resource, can access it. The resource
+       owner  can  optionally grant access permissions to others by writing an
+       access policy. For this operation, users must get the  s3:PutLifecycle-
+       Configuration permission.
+
+       You  can  also explicitly deny permissions. Explicit denial also super-
+       sedes any other permissions. If you want to prevent users  or  accounts
+       from  removing or deleting objects from your bucket, you must deny them
+       permissions for the following actions:
+
+       o s3:DeleteObject
+
+       o s3:DeleteObjectVersion
+
+       o s3:PutLifecycleConfiguration
+
+       For more information about permissions, see Managing Access Permissions
+       to your Amazon S3 Resources in the Amazon S3 User Guide .
+
+       For  more  examples of transitioning objects to storage classes such as
+       STANDARD_IA or ONEZONE_IA, see Examples of Lifecycle Configuration .
+          Related Resources
+
+       o GetBucketLifecycle (Deprecated)
+
+       o GetBucketLifecycleConfiguration
+
+       o RestoreObject
+
+       o By default, a resource ownerin this case, a bucket  owner,  which  is
+         the  Amazon  Web  Services account that created the bucketcan perform
+         any of the operations. A resource owner can also grant others permis-
+         sion  to perform the operation. For more information, see the follow-
+         ing topics in the Amazon S3 User Guide:
+
+         o Specifying Permissions in a Policy
+
+         o Managing Access Permissions to your Amazon S3 Resources
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            put-bucket-lifecycle
+          --bucket <value>
+          [--content-md5 <value>]
+          [--lifecycle-configuration <value>]
+          [--expected-bucket-owner <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --bucket (string)
+
+       --content-md5 (string)
+          For requests made using the Amazon Web Services Command Line  Inter-
+          face  (CLI)  or  Amazon  Web Services SDKs, this field is calculated
+          automatically.
+
+       --lifecycle-configuration (structure)
+          Rules -> (list)
+              Specifies lifecycle configuration rules for an Amazon S3 bucket.
+
+              (structure)
+                 Specifies  lifecycle  rules for an Amazon S3 bucket. For more
+                 information, see Put Bucket Lifecycle  Configuration  in  the
+                 Amazon  S3 API Reference . For examples, see Put Bucket Life-
+                 cycle Configuration Examples .
+
+                 Expiration -> (structure)
+                     Specifies the expiration for the lifecycle of the object.
+
+                     Date -> (timestamp)
+                        Indicates  at  what  date the object is to be moved or
+                        deleted. Should be in GMT ISO 8601 Format.
+
+                     Days -> (integer)
+                        Indicates the lifetime, in days, of the  objects  that
+                        are  subject to the rule. The value must be a non-zero
+                        positive integer.
+
+                     ExpiredObjectDeleteMarker -> (boolean)
+                        Indicates whether  Amazon  S3  will  remove  a  delete
+                        marker  with  no  noncurrent versions. If set to true,
+                        the delete marker will be expired; if set to false the
+                        policy  takes no action. This cannot be specified with
+                        Days or Date in a Lifecycle Expiration Policy.
+
+                 ID -> (string)
+                     Unique identifier for the rule. The value can't be longer
+                     than 255 characters.
+
+                 Prefix -> (string)
+                     Object  key prefix that identifies one or more objects to
+                     which this rule applies.
+
+                     WARNING:
+                        Replacement must be made for  object  keys  containing
+                        special  characters  (such  as  carriage returns) when
+                        using XML requests.  For  more  information,  see  XML
+                        related object key constraints .
+
+                 Status -> (string)
+                     If Enabled , the rule is currently being applied. If Dis-
+                     abled , the rule is not currently being applied.
+
+                 Transition -> (structure)
+                     Specifies when an object transitions to a specified stor-
+                     age class. For more information about Amazon S3 lifecycle
+                     configuration rules, see Transitioning Objects Using Ama-
+                     zon S3 Lifecycle in the Amazon S3 User Guide .
+
+                     Date -> (timestamp)
+                        Indicates  when objects are transitioned to the speci-
+                        fied storage class. The date value must be in ISO 8601
+                        format. The time is always midnight UTC.
+
+                     Days -> (integer)
+                        Indicates  the  number  of  days  after  creation when
+                        objects are  transitioned  to  the  specified  storage
+                        class. The value must be a positive integer.
+
+                     StorageClass -> (string)
+                        The  storage  class  to  which  you want the object to
+                        transition.
+
+                 NoncurrentVersionTransition -> (structure)
+                     Container for the transition  rule  that  describes  when
+                     noncurrent  objects  transition to the STANDARD_IA , ONE-
+                     ZONE_IA , INTELLIGENT_TIERING , GLACIER_IR , GLACIER , or
+                     DEEP_ARCHIVE  storage  class.  If your bucket is version-
+                     ing-enabled (or versioning is  suspended),  you  can  set
+                     this  action to request that Amazon S3 transition noncur-
+                     rent object versions to the STANDARD_IA  ,  ONEZONE_IA  ,
+                     INTELLIGENT_TIERING  , GLACIER_IR , GLACIER , or DEEP_AR-
+                     CHIVE storage class at a specific period in the  object's
+                     lifetime.
+
+                     NoncurrentDays -> (integer)
+                        Specifies  the  number of days an object is noncurrent
+                        before Amazon S3 can perform  the  associated  action.
+                        For  information  about  the  noncurrent days calcula-
+                        tions, see How Amazon S3 Calculates How Long an Object
+                        Has Been Noncurrent in the Amazon S3 User Guide .
+
+                     StorageClass -> (string)
+                        The class of storage used to store the object.
+
+                     NewerNoncurrentVersions -> (integer)
+                        Specifies  how many noncurrent versions Amazon S3 will
+                        retain. If there are this many more recent  noncurrent
+                        versions,  Amazon  S3 will take the associated action.
+                        For more information about  noncurrent  versions,  see
+                        Lifecycle configuration elements in the Amazon S3 User
+                        Guide .
+
+                 NoncurrentVersionExpiration -> (structure)
+                     Specifies when noncurrent object  versions  expire.  Upon
+                     expiration,  Amazon S3 permanently deletes the noncurrent
+                     object versions. You  set  this  lifecycle  configuration
+                     action  on  a bucket that has versioning enabled (or sus-
+                     pended) to  request  that  Amazon  S3  delete  noncurrent
+                     object  versions  at  a  specific  period in the object's
+                     lifetime.
+
+                     NoncurrentDays -> (integer)
+                        Specifies the number of days an object  is  noncurrent
+                        before  Amazon  S3  can perform the associated action.
+                        For information about  the  noncurrent  days  calcula-
+                        tions,  see  How  Amazon  S3 Calculates When an Object
+                        Became Noncurrent in the Amazon S3 User Guide .
+
+                     NewerNoncurrentVersions -> (integer)
+                        Specifies how many noncurrent versions Amazon S3  will
+                        retain.  If there are this many more recent noncurrent
+                        versions, Amazon S3 will take the  associated  action.
+                        For  more  information  about noncurrent versions, see
+                        Lifecycle configuration elements in the Amazon S3 User
+                        Guide .
+
+                 AbortIncompleteMultipartUpload -> (structure)
+                     Specifies  the days since the initiation of an incomplete
+                     multipart upload that Amazon S3 will wait  before  perma-
+                     nently  removing all parts of the upload. For more infor-
+                     mation, see Aborting Incomplete Multipart Uploads Using a
+                     Bucket Lifecycle Policy in the Amazon S3 User Guide .
+
+                     DaysAfterInitiation -> (integer)
+                        Specifies  the  number  of  days after which Amazon S3
+                        aborts an incomplete multipart upload.
+
+       JSON Syntax:
+
+          {
+            "Rules": [
+              {
+                "Expiration": {
+                  "Date": timestamp,
+                  "Days": integer,
+                  "ExpiredObjectDeleteMarker": true|false
+                },
+                "ID": "string",
+                "Prefix": "string",
+                "Status": "Enabled"|"Disabled",
+                "Transition": {
+                  "Date": timestamp,
+                  "Days": integer,
+                  "StorageClass": "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"GLACIER_IR"
+                },
+                "NoncurrentVersionTransition": {
+                  "NoncurrentDays": integer,
+                  "StorageClass": "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"GLACIER_IR",
+                  "NewerNoncurrentVersions": integer
+                },
+                "NoncurrentVersionExpiration": {
+                  "NoncurrentDays": integer,
+                  "NewerNoncurrentVersions": integer
+                },
+                "AbortIncompleteMultipartUpload": {
+                  "DaysAfterInitiation": integer
+                }
+              }
+              ...
+            ]
+          }
+
+       --expected-bucket-owner (string)
+          The account ID of the expected bucket owner. If the bucket is  owned
+          by  a  different  account,  the  request  will fail with an HTTP 403
+          (Access Denied) error.
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       The following command applies a lifecycle configuration to  the  bucket
+       my-bucket:
+
+          aws s3api put-bucket-lifecycle --bucket my-bucket --lifecycle-configuration file://lifecycle.json
+
+       The  file  lifecycle.json is a JSON document in the current folder that
+       specifies two rules:
+
+          {
+            "Rules": [
+              {
+                "ID": "Move to Glacier after sixty days (objects in logs/2015/)",
+                "Prefix": "logs/2015/",
+                "Status": "Enabled",
+                "Transition": {
+                  "Days": 60,
+                  "StorageClass": "GLACIER"
+                }
+              },
+              {
+                "Expiration": {
+                  "Date": "2016-01-01T00:00:00.000Z"
+                },
+                "ID": "Delete 2014 logs in 2016.",
+                "Prefix": "logs/2014/",
+                "Status": "Enabled"
+              }
+            ]
+          }
+
+       The first rule moves files to Amazon Glacier after sixty days. The sec-
+       ond rule deletes files from Amazon S3 on the specified date. For infor-
+       mation on acceptable timestamp formats, see Specifying Parameter Values
+       in the AWS CLI User Guide.
+
+       Each  rule in the above example specifies a policy (Transition or Expi-
+       ration) and file prefix (folder name) to which it applies. You can also
+       create  a  rule  that applies to an entire bucket by specifying a blank
+       prefix:
+
+          {
+            "Rules": [
+              {
+                "ID": "Move to Glacier after sixty days (all objects in bucket)",
+                "Prefix": "",
+                "Status": "Enabled",
+                "Transition": {
+                  "Days": 60,
+                  "StorageClass": "GLACIER"
+                }
+              }
+            ]
+          }
+
+OUTPUT
+       None
+
+
+
+                                                        PUT-BUCKET-LIFECYCLE()

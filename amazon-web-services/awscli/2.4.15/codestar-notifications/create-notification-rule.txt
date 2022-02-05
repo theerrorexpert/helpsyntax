@@ -1,0 +1,194 @@
+CREATE-NOTIFICATION-RULE()                          CREATE-NOTIFICATION-RULE()
+
+
+
+NAME
+       create-notification-rule -
+
+DESCRIPTION
+       Creates  a  notification  rule  for  a resource. The rule specifies the
+       events you want notifications about and the targets (such as  SNS  top-
+       ics) where you want to receive them.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-notification-rule
+          --name <value>
+          --event-type-ids <value>
+          --resource <value>
+          --targets <value>
+          --detail-type <value>
+          [--client-request-token <value>]
+          [--tags <value>]
+          [--status <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --name (string)
+          The  name for the notification rule. Notifictaion rule names must be
+          unique in your AWS account.
+
+       --event-type-ids (list)
+          A list of event types associated with this notification rule. For  a
+          list of allowed events, see  EventTypeSummary .
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+       --resource (string)
+          The Amazon Resource Name (ARN) of the resource to associate with the
+          notification rule. Supported  resources  include  pipelines  in  AWS
+          CodePipeline,  repositories in AWS CodeCommit, and build projects in
+          AWS CodeBuild.
+
+       --targets (list)
+          A list of Amazon Resource Names (ARNs) of SNS  topics  to  associate
+          with the notification rule.
+
+          (structure)
+              Information  about the SNS topics associated with a notification
+              rule.
+
+              TargetType -> (string)
+                 The target type. Can be an Amazon SNS topic.
+
+              TargetAddress -> (string)
+                 The Amazon Resource Name (ARN) of the SNS topic.
+
+       Shorthand Syntax:
+
+          TargetType=string,TargetAddress=string ...
+
+       JSON Syntax:
+
+          [
+            {
+              "TargetType": "string",
+              "TargetAddress": "string"
+            }
+            ...
+          ]
+
+       --detail-type (string)
+          The level of  detail  to  include  in  the  notifications  for  this
+          resource.  BASIC  will  include only the contents of the event as it
+          would appear in AWS CloudWatch. FULL will include  any  supplemental
+          information  provided  by AWS CodeStar Notifications and/or the ser-
+          vice for the resource for which the notification is created.
+
+          Possible values:
+
+          o BASIC
+
+          o FULL
+
+       --client-request-token (string)
+          A unique, client-generated idempotency token that, when provided  in
+          a  request,  ensures  the  request cannot be repeated with a changed
+          parameter. If a request with the same parameters is received  and  a
+          token is included, the request returns information about the initial
+          request that used that token.
+
+          NOTE:
+              The AWS SDKs prepopulate client request tokens. If you are using
+              an AWS SDK, an idempotency token is created for you.
+
+       --tags (map)
+          A  list of tags to apply to this notification rule. Key names cannot
+          start with "aws".
+
+          key -> (string)
+
+          value -> (string)
+
+       Shorthand Syntax:
+
+          KeyName1=string,KeyName2=string
+
+       JSON Syntax:
+
+          {"string": "string"
+            ...}
+
+       --status (string)
+          The status of the notification rule. The default value  is  ENABLED.
+          If  the status is set to DISABLED, notifications aren't sent for the
+          notification rule.
+
+          Possible values:
+
+          o ENABLED
+
+          o DISABLED
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To create a notification rule
+
+       The following create-notification-rule example uses a JSON  file  named
+       rule.json  to create a notification rule named MyNotificationRule for a
+       repository named MyDemoRepo in the specified  AWS  acccount.  Notifica-
+       tions with the FULL detail type are sent to the specified target Amazon
+       SNS topic when branches and tags are created.
+
+          aws codestar-notifications create-notification-rule \
+              --cli-input-json file://rule.json
+
+       Contents of rule.json:
+
+          {
+              "Name": "MyNotificationRule",
+              "EventTypeIds": [
+                  "codecommit-repository-branches-and-tags-created"
+              ],
+              "Resource": "arn:aws:codecommit:us-east-1:123456789012:MyDemoRepo",
+              "Targets": [
+                  {
+                      "TargetType": "SNS",
+                      "TargetAddress": "arn:aws:sns:us-east-1:123456789012:MyNotificationTopic"
+                  }
+              ],
+              "Status": "ENABLED",
+              "DetailType": "FULL"
+          }
+
+       Output:
+
+          {
+              "Arn": "arn:aws:codestar-notifications:us-east-1:123456789012:notificationrule/dc82df7a-EXAMPLE"
+          }
+
+       For more information, see Create a Notification rule in the AWS  Devel-
+       oper Tools Console User Guide.
+
+OUTPUT
+       Arn -> (string)
+          The Amazon Resource Name (ARN) of the notification rule.
+
+
+
+                                                    CREATE-NOTIFICATION-RULE()

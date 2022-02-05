@@ -1,0 +1,11 @@
+application-autoscaling delete-scaling-policy
+application-autoscaling delete-scheduled-action
+application-autoscaling deregister-scalable-target
+application-autoscaling describe-scalable-targets
+application-autoscaling describe-scaling-activities
+application-autoscaling describe-scaling-policies
+application-autoscaling describe-scheduled-actions
+application-autoscaling help
+application-autoscaling put-scaling-policy
+application-autoscaling put-scheduled-action
+application-autoscaling register-scalable-target

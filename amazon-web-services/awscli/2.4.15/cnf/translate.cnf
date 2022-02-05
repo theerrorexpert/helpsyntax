@@ -1,0 +1,15 @@
+translate create-parallel-data
+translate delete-parallel-data
+translate delete-terminology
+translate describe-text-translation-job
+translate get-parallel-data
+translate get-terminology
+translate help
+translate import-terminology
+translate list-parallel-data
+translate list-terminologies
+translate list-text-translation-jobs
+translate start-text-translation-job
+translate stop-text-translation-job
+translate translate-text
+translate update-parallel-data

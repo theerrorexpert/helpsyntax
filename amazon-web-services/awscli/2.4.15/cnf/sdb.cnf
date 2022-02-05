@@ -1,0 +1,11 @@
+sdb batch-delete-attributes
+sdb batch-put-attributes
+sdb create-domain
+sdb delete-attributes
+sdb delete-domain
+sdb domain-metadata
+sdb get-attributes
+sdb help
+sdb list-domains
+sdb put-attributes
+sdb select

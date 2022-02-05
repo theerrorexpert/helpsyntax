@@ -1,0 +1,8 @@
+macie associate-member-account
+macie associate-s3-resources
+macie disassociate-member-account
+macie disassociate-s3-resources
+macie help
+macie list-member-accounts
+macie list-s3-resources
+macie update-s3-resources

@@ -1,0 +1,3 @@
+personalize-runtime get-personalized-ranking
+personalize-runtime get-recommendations
+personalize-runtime help

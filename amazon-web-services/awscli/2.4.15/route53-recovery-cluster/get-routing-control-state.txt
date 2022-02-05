@@ -1,0 +1,65 @@
+GET-ROUTING-CONTROL-STATE()                        GET-ROUTING-CONTROL-STATE()
+
+
+
+NAME
+       get-routing-control-state -
+
+DESCRIPTION
+       Get  the  state  for  a  routing control. A routing control is a simple
+       on/off switch that you can use to route  traffic  to  cells.  When  the
+       state  is  On, traffic flows to a cell. When it's off, traffic does not
+       flow.
+
+       Before you can create a routing control, you first must create a  clus-
+       ter  to  host  the  control.  For more information, see CreateCluster .
+       Access one of the endpoints for the cluster to get or update the  rout-
+       ing control state to redirect traffic.
+
+       For  more  information about working with routing controls, see Routing
+       control in the  Route  53  Application  Recovery  Controller  Developer
+       Guide.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            get-routing-control-state
+          --routing-control-arn <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --routing-control-arn (string)
+          The  Amazon  Resource  Number (ARN) for the routing control that you
+          want to get the state for.
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       RoutingControlArn -> (string)
+          The Amazon Resource Number (ARN) of the response.
+
+       RoutingControlState -> (string)
+          The state of the routing control.
+
+
+
+                                                   GET-ROUTING-CONTROL-STATE()

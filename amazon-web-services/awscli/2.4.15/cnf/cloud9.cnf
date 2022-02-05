@@ -1,0 +1,14 @@
+cloud9 create-environment-ec2
+cloud9 create-environment-membership
+cloud9 delete-environment
+cloud9 delete-environment-membership
+cloud9 describe-environment-memberships
+cloud9 describe-environment-status
+cloud9 describe-environments
+cloud9 help
+cloud9 list-environments
+cloud9 list-tags-for-resource
+cloud9 tag-resource
+cloud9 untag-resource
+cloud9 update-environment
+cloud9 update-environment-membership

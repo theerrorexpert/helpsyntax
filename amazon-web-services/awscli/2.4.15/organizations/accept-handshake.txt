@@ -1,0 +1,295 @@
+ACCEPT-HANDSHAKE()                                          ACCEPT-HANDSHAKE()
+
+
+
+NAME
+       accept-handshake -
+
+DESCRIPTION
+       Sends  a  response  to  the  originator  of a handshake agreeing to the
+       action proposed by the handshake request.
+
+       This operation can be called only by the following principals when they
+       also have the relevant IAM permissions:
+
+       o Invitation to join or Approve all features request handshakes: only a
+         principal from the member account. The user who calls the API for  an
+         invitation  to  join must have the organizations:AcceptHandshake per-
+         mission. If you enabled all features in the  organization,  the  user
+         must also have the iam:CreateServiceLinkedRole permission so that AWS
+         Organizations can  create  the  required  service-linked  role  named
+         AWSServiceRoleForOrganizations  . For more information, see AWS Orga-
+         nizations and Service-Linked Roles  in  the  AWS  Organizations  User
+         Guide .
+
+       o Enable  all  features  final confirmation handshake: only a principal
+         from the management account. For more information about  invitations,
+         see  Inviting  an  AWS  Account  to Join Your Organization in the AWS
+         Organizations User Guide. For  more  information  about  requests  to
+         enable all features in the organization, see Enabling All Features in
+         Your Organization in the AWS Organizations User Guide.
+
+       After you accept a handshake, it continues to appear in the results  of
+       relevant APIs for only 30 days. After that, it's deleted.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            accept-handshake
+          --handshake-id <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --handshake-id (string)
+          The unique identifier (ID) of the handshake that you want to accept.
+
+          The regex pattern for handshake ID string requires "h-" followed  by
+          from 8 to 32 lowercase letters or digits.
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To accept a handshake from another account
+
+       Bill,  the  owner  of  an  organization,  has previously invited Juan's
+       account to join his organization. The following  example  shows  Juan's
+       account accepting the handshake and thus agreeing to the invitation.
+
+          aws organizations accept-handshake --handshake-id h-examplehandshakeid111
+
+       The output shows the following:
+
+          {
+                  "Handshake": {
+                          "Action": "INVITE",
+                          "Arn": "arn:aws:organizations::111111111111:handshake/o-exampleorgid/invite/h-examplehandshakeid111",
+                          "RequestedTimestamp": 1481656459.257,
+                          "ExpirationTimestamp": 1482952459.257,
+                          "Id": "h-examplehandshakeid111",
+                          "Parties": [
+                                  {
+                                          "Id": "o-exampleorgid",
+                                          "Type": "ORGANIZATION"
+                                  },
+                                  {
+                                          "Id": "juan@example.com",
+                                          "Type": "EMAIL"
+                                  }
+                          ],
+                          "Resources": [
+                                  {
+                                          "Resources": [
+                                                  {
+                                                          "Type": "MASTER_EMAIL",
+                                                          "Value": "bill@amazon.com"
+                                                  },
+                                                  {
+                                                          "Type": "MASTER_NAME",
+                                                          "Value": "Org Master Account"
+                                                  },
+                                                  {
+                                                          "Type": "ORGANIZATION_FEATURE_SET",
+                                                          "Value": "ALL"
+                                                  }
+                                          ],
+                                          "Type": "ORGANIZATION",
+                                          "Value": "o-exampleorgid"
+                                  },
+                                  {
+                                          "Type": "EMAIL",
+                                          "Value": "juan@example.com"
+                                  }
+                          ],
+                          "State": "ACCEPTED"
+                  }
+          }
+
+OUTPUT
+       Handshake -> (structure)
+          A structure that contains details about the accepted handshake.
+
+          Id -> (string)
+              The  unique  identifier  (ID)  of  a  handshake. The originating
+              account creates the ID when it initiates the handshake.
+
+              The regex pattern for handshake ID string requires "h-" followed
+              by from 8 to 32 lowercase letters or digits.
+
+          Arn -> (string)
+              The Amazon Resource Name (ARN) of a handshake.
+
+              For  more  information about ARNs in Organizations, see ARN For-
+              mats Supported by Organizations in the AWS Service Authorization
+              Reference .
+
+          Parties -> (list)
+              Information about the two accounts that are participating in the
+              handshake.
+
+              (structure)
+                 Identifies a participant in a handshake.
+
+                 Id -> (string)
+                     The unique identifier (ID) for the party.
+
+                     The regex pattern for handshake ID string  requires  "h-"
+                     followed by from 8 to 32 lowercase letters or digits.
+
+                 Type -> (string)
+                     The type of party.
+
+          State -> (string)
+              The  current  state of the handshake. Use the state to trace the
+              flow of the handshake through the process from its  creation  to
+              its  acceptance.  The  meaning of each of the valid values is as
+              follows:
+
+              o REQUESTED : This handshake was  sent  to  multiple  recipients
+                (applicable  to only some handshake types) and not all recipi-
+                ents have responded yet. The request stays in this state until
+                all recipients respond.
+
+              o OPEN  : This handshake was sent to multiple recipients (appli-
+                cable to only some  policy  types)  and  all  recipients  have
+                responded,  allowing  the originator to complete the handshake
+                action.
+
+              o CANCELED : This handshake is no longer active because  it  was
+                canceled by the originating account.
+
+              o ACCEPTED  :  This  handshake  is  complete because it has been
+                accepted by the recipient.
+
+              o DECLINED : This handshake is no longer active because  it  was
+                declined by the recipient account.
+
+              o EXPIRED : This handshake is no longer active because the orig-
+                inator did not receive a response of any kind from the recipi-
+                ent before the expiration time (15 days).
+
+          RequestedTimestamp -> (timestamp)
+              The date and time that the handshake request was made.
+
+          ExpirationTimestamp -> (timestamp)
+              The  date  and time that the handshake expires. If the recipient
+              of the handshake request fails to respond before  the  specified
+              date  and  time, the handshake becomes inactive and is no longer
+              valid.
+
+          Action -> (string)
+              The type of handshake, indicating what action  occurs  when  the
+              recipient  accepts  the handshake. The following handshake types
+              are supported:
+
+              o INVITE : This type of handshake represents a request  to  join
+                an organization. It is always sent from the management account
+                to only non-member accounts.
+
+              o ENABLE_ALL_FEATURES : This  type  of  handshake  represents  a
+                request  to  enable  all  features  in  an organization. It is
+                always sent from the management account to only invited member
+                accounts.  Created  accounts do not receive this because those
+                accounts were created by the organization's management account
+                and approval is inferred.
+
+              o APPROVE_ALL_FEATURES : This type of handshake is sent from the
+                Organizations service when all member accounts  have  approved
+                the  ENABLE_ALL_FEATURES  invitation.  It  is sent only to the
+                management account and signals the master that it can finalize
+                the process to enable all features.
+
+          Resources -> (list)
+              Additional  information that is needed to process the handshake.
+
+              (structure)
+                 Contains additional data that is needed to  process  a  hand-
+                 shake.
+
+                 Value -> (string)
+                     The  information that is passed to the other party in the
+                     handshake. The format of the value string must match  the
+                     requirements of the specified type.
+
+                 Type -> (string)
+                     The  type of information being passed, specifying how the
+                     value is to be interpreted by the other party:
+
+                     o ACCOUNT - Specifies an AWS account ID number.
+
+                     o ORGANIZATION - Specifies an organization ID number.
+
+                     o EMAIL - Specifies the email address that is  associated
+                       with the account that receives the handshake.
+
+                     o OWNER_EMAIL  -  Specifies  the email address associated
+                       with the management account.  Included  as  information
+                       about an organization.
+
+                     o OWNER_NAME  -  Specifies  the  name associated with the
+                       management account. Included as  information  about  an
+                       organization.
+
+                     o NOTES  - Additional text provided by the handshake ini-
+                       tiator and intended for the recipient to read.
+
+                 Resources -> (list)
+                     When needed, contains an additional array of HandshakeRe-
+                     source objects.
+
+                     (structure)
+                        Contains  additional  data that is needed to process a
+                        handshake.
+
+                        Value -> (string)
+                            The information that is passed to the other  party
+                            in  the  handshake. The format of the value string
+                            must match the requirements of the specified type.
+
+                        Type -> (string)
+                            The  type  of information being passed, specifying
+                            how the value is to be interpreted  by  the  other
+                            party:
+
+                            o ACCOUNT - Specifies an AWS account ID number.
+
+                            o ORGANIZATION - Specifies an organization ID num-
+                              ber.
+
+                            o EMAIL - Specifies  the  email  address  that  is
+                              associated  with  the  account that receives the
+                              handshake.
+
+                            o OWNER_EMAIL - Specifies the email address  asso-
+                              ciated  with the management account. Included as
+                              information about an organization.
+
+                            o OWNER_NAME - Specifies the name associated  with
+                              the  management account. Included as information
+                              about an organization.
+
+                            o NOTES - Additional text provided  by  the  hand-
+                              shake  initiator  and intended for the recipient
+                              to read.
+
+
+
+                                                            ACCEPT-HANDSHAKE()

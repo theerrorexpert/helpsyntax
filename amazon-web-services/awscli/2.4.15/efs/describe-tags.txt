@@ -1,0 +1,146 @@
+DESCRIBE-TAGS()                                                DESCRIBE-TAGS()
+
+
+
+NAME
+       describe-tags -
+
+DESCRIPTION
+       NOTE:
+          DEPRECATED - The DeleteTags action is deprecated and not maintained.
+          Please use the API action to remove tags from EFS resources.
+
+       Returns the tags associated with a  file  system.  The  order  of  tags
+       returned in the response of one DescribeTags call and the order of tags
+       returned across the responses of a multiple-call iteration (when  using
+       pagination) is unspecified.
+
+       This  operation  requires permissions for the elasticfilesystem:Descri-
+       beTags action.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+       describe-tags is a paginated  operation.  Multiple  API  calls  may  be
+       issued  in  order  to  retrieve the entire data set of results. You can
+       disable pagination by providing the --no-paginate argument.  When using
+       --output  text  and  the  --query argument on a paginated response, the
+       --query argument must extract data from the results  of  the  following
+       query expressions: Tags
+
+SYNOPSIS
+            describe-tags
+          [--max-items <value>]
+          --file-system-id <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--starting-token <value>]
+          [--page-size <value>]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --max-items (integer)
+          The  total number of items to return in the command's output. If the
+          total number of items available is more than the value specified,  a
+          NextToken is provided in the command's output. To resume pagination,
+          provide the NextToken value in the starting-token argument of a sub-
+          sequent  command. Do not use the NextToken response element directly
+          outside of the AWS CLI.
+
+          For usage examples, see Pagination in the AWS Command Line Interface
+          User Guide .
+
+       --file-system-id (string)
+          The ID of the file system whose tag set you want to retrieve.
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --starting-token (string)
+          A  token to specify where to start paginating. This is the NextToken
+          from a previously truncated response.
+
+          For usage examples, see Pagination in the AWS Command Line Interface
+          User Guide .
+
+       --page-size (integer)
+          The  size of each page to get in the AWS service call. This does not
+          affect the number of items returned in the command's output. Setting
+          a  smaller  page  size  results  in  more  calls to the AWS service,
+          retrieving fewer items in each call. This can help prevent  the  AWS
+          service calls from timing out.
+
+          For usage examples, see Pagination in the AWS Command Line Interface
+          User Guide .
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To describe the tags for a file system
+
+       The following describe-tags example describes the tags for  the  speci-
+       fied file system.
+
+          aws efs describe-tags \
+              --file-system-id fs-c7a0456e
+
+       Output:
+
+          {
+              "Tags": [
+                  {
+                      "Key": "Name",
+                      "Value": "my-file-system"
+                  },
+                  {
+                      "Key": "Department",
+                      "Value": "Business Intelligence"
+                  }
+              ]
+          }
+
+       For more information, see Managing file system tags in the Amazon Elas-
+       tic File System User Guide.
+
+OUTPUT
+       Marker -> (string)
+          If the request included a Marker , the response returns  that  value
+          in this field.
+
+       Tags -> (list)
+          Returns  tags  associated  with  the  file system as an array of Tag
+          objects.
+
+          (structure)
+              A tag is a key-value pair. Allowed characters are letters, white
+              space,  and  numbers  that  can be represented in UTF-8, and the
+              following characters:+ - = . _ : / .
+
+              Key -> (string)
+                 The tag key (String). The key can't start with aws: .
+
+              Value -> (string)
+                 The value of the tag key.
+
+       NextMarker -> (string)
+          If a value is present, there are more tags to return.  In  a  subse-
+          quent  request, you can provide the value of NextMarker as the value
+          of the Marker parameter in your next request to  retrieve  the  next
+          set of tags.
+
+
+
+                                                               DESCRIBE-TAGS()

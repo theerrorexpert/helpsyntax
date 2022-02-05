@@ -1,0 +1,10 @@
+dlm create-default-role
+dlm create-lifecycle-policy
+dlm delete-lifecycle-policy
+dlm get-lifecycle-policies
+dlm get-lifecycle-policy
+dlm help
+dlm list-tags-for-resource
+dlm tag-resource
+dlm untag-resource
+dlm update-lifecycle-policy

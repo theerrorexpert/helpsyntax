@@ -1,0 +1,15 @@
+amplifyuibuilder create-component
+amplifyuibuilder create-theme
+amplifyuibuilder delete-component
+amplifyuibuilder delete-theme
+amplifyuibuilder exchange-code-for-token
+amplifyuibuilder export-components
+amplifyuibuilder export-themes
+amplifyuibuilder get-component
+amplifyuibuilder get-theme
+amplifyuibuilder help
+amplifyuibuilder list-components
+amplifyuibuilder list-themes
+amplifyuibuilder refresh-token
+amplifyuibuilder update-component
+amplifyuibuilder update-theme

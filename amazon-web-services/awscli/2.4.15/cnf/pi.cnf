@@ -1,0 +1,7 @@
+pi describe-dimension-keys
+pi get-dimension-key-details
+pi get-resource-metadata
+pi get-resource-metrics
+pi help
+pi list-available-resource-dimensions
+pi list-available-resource-metrics

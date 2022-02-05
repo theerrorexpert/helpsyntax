@@ -1,0 +1,16 @@
+cloudhsmv2 copy-backup-to-region
+cloudhsmv2 create-cluster
+cloudhsmv2 create-hsm
+cloudhsmv2 delete-backup
+cloudhsmv2 delete-cluster
+cloudhsmv2 delete-hsm
+cloudhsmv2 describe-backups
+cloudhsmv2 describe-clusters
+cloudhsmv2 help
+cloudhsmv2 initialize-cluster
+cloudhsmv2 list-tags
+cloudhsmv2 modify-backup-attributes
+cloudhsmv2 modify-cluster
+cloudhsmv2 restore-backup
+cloudhsmv2 tag-resource
+cloudhsmv2 untag-resource

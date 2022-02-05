@@ -1,0 +1,16 @@
+honeycode batch-create-table-rows
+honeycode batch-delete-table-rows
+honeycode batch-update-table-rows
+honeycode batch-upsert-table-rows
+honeycode describe-table-data-import-job
+honeycode get-screen-data
+honeycode help
+honeycode invoke-screen-automation
+honeycode list-table-columns
+honeycode list-table-rows
+honeycode list-tables
+honeycode list-tags-for-resource
+honeycode query-table-rows
+honeycode start-table-data-import-job
+honeycode tag-resource
+honeycode untag-resource

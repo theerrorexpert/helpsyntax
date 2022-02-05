@@ -1,0 +1,86 @@
+ASSOCIATE-TEAM-MEMBER()                                ASSOCIATE-TEAM-MEMBER()
+
+
+
+NAME
+       associate-team-member -
+
+DESCRIPTION
+       Adds an IAM user to the team for an AWS CodeStar project.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            associate-team-member
+          --project-id <value>
+          [--client-request-token <value>]
+          --user-arn <value>
+          --project-role <value>
+          [--remote-access-allowed | --no-remote-access-allowed]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --project-id (string)
+          The ID of the project to which you will add the IAM user.
+
+       --client-request-token (string)
+          A  user-  or  system-generated token that identifies the entity that
+          requested the team member association to the project. This token can
+          be used to repeat the request.
+
+       --user-arn (string)
+          The  Amazon  Resource Name (ARN) for the IAM user you want to add to
+          the AWS CodeStar project.
+
+       --project-role (string)
+          The AWS CodeStar project role that will apply  to  this  user.  This
+          role  determines  what  actions  a  user can take in an AWS CodeStar
+          project.
+
+       --remote-access-allowed | --no-remote-access-allowed (boolean)
+          Whether the team member is allowed to use an SSH public/private  key
+          pair  to  remotely  access project resources, for example Amazon EC2
+          instances.
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To add a team member to a project
+
+       The following associate-team-member example makes  the  intern  user  a
+       viewer on the project with the specified ID.
+
+          aws codestar associate-team-member \
+              --project-id my-project \
+              --user-arn arn:aws:iam::123456789012:user/intern \
+              --project-role Viewer
+
+       This command produces no output.
+
+OUTPUT
+       clientRequestToken -> (string)
+          The  user-  or  system-generated token from the initial request that
+          can be used to repeat the request.
+
+
+
+                                                       ASSOCIATE-TEAM-MEMBER()

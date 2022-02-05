@@ -1,0 +1,85 @@
+COMPLETE-SNAPSHOT()                                        COMPLETE-SNAPSHOT()
+
+
+
+NAME
+       complete-snapshot -
+
+DESCRIPTION
+       Seals  and  completes  the snapshot after all of the required blocks of
+       data have been written to it. Completing the snapshot changes the  sta-
+       tus  to  completed . You cannot write new blocks to a snapshot after it
+       has been completed.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            complete-snapshot
+          --snapshot-id <value>
+          --changed-blocks-count <value>
+          [--checksum <value>]
+          [--checksum-algorithm <value>]
+          [--checksum-aggregation-method <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --snapshot-id (string)
+          The ID of the snapshot.
+
+       --changed-blocks-count (integer)
+          The number of blocks that were written to the snapshot.
+
+       --checksum (string)
+          An aggregated Base-64 SHA256 checksum based on the checksums of each
+          written block.
+
+          To  generate  the  aggregated  checksum using the linear aggregation
+          method, arrange the checksums for each written  block  in  ascending
+          order  of  their  block  index,  concatenate  them  to form a single
+          string, and then generate the checksum on the  entire  string  using
+          the SHA256 algorithm.
+
+       --checksum-algorithm (string)
+          The  algorithm  used  to  generate the checksum. Currently, the only
+          supported algorithm is SHA256 .
+
+          Possible values:
+
+          o SHA256
+
+       --checksum-aggregation-method (string)
+          The aggregation method used to generate the checksum. Currently, the
+          only supported aggregation method is LINEAR .
+
+          Possible values:
+
+          o LINEAR
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       Status -> (string)
+          The status of the snapshot.
+
+
+
+                                                           COMPLETE-SNAPSHOT()

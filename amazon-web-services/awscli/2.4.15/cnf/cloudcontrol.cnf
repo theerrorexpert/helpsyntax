@@ -1,0 +1,10 @@
+cloudcontrol cancel-resource-request
+cloudcontrol create-resource
+cloudcontrol delete-resource
+cloudcontrol get-resource
+cloudcontrol get-resource-request-status
+cloudcontrol help
+cloudcontrol list-resource-requests
+cloudcontrol list-resources
+cloudcontrol update-resource
+cloudcontrol wait

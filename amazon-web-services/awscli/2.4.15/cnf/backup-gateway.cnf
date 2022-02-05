@@ -1,0 +1,17 @@
+backup-gateway associate-gateway-to-server
+backup-gateway create-gateway
+backup-gateway delete-gateway
+backup-gateway delete-hypervisor
+backup-gateway disassociate-gateway-from-server
+backup-gateway help
+backup-gateway import-hypervisor-configuration
+backup-gateway list-gateways
+backup-gateway list-hypervisors
+backup-gateway list-tags-for-resource
+backup-gateway list-virtual-machines
+backup-gateway put-maintenance-start-time
+backup-gateway tag-resource
+backup-gateway test-hypervisor-configuration
+backup-gateway untag-resource
+backup-gateway update-gateway-information
+backup-gateway update-hypervisor

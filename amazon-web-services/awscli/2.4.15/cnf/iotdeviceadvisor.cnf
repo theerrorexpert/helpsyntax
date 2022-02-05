@@ -1,0 +1,15 @@
+iotdeviceadvisor create-suite-definition
+iotdeviceadvisor delete-suite-definition
+iotdeviceadvisor get-endpoint
+iotdeviceadvisor get-suite-definition
+iotdeviceadvisor get-suite-run
+iotdeviceadvisor get-suite-run-report
+iotdeviceadvisor help
+iotdeviceadvisor list-suite-definitions
+iotdeviceadvisor list-suite-runs
+iotdeviceadvisor list-tags-for-resource
+iotdeviceadvisor start-suite-run
+iotdeviceadvisor stop-suite-run
+iotdeviceadvisor tag-resource
+iotdeviceadvisor untag-resource
+iotdeviceadvisor update-suite-definition

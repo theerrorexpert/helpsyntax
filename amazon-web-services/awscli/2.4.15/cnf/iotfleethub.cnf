@@ -1,0 +1,9 @@
+iotfleethub create-application
+iotfleethub delete-application
+iotfleethub describe-application
+iotfleethub help
+iotfleethub list-applications
+iotfleethub list-tags-for-resource
+iotfleethub tag-resource
+iotfleethub untag-resource
+iotfleethub update-application

@@ -1,0 +1,14 @@
+iot1click-devices claim-devices-by-claim-code
+iot1click-devices describe-device
+iot1click-devices finalize-device-claim
+iot1click-devices get-device-methods
+iot1click-devices help
+iot1click-devices initiate-device-claim
+iot1click-devices invoke-device-method
+iot1click-devices list-device-events
+iot1click-devices list-devices
+iot1click-devices list-tags-for-resource
+iot1click-devices tag-resource
+iot1click-devices unclaim-device
+iot1click-devices untag-resource
+iot1click-devices update-device-state

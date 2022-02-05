@@ -1,0 +1,4 @@
+migrationhub-config create-home-region-control
+migrationhub-config describe-home-region-controls
+migrationhub-config get-home-region
+migrationhub-config help

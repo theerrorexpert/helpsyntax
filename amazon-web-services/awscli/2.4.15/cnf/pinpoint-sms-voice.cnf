@@ -1,0 +1,8 @@
+pinpoint-sms-voice create-configuration-set
+pinpoint-sms-voice create-configuration-set-event-destination
+pinpoint-sms-voice delete-configuration-set
+pinpoint-sms-voice delete-configuration-set-event-destination
+pinpoint-sms-voice get-configuration-set-event-destinations
+pinpoint-sms-voice help
+pinpoint-sms-voice send-voice-message
+pinpoint-sms-voice update-configuration-set-event-destination

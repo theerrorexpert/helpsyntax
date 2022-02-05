@@ -1,0 +1,4 @@
+s3outposts create-endpoint
+s3outposts delete-endpoint
+s3outposts help
+s3outposts list-endpoints

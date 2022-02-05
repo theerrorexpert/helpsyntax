@@ -1,0 +1,195 @@
+GET-MEDIA()                                                        GET-MEDIA()
+
+
+
+NAME
+       get-media -
+
+DESCRIPTION
+       Use  this API to retrieve media content from a Kinesis video stream. In
+       the request, you identify the stream name  or  stream  Amazon  Resource
+       Name  (ARN), and the starting chunk. Kinesis Video Streams then returns
+       a stream of chunks in order by fragment number.
+
+       NOTE:
+          You must first call the GetDataEndpoint API to get an endpoint. Then
+          send the GetMedia requests to this endpoint using the --endpoint-url
+          parameter .
+
+       When you put media data (fragments) on a stream, Kinesis Video  Streams
+       stores  each incoming fragment and related metadata in what is called a
+       "chunk." For more information, see PutMedia . The GetMedia API  returns
+       a  stream  of  these chunks starting from the chunk that you specify in
+       the request.
+
+       The following limits apply when using the GetMedia API:
+
+       o A client can call GetMedia up to five times per second per stream.
+
+       o Kinesis Video Streams sends  media  data  at  a  rate  of  up  to  25
+         megabytes  per  second (or 200 megabits per second) during a GetMedia
+         session.
+
+       NOTE:
+          If an error is thrown after invoking a Kinesis Video  Streams  media
+          API,  in  addition to the HTTP status code and the response body, it
+          includes the following pieces of information:
+
+          o x-amz-ErrorType HTTP header  contains a more specific  error  type
+            in addition to what the HTTP status code provides.
+
+          o x-amz-RequestId  HTTP  header   if  you want to report an issue to
+            AWS, the support team can better diagnose the problem if given the
+            Request Id.
+
+          Both  the  HTTP status code and the ErrorType header can be utilized
+          to make programmatic decisions about whether errors  are  retry-able
+          and  under  what  conditions, as well as provide information on what
+          actions the client programmer might need to take in  order  to  suc-
+          cessfully try again.
+
+          For  more  information, see the Errors section at the bottom of this
+          topic, as well as Common Errors .
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            get-media
+          [--stream-name <value>]
+          [--stream-arn <value>]
+          --start-selector <value>
+          <outfile>
+
+OPTIONS
+       --stream-name (string)
+          The Kinesis video stream name from where you want to get  the  media
+          content.  If you don't specify the streamName , you must specify the
+          streamARN .
+
+       --stream-arn (string)
+          The ARN of the stream from where you want to get the media  content.
+          If you don't specify the streamARN , you must specify the streamName
+          .
+
+       --start-selector (structure)
+          Identifies the starting chunk to get from the specified stream.
+
+          StartSelectorType -> (string)
+              Identifies the fragment on the Kinesis video  stream  where  you
+              want to start getting the data from.
+
+              o NOW - Start with the latest chunk on the stream.
+
+              o EARLIEST  - Start with earliest available chunk on the stream.
+
+              o FRAGMENT_NUMBER - Start with the chunk after a specific  frag-
+                ment. You must also specify the AfterFragmentNumber parameter.
+
+              o PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the  chunk
+                containing  a  fragment  with the specified producer or server
+                timestamp. You specify the timestamp by adding  StartTimestamp
+                .
+
+              o CONTINUATION_TOKEN  -  Read  using  the specified continuation
+                token.
+
+              NOTE:
+                 If you choose the NOW, EARLIEST, or CONTINUATION_TOKEN as the
+                 startSelectorType , you don't provide any additional informa-
+                 tion in the startSelector .
+
+          AfterFragmentNumber -> (string)
+              Specifies the fragment number from where you want  the  GetMedia
+              API to start returning the fragments.
+
+          StartTimestamp -> (timestamp)
+              A timestamp value. This value is required if you choose the PRO-
+              DUCER_TIMESTAMP or the SERVER_TIMESTAMP as the startSelectorType
+              .  The  GetMedia  API  then starts with the chunk containing the
+              fragment that has the specified timestamp.
+
+          ContinuationToken -> (string)
+              Continuation token that Kinesis Video Streams  returned  in  the
+              previous  GetMedia  response.  The GetMedia API then starts with
+              the chunk identified by the continuation token.
+
+       Shorthand Syntax:
+
+          StartSelectorType=string,AfterFragmentNumber=string,StartTimestamp=timestamp,ContinuationToken=string
+
+       JSON Syntax:
+
+          {
+            "StartSelectorType": "FRAGMENT_NUMBER"|"SERVER_TIMESTAMP"|"PRODUCER_TIMESTAMP"|"NOW"|"EARLIEST"|"CONTINUATION_TOKEN",
+            "AfterFragmentNumber": "string",
+            "StartTimestamp": timestamp,
+            "ContinuationToken": "string"
+          }
+
+       outfile (string) Filename where the content will be saved
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       ContentType -> (string)
+          The content type of the requested media.
+
+       Payload -> (blob)
+          The payload Kinesis Video Streams returns is a  sequence  of  chunks
+          from  the  specified stream. For information about the chunks, see .
+          The chunks that Kinesis Video Streams returns in the  GetMedia  call
+          also include the following additional Matroska (MKV) tags:
+
+          o AWS_KINESISVIDEO_CONTINUATION_TOKEN  (UTF-8 string) - In the event
+            your GetMedia call terminates, you can use this continuation token
+            in  your next request to get the next chunk where the last request
+            terminated.
+
+          o AWS_KINESISVIDEO_MILLIS_BEHIND_NOW (UTF-8 string) - Client  appli-
+            cations  can  use  this  tag value to determine how far behind the
+            chunk returned in the response is from the  latest  chunk  on  the
+            stream.
+
+          o AWS_KINESISVIDEO_FRAGMENT_NUMBER - Fragment number returned in the
+            chunk.
+
+          o AWS_KINESISVIDEO_SERVER_TIMESTAMP - Server timestamp of the  frag-
+            ment.
+
+          o AWS_KINESISVIDEO_PRODUCER_TIMESTAMP  -  Producer  timestamp of the
+            fragment.
+
+          The following tags will be present if an error occurs:
+
+          o AWS_KINESISVIDEO_ERROR_CODE - String description of an error  that
+            caused GetMedia to stop.
+
+          o AWS_KINESISVIDEO_ERROR_ID: Integer code of the error.
+
+          The error codes are as follows:
+
+          o 3002 - Error writing to the stream
+
+          o 4000 - Requested fragment is not found
+
+          o 4500 - Access denied for the stream's KMS key
+
+          o 4501 - Stream's KMS key is disabled
+
+          o 4502 - Validation error on the stream's KMS key
+
+          o 4503 - KMS key specified in the stream is unavailable
+
+          o 4504 - Invalid usage of the KMS key specified in the stream
+
+          o 4505 - Invalid state of the KMS key specified in the stream
+
+          o 4506 - Unable to find the KMS key specified in the stream
+
+          o 5000 - Internal error
+
+
+
+                                                                   GET-MEDIA()

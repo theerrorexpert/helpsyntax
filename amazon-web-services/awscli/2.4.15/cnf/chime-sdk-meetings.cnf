@@ -1,0 +1,12 @@
+chime-sdk-meetings batch-create-attendee
+chime-sdk-meetings create-attendee
+chime-sdk-meetings create-meeting
+chime-sdk-meetings create-meeting-with-attendees
+chime-sdk-meetings delete-attendee
+chime-sdk-meetings delete-meeting
+chime-sdk-meetings get-attendee
+chime-sdk-meetings get-meeting
+chime-sdk-meetings help
+chime-sdk-meetings list-attendees
+chime-sdk-meetings start-meeting-transcription
+chime-sdk-meetings stop-meeting-transcription

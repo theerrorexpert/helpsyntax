@@ -1,0 +1,3 @@
+appconfigdata get-latest-configuration
+appconfigdata help
+appconfigdata start-configuration-session

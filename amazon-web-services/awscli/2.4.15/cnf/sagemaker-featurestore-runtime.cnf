@@ -1,0 +1,5 @@
+sagemaker-featurestore-runtime batch-get-record
+sagemaker-featurestore-runtime delete-record
+sagemaker-featurestore-runtime get-record
+sagemaker-featurestore-runtime help
+sagemaker-featurestore-runtime put-record

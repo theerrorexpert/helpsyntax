@@ -1,0 +1,7 @@
+marketplace-catalog cancel-change-set
+marketplace-catalog describe-change-set
+marketplace-catalog describe-entity
+marketplace-catalog help
+marketplace-catalog list-change-sets
+marketplace-catalog list-entities
+marketplace-catalog start-change-set

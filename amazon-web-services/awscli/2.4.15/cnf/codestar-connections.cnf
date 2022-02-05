@@ -1,0 +1,13 @@
+codestar-connections create-connection
+codestar-connections create-host
+codestar-connections delete-connection
+codestar-connections delete-host
+codestar-connections get-connection
+codestar-connections get-host
+codestar-connections help
+codestar-connections list-connections
+codestar-connections list-hosts
+codestar-connections list-tags-for-resource
+codestar-connections tag-resource
+codestar-connections untag-resource
+codestar-connections update-host

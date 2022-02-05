@@ -1,0 +1,16 @@
+codeguru-reviewer associate-repository
+codeguru-reviewer create-code-review
+codeguru-reviewer describe-code-review
+codeguru-reviewer describe-recommendation-feedback
+codeguru-reviewer describe-repository-association
+codeguru-reviewer disassociate-repository
+codeguru-reviewer help
+codeguru-reviewer list-code-reviews
+codeguru-reviewer list-recommendation-feedback
+codeguru-reviewer list-recommendations
+codeguru-reviewer list-repository-associations
+codeguru-reviewer list-tags-for-resource
+codeguru-reviewer put-recommendation-feedback
+codeguru-reviewer tag-resource
+codeguru-reviewer untag-resource
+codeguru-reviewer wait

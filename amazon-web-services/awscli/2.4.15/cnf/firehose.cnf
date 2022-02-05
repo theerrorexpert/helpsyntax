@@ -1,0 +1,13 @@
+firehose create-delivery-stream
+firehose delete-delivery-stream
+firehose describe-delivery-stream
+firehose help
+firehose list-delivery-streams
+firehose list-tags-for-delivery-stream
+firehose put-record
+firehose put-record-batch
+firehose start-delivery-stream-encryption
+firehose stop-delivery-stream-encryption
+firehose tag-delivery-stream
+firehose untag-delivery-stream
+firehose update-destination

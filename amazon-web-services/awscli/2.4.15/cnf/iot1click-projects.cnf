@@ -1,0 +1,17 @@
+iot1click-projects associate-device-with-placement
+iot1click-projects create-placement
+iot1click-projects create-project
+iot1click-projects delete-placement
+iot1click-projects delete-project
+iot1click-projects describe-placement
+iot1click-projects describe-project
+iot1click-projects disassociate-device-from-placement
+iot1click-projects get-devices-in-placement
+iot1click-projects help
+iot1click-projects list-placements
+iot1click-projects list-projects
+iot1click-projects list-tags-for-resource
+iot1click-projects tag-resource
+iot1click-projects untag-resource
+iot1click-projects update-placement
+iot1click-projects update-project

@@ -1,0 +1,12 @@
+kafkaconnect create-connector
+kafkaconnect create-custom-plugin
+kafkaconnect create-worker-configuration
+kafkaconnect delete-connector
+kafkaconnect describe-connector
+kafkaconnect describe-custom-plugin
+kafkaconnect describe-worker-configuration
+kafkaconnect help
+kafkaconnect list-connectors
+kafkaconnect list-custom-plugins
+kafkaconnect list-worker-configurations
+kafkaconnect update-connector

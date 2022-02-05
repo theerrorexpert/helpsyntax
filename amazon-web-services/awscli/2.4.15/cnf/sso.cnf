@@ -1,0 +1,6 @@
+sso get-role-credentials
+sso help
+sso list-account-roles
+sso list-accounts
+sso login
+sso logout

@@ -1,0 +1,4 @@
+apigatewaymanagementapi delete-connection
+apigatewaymanagementapi get-connection
+apigatewaymanagementapi help
+apigatewaymanagementapi post-to-connection

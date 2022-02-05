@@ -1,0 +1,343 @@
+CREATE-DEVICE-POOL()                                      CREATE-DEVICE-POOL()
+
+
+
+NAME
+       create-device-pool -
+
+DESCRIPTION
+       Creates a device pool.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-device-pool
+          --project-arn <value>
+          --name <value>
+          [--description <value>]
+          --rules <value>
+          [--max-devices <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --project-arn (string)
+          The ARN of the project for the device pool.
+
+       --name (string)
+          The device pool's name.
+
+       --description (string)
+          The device pool's description.
+
+       --rules (list)
+          The device pool's rules.
+
+          (structure)
+              Represents a condition for a device pool.
+
+              attribute -> (string)
+                 The  rule's  stringified  attribute. For example, specify the
+                 value as "\"abc\"" .
+
+                 The supported operators for each attribute  are  provided  in
+                 the following list.
+                     APPIUM_VERSION
+
+                 The Appium version for the test.
+
+                 Supported operators: CONTAINS
+                     ARN
+
+                 The  Amazon  Resource  Name (ARN) of the device (for example,
+                 arn:aws:devicefarm:us-west-2::device:12345Example .
+
+                 Supported operators: EQUALS , IN , NOT_IN
+                     AVAILABILITY
+
+                 The current availability of  the  device.  Valid  values  are
+                 AVAILABLE,  HIGHLY_AVAILABLE,  BUSY,  or TEMPORARY_NOT_AVAIL-
+                 ABLE.
+
+                 Supported operators: EQUALS
+                     FLEET_TYPE
+
+                 The fleet type. Valid values are PUBLIC or PRIVATE.
+
+                 Supported operators: EQUALS
+                     FORM_FACTOR
+
+                 The device form factor. Valid values are PHONE or TABLET.
+
+                 Supported operators: EQUALS , IN , NOT_IN
+                     INSTANCE_ARN
+
+                 The Amazon Resource Name (ARN) of the device instance.
+
+                 Supported operators: IN , NOT_IN
+                     INSTANCE_LABELS
+
+                 The label of the device instance.
+
+                 Supported operators: CONTAINS
+                     MANUFACTURER
+
+                 The device manufacturer (for example, Apple).
+
+                 Supported operators: EQUALS , IN , NOT_IN
+                     MODEL
+
+                 The device model, such as Apple iPad Air 2 or Google Pixel.
+
+                 Supported operators: CONTAINS , EQUALS , IN , NOT_IN
+                     OS_VERSION
+
+                 The operating system version (for example, 10.3.2).
+
+                 Supported    operators:    EQUALS    ,     GREATER_THAN     ,
+                 GREATER_THAN_OR_EQUALS , IN , LESS_THAN , LESS_THAN_OR_EQUALS
+                 , NOT_IN
+                     PLATFORM
+
+                 The device platform. Valid values are ANDROID or IOS.
+
+                 Supported operators: EQUALS , IN , NOT_IN
+                     REMOTE_ACCESS_ENABLED
+
+                 Whether the device is enabled for remote access. Valid values
+                 are TRUE or FALSE.
+
+                 Supported operators: EQUALS
+                     REMOTE_DEBUG_ENABLED
+
+                 Whether  the  device  is  enabled for remote debugging. Valid
+                 values are TRUE or FALSE.
+
+                 Supported operators: EQUALS
+
+                 Because remote debugging is no longer supported , this filter
+                 is ignored.
+
+              operator -> (string)
+                 Specifies  how  Device  Farm compares the rule's attribute to
+                 the value. For the  operators  that  are  supported  by  each
+                 attribute, see the attribute descriptions.
+
+              value -> (string)
+                 The rule's value.
+
+       Shorthand Syntax:
+
+          attribute=string,operator=string,value=string ...
+
+       JSON Syntax:
+
+          [
+            {
+              "attribute": "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+              "operator": "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+              "value": "string"
+            }
+            ...
+          ]
+
+       --max-devices (integer)
+          The  number of devices that Device Farm can add to your device pool.
+          Device Farm adds devices that are available and  meet  the  criteria
+          that  you  assign  for  the  rules  parameter. Depending on how many
+          devices meet these constraints, your device pool might contain fewer
+          devices than the value for this parameter.
+
+          By  specifying  the  maximum  number of devices, you can control the
+          costs that you incur by running tests.
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To create a device pool
+
+       The following command creates an Android device pool for a project:
+
+          aws devicefarm create-device-pool --name pool1 --rules file://device-pool-rules.json --project-arn "arn:aws:devicefarm:us-west-2:123456789012:project:070fc3ca-7ec1-4741-9c1f-d3e044efc506"
+
+       You can get the project  ARN  from  the  output  of  create-project  or
+       list-projects.  The  file  device-pool-rules.json is a JSON document in
+       the current folder that specifies the device platform:
+
+          [
+              {
+                  "attribute": "PLATFORM",
+                  "operator": "EQUALS",
+                  "value": "\"ANDROID\""
+              }
+          ]
+
+       Output:
+
+          {
+              "devicePool": {
+                  "rules": [
+                      {
+                          "operator": "EQUALS",
+                          "attribute": "PLATFORM",
+                          "value": "\"ANDROID\""
+                      }
+                  ],
+                  "type": "PRIVATE",
+                  "name": "pool1",
+                  "arn": "arn:aws:devicefarm:us-west-2:123456789012:devicepool:070fc3ca-7ec1-4741-9c1f-d3e044efc506/2aa8d2a9-5e73-47ca-b929-659cb34b7dcd"
+              }
+          }
+
+OUTPUT
+       devicePool -> (structure)
+          The newly created device pool.
+
+          arn -> (string)
+              The device pool's ARN.
+
+          name -> (string)
+              The device pool's name.
+
+          description -> (string)
+              The device pool's description.
+
+          type -> (string)
+              The device pool's type.
+
+              Allowed values include:
+
+              o CURATED: A device pool that is  created  and  managed  by  AWS
+                Device Farm.
+
+              o PRIVATE:  A  device  pool  that  is created and managed by the
+                device pool developer.
+
+          rules -> (list)
+              Information about the device pool's rules.
+
+              (structure)
+                 Represents a condition for a device pool.
+
+                 attribute -> (string)
+                     The rule's stringified attribute.  For  example,  specify
+                     the value as "\"abc\"" .
+
+                     The  supported  operators for each attribute are provided
+                     in the following list.
+                        APPIUM_VERSION
+
+                     The Appium version for the test.
+
+                     Supported operators: CONTAINS
+                        ARN
+
+                     The Amazon Resource Name (ARN) of the device  (for  exam-
+                     ple,  arn:aws:devicefarm:us-west-2::device:12345Example .
+
+                     Supported operators: EQUALS , IN , NOT_IN
+                        AVAILABILITY
+
+                     The current availability of the device. Valid values  are
+                     AVAILABLE,     HIGHLY_AVAILABLE,    BUSY,    or    TEMPO-
+                     RARY_NOT_AVAILABLE.
+
+                     Supported operators: EQUALS
+                        FLEET_TYPE
+
+                     The fleet type. Valid values are PUBLIC or PRIVATE.
+
+                     Supported operators: EQUALS
+                        FORM_FACTOR
+
+                     The device form factor. Valid values are PHONE or TABLET.
+
+                     Supported operators: EQUALS , IN , NOT_IN
+                        INSTANCE_ARN
+
+                     The Amazon Resource Name (ARN) of the device instance.
+
+                     Supported operators: IN , NOT_IN
+                        INSTANCE_LABELS
+
+                     The label of the device instance.
+
+                     Supported operators: CONTAINS
+                        MANUFACTURER
+
+                     The device manufacturer (for example, Apple).
+
+                     Supported operators: EQUALS , IN , NOT_IN
+                        MODEL
+
+                     The  device  model,  such  as  Apple iPad Air 2 or Google
+                     Pixel.
+
+                     Supported operators: CONTAINS , EQUALS , IN , NOT_IN
+                        OS_VERSION
+
+                     The operating system version (for example, 10.3.2).
+
+                     Supported   operators:   EQUALS    ,    GREATER_THAN    ,
+                     GREATER_THAN_OR_EQUALS     ,    IN    ,    LESS_THAN    ,
+                     LESS_THAN_OR_EQUALS , NOT_IN
+                        PLATFORM
+
+                     The device platform. Valid values are ANDROID or IOS.
+
+                     Supported operators: EQUALS , IN , NOT_IN
+                        REMOTE_ACCESS_ENABLED
+
+                     Whether the device is enabled for  remote  access.  Valid
+                     values are TRUE or FALSE.
+
+                     Supported operators: EQUALS
+                        REMOTE_DEBUG_ENABLED
+
+                     Whether the device is enabled for remote debugging. Valid
+                     values are TRUE or FALSE.
+
+                     Supported operators: EQUALS
+
+                     Because remote debugging is no longer  supported  ,  this
+                     filter is ignored.
+
+                 operator -> (string)
+                     Specifies  how  Device Farm compares the rule's attribute
+                     to the value. For the operators  that  are  supported  by
+                     each attribute, see the attribute descriptions.
+
+                 value -> (string)
+                     The rule's value.
+
+          maxDevices -> (integer)
+              The  number  of  devices that Device Farm can add to your device
+              pool. Device Farm adds devices that are available and  meet  the
+              criteria  that  you assign for the rules parameter. Depending on
+              how many devices meet these constraints, your device pool  might
+              contain fewer devices than the value for this parameter.
+
+              By specifying the maximum number of devices, you can control the
+              costs that you incur by running tests.
+
+
+
+                                                          CREATE-DEVICE-POOL()

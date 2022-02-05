@@ -1,0 +1,7 @@
+elastic-inference describe-accelerator-offerings
+elastic-inference describe-accelerator-types
+elastic-inference describe-accelerators
+elastic-inference help
+elastic-inference list-tags-for-resource
+elastic-inference tag-resource
+elastic-inference untag-resource

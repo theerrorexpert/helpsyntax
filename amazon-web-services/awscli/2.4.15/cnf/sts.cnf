@@ -1,0 +1,9 @@
+sts assume-role
+sts assume-role-with-saml
+sts assume-role-with-web-identity
+sts decode-authorization-message
+sts get-access-key-info
+sts get-caller-identity
+sts get-federation-token
+sts get-session-token
+sts help

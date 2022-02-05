@@ -1,0 +1,114 @@
+CREATE-TOKEN()                                                  CREATE-TOKEN()
+
+
+
+NAME
+       create-token -
+
+DESCRIPTION
+       Creates  and  returns  an  access  token for the authorized client. The
+       access token issued will be used to fetch  short-term  credentials  for
+       the assigned roles in the AWS account.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-token
+          --client-id <value>
+          --client-secret <value>
+          --grant-type <value>
+          --device-code <value>
+          [--code <value>]
+          [--refresh-token <value>]
+          [--scope <value>]
+          [--redirect-uri <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --client-id (string)
+          The unique identifier string for each client. This value should come
+          from the persisted result of the  RegisterClient API.
+
+       --client-secret (string)
+          A secret string generated for the client.  This  value  should  come
+          from the persisted result of the  RegisterClient API.
+
+       --grant-type (string)
+          Supports  grant  types  for  authorization  code, refresh token, and
+          device code request.
+
+       --device-code (string)
+          Used only when calling this API for the device code grant type. This
+          short-term  code  is  used  to identify this authentication attempt.
+          This should come from an in-memory reference to the  result  of  the
+          StartDeviceAuthorization API.
+
+       --code (string)
+          The authorization code received from the authorization service. This
+          parameter is required to perform an authorization grant  request  to
+          get access to a token.
+
+       --refresh-token (string)
+          The  token  used  to  obtain  an  access token in the event that the
+          access token is invalid or expired. This token is not issued by  the
+          service.
+
+       --scope (list)
+          The  list  of  scopes that is defined by the client. Upon authoriza-
+          tion, this list is used to restrict  permissions  when  granting  an
+          access token.
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+       --redirect-uri (string)
+          The  location of the application that will receive the authorization
+          code. Users authorize the service to send the request to this  loca-
+          tion.
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       accessToken -> (string)
+          An opaque token to access AWS SSO resources assigned to a user.
+
+       tokenType -> (string)
+          Used  to  notify  the  client  that  the returned token is an access
+          token. The supported type is BearerToken .
+
+       expiresIn -> (integer)
+          Indicates the time in seconds when an access token will expire.
+
+       refreshToken -> (string)
+          A token that, if present, can be used to refresh a previously issued
+          access token that might have expired.
+
+       idToken -> (string)
+          The identifier of the user that associated with the access token, if
+          present.
+
+
+
+                                                                CREATE-TOKEN()

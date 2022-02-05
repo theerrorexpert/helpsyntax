@@ -1,0 +1,14 @@
+timestream-query cancel-query
+timestream-query create-scheduled-query
+timestream-query delete-scheduled-query
+timestream-query describe-endpoints
+timestream-query describe-scheduled-query
+timestream-query execute-scheduled-query
+timestream-query help
+timestream-query list-scheduled-queries
+timestream-query list-tags-for-resource
+timestream-query prepare-query
+timestream-query query
+timestream-query tag-resource
+timestream-query untag-resource
+timestream-query update-scheduled-query

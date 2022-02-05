@@ -1,0 +1,6 @@
+lexv2-runtime delete-session
+lexv2-runtime get-session
+lexv2-runtime help
+lexv2-runtime put-session
+lexv2-runtime recognize-text
+lexv2-runtime recognize-utterance

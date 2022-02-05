@@ -1,0 +1,10 @@
+savingsplans create-savings-plan
+savingsplans delete-queued-savings-plan
+savingsplans describe-savings-plan-rates
+savingsplans describe-savings-plans
+savingsplans describe-savings-plans-offering-rates
+savingsplans describe-savings-plans-offerings
+savingsplans help
+savingsplans list-tags-for-resource
+savingsplans tag-resource
+savingsplans untag-resource

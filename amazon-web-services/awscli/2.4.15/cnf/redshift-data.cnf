@@ -1,0 +1,11 @@
+redshift-data batch-execute-statement
+redshift-data cancel-statement
+redshift-data describe-statement
+redshift-data describe-table
+redshift-data execute-statement
+redshift-data get-statement-result
+redshift-data help
+redshift-data list-databases
+redshift-data list-schemas
+redshift-data list-statements
+redshift-data list-tables

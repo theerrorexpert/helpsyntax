@@ -1,0 +1,15 @@
+fis create-experiment-template
+fis delete-experiment-template
+fis get-action
+fis get-experiment
+fis get-experiment-template
+fis help
+fis list-actions
+fis list-experiment-templates
+fis list-experiments
+fis list-tags-for-resource
+fis start-experiment
+fis stop-experiment
+fis tag-resource
+fis untag-resource
+fis update-experiment-template

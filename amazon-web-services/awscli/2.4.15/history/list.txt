@@ -1,0 +1,26 @@
+LIST()                                                                  LIST()
+
+
+
+NAME
+       list -
+
+DESCRIPTION
+       Shows a list of previously run commands and their command_ids. Each row
+       shows only a bare minimum of details including  the  command_id,  date,
+       arguments  and  return code. You can use the history show with the com-
+       mand_id to see more details about a particular entry.
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+          list
+
+OPTIONS
+       None
+
+       See 'aws help' for descriptions of global parameters.
+
+
+
+                                                                        LIST()

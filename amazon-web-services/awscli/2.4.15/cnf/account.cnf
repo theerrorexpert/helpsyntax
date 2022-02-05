@@ -1,0 +1,4 @@
+account delete-alternate-contact
+account get-alternate-contact
+account help
+account put-alternate-contact

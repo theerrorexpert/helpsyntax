@@ -1,0 +1,156 @@
+BATCH-PUT-MESSAGE()                                        BATCH-PUT-MESSAGE()
+
+
+
+NAME
+       batch-put-message -
+
+DESCRIPTION
+       Sends messages to a channel.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            batch-put-message
+          --channel-name <value>
+          --messages <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --channel-name (string)
+          The name of the channel where the messages are sent.
+
+       --messages (list)
+          The  list  of  messages  to  be sent. Each message has the format: {
+          "messageId": "string", "payload": "string"}.
+
+          The field names of message payloads (data) that you send to IoT Ana-
+          lytics:
+
+          o Must  contain  only alphanumeric characters and undescores (_). No
+            other special characters are allowed.
+
+          o Must begin with an alphabetic character or single underscore  (_).
+
+          o Cannot contain hyphens (-).
+
+          o In regular expression terms: "^[
+            A-Za-z_
+            ]([A-Za-z0-9]*|[A-Za-z0-9][
+            A-Za-z0-9_
+            ]*)$".
+
+          o Cannot be more than 255 characters.
+
+          o Are  case  insensitive. (Fields named foo and FOO in the same pay-
+            load are considered duplicates.)
+
+          For example, {"temp_01": 29} or  {"_temp_01":  29}  are  valid,  but
+          {"temp-01": 29}, {"01_temp": 29} or {"__temp_01": 29} are invalid in
+          message payloads.
+
+          (structure)
+              Information about a message.
+
+              messageId -> (string)
+                 The ID you want to assign to the message. Each messageId must
+                 be unique within each batch sent.
+
+              payload -> (blob)
+                 The  payload  of  the message. This can be a JSON string or a
+                 base64-encoded string representing binary data, in which case
+                 you must decode it by means of a pipeline activity.
+
+       Shorthand Syntax:
+
+          messageId=string,payload=blob ...
+
+       JSON Syntax:
+
+          [
+            {
+              "messageId": "string",
+              "payload": blob
+            }
+            ...
+          ]
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To send a message to a channel
+
+       The  following  batch-put-message example sends a message to the speci-
+       fied channel.
+
+          aws iotanalytics batch-put-message \
+              --cli-input-json file://batch-put-message.json
+
+       Contents of batch-put-message.json:
+
+          {
+              "channelName": "mychannel",
+              "messages": [
+                  {
+                      "messageId": "0001",
+                      "payload": "eyAidGVtcGVyYXR1cmUiOiAyMCB9"
+                  }
+              ]
+          }
+
+       Output:
+
+          {
+              "batchPutMessageErrorEntries": []
+          }
+
+       For more information, see BatchPutMessage in the AWS IoT Analytics  API
+       Reference.
+
+OUTPUT
+       batchPutMessageErrorEntries -> (list)
+          A  list  of  any errors encountered when sending the messages to the
+          channel.
+
+          (structure)
+              Contains informations about errors.
+
+              messageId -> (string)
+                 The ID of the message that caused the error.  See  the  value
+                 corresponding to the messageId key in the message object.
+
+              errorCode -> (string)
+                 The code associated with the error.
+
+              errorMessage -> (string)
+                 The message associated with the error.
+
+DOCUTILS SYSTEM MESSAGES
+       System Message: ERROR/3 (<string>:, line 71)
+              Unknown target name: "a-za-z".
+
+       System Message: ERROR/3 (<string>:, line 71)
+              Unknown target name: "a-za-z0-9".
+
+
+
+                                                           BATCH-PUT-MESSAGE()

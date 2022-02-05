@@ -1,0 +1,70 @@
+ASSOCIATE-DRT-LOG-BUCKET()                          ASSOCIATE-DRT-LOG-BUCKET()
+
+
+
+NAME
+       associate-drt-log-bucket -
+
+DESCRIPTION
+       Authorizes  the Shield Response Team (SRT) to access the specified Ama-
+       zon S3 bucket containing log data such  as  Application  Load  Balancer
+       access logs, CloudFront logs, or logs from third party sources. You can
+       associate up to 10 Amazon S3 buckets with your subscription.
+
+       To use the services  of  the  SRT  and  make  an  AssociateDRTLogBucket
+       request,  you  must  be  subscribed to the Business Support plan or the
+       Enterprise Support plan .
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            associate-drt-log-bucket
+          --log-bucket <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --log-bucket (string)
+          The Amazon S3 bucket that contains the logs that you want to  share.
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To authorize the DRT to access an Amazon S3 bucket
+
+       The  following  associate-drt-log-bucket example creates an association
+       between the DRT and the specified S3 bucket. This permits  the  DRT  to
+       access the bucket on behalf of the account.:
+
+          aws shield associate-drt-log-bucket \
+              --log-bucket flow-logs-for-website-lb
+
+       This command produces no output.
+
+       For  more  information, see Authorize the DDoS Response Team in the AWS
+       Shield Advanced Developer Guide.
+
+OUTPUT
+       None
+
+
+
+                                                    ASSOCIATE-DRT-LOG-BUCKET()

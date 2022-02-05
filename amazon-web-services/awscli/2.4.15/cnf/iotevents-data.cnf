@@ -1,0 +1,12 @@
+iotevents-data batch-acknowledge-alarm
+iotevents-data batch-disable-alarm
+iotevents-data batch-enable-alarm
+iotevents-data batch-put-message
+iotevents-data batch-reset-alarm
+iotevents-data batch-snooze-alarm
+iotevents-data batch-update-detector
+iotevents-data describe-alarm
+iotevents-data describe-detector
+iotevents-data help
+iotevents-data list-alarms
+iotevents-data list-detectors

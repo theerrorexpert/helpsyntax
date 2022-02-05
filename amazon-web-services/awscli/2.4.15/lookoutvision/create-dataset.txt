@@ -1,0 +1,145 @@
+CREATE-DATASET()                                              CREATE-DATASET()
+
+
+
+NAME
+       create-dataset -
+
+DESCRIPTION
+       Creates  a new dataset in an Amazon Lookout for Vision project. Create-
+       Dataset can create a training or a test dataset from  a  valid  dataset
+       source (DatasetSource ).
+
+       If  you  want  a single dataset project, specify train for the value of
+       DatasetType .
+
+       To have a project with separate training and test datasets,  call  Cre-
+       ateDataset  twice.  On  the  first call, specify train for the value of
+       DatasetType . On the  second  call,  specify  test  for  the  value  of
+       DatasetType .
+
+       This  operation  requires permissions to perform the lookoutvision:Cre-
+       ateDataset operation.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-dataset
+          --project-name <value>
+          --dataset-type <value>
+          [--dataset-source <value>]
+          [--client-token <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --project-name (string)
+          The name of the project in which you want to create a dataset.
+
+       --dataset-type (string)
+          The type of the dataset. Specify train for a training dataset. Spec-
+          ify test for a test dataset.
+
+       --dataset-source (structure)
+          The  location  of  the  manifest file that Amazon Lookout for Vision
+          uses to create the dataset.
+
+          If you don't specify DatasetSource , an empty dataset is created and
+          the  operation  synchronously returns. Later, you can add JSON Lines
+          by calling  UpdateDatasetEntries .
+
+          If you specify a value for DataSource , the manifest at the S3 loca-
+          tion  is  validated and used to create the dataset. The call to Cre-
+          ateDataset is asynchronous and might take a while  to  complete.  To
+          find out the current status, Check the value of Status returned in a
+          call to  DescribeDataset .
+
+          GroundTruthManifest -> (structure)
+              Location information for the manifest file.
+
+              S3Object -> (structure)
+                 The S3 bucket location for the manifest file.
+
+                 Bucket -> (string)
+                     The Amazon S3 bucket that contains the manifest.
+
+                 Key -> (string)
+                     The name and location of the manifest  file  withiin  the
+                     bucket.
+
+                 VersionId -> (string)
+                     The version ID of the bucket.
+
+       Shorthand Syntax:
+
+          GroundTruthManifest={S3Object={Bucket=string,Key=string,VersionId=string}}
+
+       JSON Syntax:
+
+          {
+            "GroundTruthManifest": {
+              "S3Object": {
+                "Bucket": "string",
+                "Key": "string",
+                "VersionId": "string"
+              }
+            }
+          }
+
+       --client-token (string)
+          ClientToken  is  an idempotency token that ensures a call to Create-
+          Dataset completes only once. You choose the value to pass. For exam-
+          ple, An issue might prevent you from getting a response from Create-
+          Dataset . In this case, safely retry your call to  CreateDataset  by
+          using the same ClientToken parameter value.
+
+          If  you  don't  supply a value for ClientToken , the AWS SDK you are
+          using inserts a value for you. This prevents retries after a network
+          error from making multiple dataset creation requests. You'll need to
+          provide your own value for other use cases.
+
+          An error occurs if the other input parameters are not the same as in
+          the  first  request. Using a different value for ClientToken is con-
+          sidered a new call to CreateDataset . An idempotency token is active
+          for 8 hours.
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       DatasetMetadata -> (structure)
+          Information about the dataset.
+
+          DatasetType -> (string)
+              The type of the dataset.
+
+          CreationTimestamp -> (timestamp)
+              The  Unix  timestamp  for the date and time that the dataset was
+              created.
+
+          Status -> (string)
+              The status for the dataset.
+
+          StatusMessage -> (string)
+              The status message for the dataset.
+
+
+
+                                                              CREATE-DATASET()

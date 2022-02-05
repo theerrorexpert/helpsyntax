@@ -1,0 +1,106 @@
+BATCH-DELETE-RECIPE-VERSION()                    BATCH-DELETE-RECIPE-VERSION()
+
+
+
+NAME
+       batch-delete-recipe-version -
+
+DESCRIPTION
+       Deletes one or more versions of a recipe at a time.
+
+       The entire request will be rejected if:
+
+       o The recipe does not exist.
+
+       o There is an invalid version identifier in the list of versions.
+
+       o The version list is empty.
+
+       o The version list size exceeds 50.
+
+       o The version list contains duplicate entries.
+
+       The request will complete successfully, but with partial failures, if:
+
+       o A version does not exist.
+
+       o A version is being used by a job.
+
+       o You specify LATEST_WORKING , but it's being used by a project.
+
+       o The version fails to be deleted.
+
+       The  LATEST_WORKING  version  will only be deleted if the recipe has no
+       other versions. If you try to delete LATEST_WORKING  while  other  ver-
+       sions  exist (or if they can't be deleted), then LATEST_WORKING will be
+       listed as partial failure in the response.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            batch-delete-recipe-version
+          --name <value>
+          --recipe-versions <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --name (string)
+          The name of the recipe whose versions are to be deleted.
+
+       --recipe-versions (list)
+          An array of version identifiers,  for  the  recipe  versions  to  be
+          deleted. You can specify numeric versions (X.Y ) or LATEST_WORKING .
+          LATEST_PUBLISHED is not supported.
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       Name -> (string)
+          The name of the recipe that was modified.
+
+       Errors -> (list)
+          Errors, if any, that occurred while attempting to delete the  recipe
+          versions.
+
+          (structure)
+              Represents any errors encountered when attempting to delete mul-
+              tiple recipe versions.
+
+              ErrorCode -> (string)
+                 The HTTP status code for the error.
+
+              ErrorMessage -> (string)
+                 The text of the error message.
+
+              RecipeVersion -> (string)
+                 The identifier for the recipe version  associated  with  this
+                 error.
+
+
+
+                                                 BATCH-DELETE-RECIPE-VERSION()

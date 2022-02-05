@@ -1,0 +1,97 @@
+GET-ANALYZER()                                                  GET-ANALYZER()
+
+
+
+NAME
+       get-analyzer -
+
+DESCRIPTION
+       Retrieves information about the specified analyzer.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            get-analyzer
+          --analyzer-name <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --analyzer-name (string)
+          The name of the analyzer retrieved.
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       analyzer -> (structure)
+          An  AnalyzerSummary  object that contains information about the ana-
+          lyzer.
+
+          arn -> (string)
+              The ARN of the analyzer.
+
+          createdAt -> (timestamp)
+              A timestamp for the time at which the analyzer was created.
+
+          lastResourceAnalyzed -> (string)
+              The resource that was most recently analyzed by the analyzer.
+
+          lastResourceAnalyzedAt -> (timestamp)
+              The time at which the most recently analyzed resource  was  ana-
+              lyzed.
+
+          name -> (string)
+              The name of the analyzer.
+
+          status -> (string)
+              The status of the analyzer. An Active analyzer successfully mon-
+              itors supported resources and generates new findings.  The  ana-
+              lyzer  is  Disabled when a user action, such as removing trusted
+              access for Identity and Access Management Access  Analyzer  from
+              Organizations,  causes the analyzer to stop generating new find-
+              ings. The status is Creating when the analyzer  creation  is  in
+              progress and Failed when the analyzer creation has failed.
+
+          statusReason -> (structure)
+              The  statusReason provides more details about the current status
+              of the analyzer. For example, if the creation for  the  analyzer
+              fails, a Failed status is returned. For an analyzer with organi-
+              zation as the type, this failure can be due  to  an  issue  with
+              creating   the  service-linked  roles  required  in  the  member
+              accounts of the Amazon Web Services organization.
+
+              code -> (string)
+                 The reason code for the current status of the analyzer.
+
+          tags -> (map)
+              The tags added to the analyzer.
+
+              key -> (string)
+
+              value -> (string)
+
+          type -> (string)
+              The type of analyzer, which corresponds to  the  zone  of  trust
+              chosen for the analyzer.
+
+
+
+                                                                GET-ANALYZER()

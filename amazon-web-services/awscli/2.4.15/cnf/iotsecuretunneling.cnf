@@ -1,0 +1,8 @@
+iotsecuretunneling close-tunnel
+iotsecuretunneling describe-tunnel
+iotsecuretunneling help
+iotsecuretunneling list-tags-for-resource
+iotsecuretunneling list-tunnels
+iotsecuretunneling open-tunnel
+iotsecuretunneling tag-resource
+iotsecuretunneling untag-resource

@@ -1,0 +1,14 @@
+braket cancel-job
+braket cancel-quantum-task
+braket create-job
+braket create-quantum-task
+braket get-device
+braket get-job
+braket get-quantum-task
+braket help
+braket list-tags-for-resource
+braket search-devices
+braket search-jobs
+braket search-quantum-tasks
+braket tag-resource
+braket untag-resource

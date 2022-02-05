@@ -1,0 +1,519 @@
+DESCRIBE-DIMENSION-KEYS()                            DESCRIBE-DIMENSION-KEYS()
+
+
+
+NAME
+       describe-dimension-keys -
+
+DESCRIPTION
+       For  a  specific  time  period, retrieve the top N dimension keys for a
+       metric.
+
+       NOTE:
+          Each response element returns a maximum of  500  bytes.  For  larger
+          elements,  such  as  SQL  statements,  only  the first 500 bytes are
+          returned.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            describe-dimension-keys
+          --service-type <value>
+          --identifier <value>
+          --start-time <value>
+          --end-time <value>
+          --metric <value>
+          [--period-in-seconds <value>]
+          --group-by <value>
+          [--additional-metrics <value>]
+          [--partition-by <value>]
+          [--filter <value>]
+          [--max-results <value>]
+          [--next-token <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --service-type (string)
+          The Amazon Web Services service for which Performance Insights  will
+          return metrics. The only valid value for ServiceType is RDS .
+
+          Possible values:
+
+          o RDS
+
+          o DOCDB
+
+       --identifier (string)
+          An  immutable,  Amazon  Web  Services Region-unique identifier for a
+          data source. Performance Insights gathers  metrics  from  this  data
+          source.
+
+          To  use  an  Amazon  RDS  instance as a data source, you specify its
+          DbiResourceId   value.   For   example,    specify    db-FAIHNTYBKT-
+          GAUSUZQYPDS2GW4A .
+
+       --start-time (timestamp)
+          The  date  and  time  specifying the beginning of the requested time
+          series data. You must specify a StartTime within the  past  7  days.
+          The  value  specified  is  inclusive  , which means that data points
+          equal to or greater than StartTime are returned.
+
+          The value for StartTime must be earlier than the value for EndTime .
+
+       --end-time (timestamp)
+          The  date  and  time specifying the end of the requested time series
+          data. The value specified is  exclusive  ,  which  means  that  data
+          points less than (but not equal to) EndTime are returned.
+
+          The value for EndTime must be later than the value for StartTime .
+
+       --metric (string)
+          The name of a Performance Insights metric to be measured.
+
+          Valid values for Metric are:
+
+          o db.load.avg - a scaled representation of the number of active ses-
+            sions for the database engine.
+
+          o db.sampledload.avg - the raw number of  active  sessions  for  the
+            database engine.
+
+          If  the  number  of active sessions is less than an internal Perfor-
+          mance Insights threshold, db.load.avg and db.sampledload.avg are the
+          same  value.  If  the  number of active sessions is greater than the
+          internal threshold, Performance Insights  samples  the  active  ses-
+          sions,  with  db.load.avg  showing  the  scaled  values, db.sampled-
+          load.avg showing the raw values, and  db.sampledload.avg  less  than
+          db.load.avg . For most use cases, you can query db.load.avg only.
+
+       --period-in-seconds (integer)
+          The  granularity,  in seconds, of the data points returned from Per-
+          formance Insights. A period can be as short as  one  second,  or  as
+          long as one day (86400 seconds). Valid values are:
+
+          o 1 (one second)
+
+          o 60 (one minute)
+
+          o 300 (five minutes)
+
+          o 3600 (one hour)
+
+          o 86400 (twenty-four hours)
+
+          If  you  don't  specify  PeriodInSeconds , then Performance Insights
+          chooses a value for you, with a goal of  returning  roughly  100-200
+          data points in the response.
+
+       --group-by (structure)
+          A  specification  for  how to aggregate the data points from a query
+          result. You  must  specify  a  valid  dimension  group.  Performance
+          Insights  returns  all dimensions within this group, unless you pro-
+          vide the names of specific dimensions within  this  group.  You  can
+          also  request  that  Performance Insights return a limited number of
+          values for a dimension.
+
+          Group -> (string)
+              The name of the dimension group. Valid values are:
+
+              o db - The name of the database to which the client is connected
+                (only  Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL,
+                Amazon RDS MySQL, and MariaDB)
+
+              o db.application - The name of the application that is connected
+                to the database (only Aurora PostgreSQL and RDS PostgreSQL)
+
+              o db.host - The host name of the connected client (all engines)
+
+              o db.session_type - The type of the current session (only Aurora
+                PostgreSQL and RDS PostgreSQL)
+
+              o db.sql - The SQL that is currently executing (all engines)
+
+              o db.sql_tokenized - The SQL digest (all engines)
+
+              o db.wait_event - The event for which the  database  backend  is
+                waiting (all engines)
+
+              o db.wait_event_type  - The type of event for which the database
+                backend is waiting (all engines)
+
+              o db.user - The user logged in to the database (all engines)
+
+          Dimensions -> (list)
+              A list of specific dimensions from a dimension  group.  If  this
+              parameter  is  not  present,  then  it signifies that all of the
+              dimensions in the group were requested, or are  present  in  the
+              response.
+
+              Valid values for elements in the Dimensions array are:
+
+              o db.application.name - The name of the application that is con-
+                nected to the database (only Aurora PostgreSQL and  RDS  Post-
+                greSQL)
+
+              o db.host.id - The host ID of the connected client (all engines)
+
+              o db.host.name - The host name  of  the  connected  client  (all
+                engines)
+
+              o db.name - The name of the database to which the client is con-
+                nected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,  Aurora
+                MySQL, Amazon RDS MySQL, and MariaDB)
+
+              o db.session_type.name  -  The type of the current session (only
+                Aurora PostgreSQL and RDS PostgreSQL)
+
+              o db.sql.id - The SQL ID generated by Performance Insights  (all
+                engines)
+
+              o db.sql.db_id  -  The  SQL  ID  generated  by the database (all
+                engines)
+
+              o db.sql.statement - The SQL text that is  being  executed  (all
+                engines)
+
+              o db.sql.tokenized_id
+
+              o db.sql_tokenized.id  -  The SQL digest ID generated by Perfor-
+                mance Insights (all engines)
+
+              o db.sql_tokenized.db_id - SQL digest ID generated by the  data-
+                base (all engines)
+
+              o db.sql_tokenized.statement - The SQL digest text (all engines)
+
+              o db.user.id - The ID of the user logged in to the database (all
+                engines)
+
+              o db.user.name  - The name of the user logged in to the database
+                (all engines)
+
+              o db.wait_event.name - The event for which the backend is  wait-
+                ing (all engines)
+
+              o db.wait_event.type  -  The type of event for which the backend
+                is waiting (all engines)
+
+              o db.wait_event_type.name - The name of the event type for which
+                the backend is waiting (all engines)
+
+              (string)
+
+          Limit -> (integer)
+              The maximum number of items to fetch for this dimension group.
+
+       Shorthand Syntax:
+
+          Group=string,Dimensions=string,string,Limit=integer
+
+       JSON Syntax:
+
+          {
+            "Group": "string",
+            "Dimensions": ["string", ...],
+            "Limit": integer
+          }
+
+       --additional-metrics (list)
+          Additional  metrics  for  the top N dimension keys. If the specified
+          dimension group in the GroupBy parameter is db.sql_tokenized  ,  you
+          can  specify  per-SQL  metrics  to  get the values for the top N SQL
+          digests. The response syntax is "AdditionalMetrics" : { "*string*  "
+          : "*string* " } .
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+       --partition-by (structure)
+          For each dimension specified in GroupBy , specify a secondary dimen-
+          sion to further subdivide the partition keys in the response.
+
+          Group -> (string)
+              The name of the dimension group. Valid values are:
+
+              o db - The name of the database to which the client is connected
+                (only  Aurora PostgreSQL, Amazon RDS PostgreSQL, Aurora MySQL,
+                Amazon RDS MySQL, and MariaDB)
+
+              o db.application - The name of the application that is connected
+                to the database (only Aurora PostgreSQL and RDS PostgreSQL)
+
+              o db.host - The host name of the connected client (all engines)
+
+              o db.session_type - The type of the current session (only Aurora
+                PostgreSQL and RDS PostgreSQL)
+
+              o db.sql - The SQL that is currently executing (all engines)
+
+              o db.sql_tokenized - The SQL digest (all engines)
+
+              o db.wait_event - The event for which the  database  backend  is
+                waiting (all engines)
+
+              o db.wait_event_type  - The type of event for which the database
+                backend is waiting (all engines)
+
+              o db.user - The user logged in to the database (all engines)
+
+          Dimensions -> (list)
+              A list of specific dimensions from a dimension  group.  If  this
+              parameter  is  not  present,  then  it signifies that all of the
+              dimensions in the group were requested, or are  present  in  the
+              response.
+
+              Valid values for elements in the Dimensions array are:
+
+              o db.application.name - The name of the application that is con-
+                nected to the database (only Aurora PostgreSQL and  RDS  Post-
+                greSQL)
+
+              o db.host.id - The host ID of the connected client (all engines)
+
+              o db.host.name - The host name  of  the  connected  client  (all
+                engines)
+
+              o db.name - The name of the database to which the client is con-
+                nected (only Aurora PostgreSQL, Amazon RDS PostgreSQL,  Aurora
+                MySQL, Amazon RDS MySQL, and MariaDB)
+
+              o db.session_type.name  -  The type of the current session (only
+                Aurora PostgreSQL and RDS PostgreSQL)
+
+              o db.sql.id - The SQL ID generated by Performance Insights  (all
+                engines)
+
+              o db.sql.db_id  -  The  SQL  ID  generated  by the database (all
+                engines)
+
+              o db.sql.statement - The SQL text that is  being  executed  (all
+                engines)
+
+              o db.sql.tokenized_id
+
+              o db.sql_tokenized.id  -  The SQL digest ID generated by Perfor-
+                mance Insights (all engines)
+
+              o db.sql_tokenized.db_id - SQL digest ID generated by the  data-
+                base (all engines)
+
+              o db.sql_tokenized.statement - The SQL digest text (all engines)
+
+              o db.user.id - The ID of the user logged in to the database (all
+                engines)
+
+              o db.user.name  - The name of the user logged in to the database
+                (all engines)
+
+              o db.wait_event.name - The event for which the backend is  wait-
+                ing (all engines)
+
+              o db.wait_event.type  -  The type of event for which the backend
+                is waiting (all engines)
+
+              o db.wait_event_type.name - The name of the event type for which
+                the backend is waiting (all engines)
+
+              (string)
+
+          Limit -> (integer)
+              The maximum number of items to fetch for this dimension group.
+
+       Shorthand Syntax:
+
+          Group=string,Dimensions=string,string,Limit=integer
+
+       JSON Syntax:
+
+          {
+            "Group": "string",
+            "Dimensions": ["string", ...],
+            "Limit": integer
+          }
+
+       --filter (map)
+          One or more filters to apply in the request. Restrictions:
+
+          o Any  number  of filters by the same dimension, as specified in the
+            GroupBy or Partition parameters.
+
+          o A single filter for any other dimension in this dimension group.
+
+          key -> (string)
+
+          value -> (string)
+
+       Shorthand Syntax:
+
+          KeyName1=string,KeyName2=string
+
+       JSON Syntax:
+
+          {"string": "string"
+            ...}
+
+       --max-results (integer)
+          The maximum number of items to return in the response. If more items
+          exist  than  the  specified  MaxRecords value, a pagination token is
+          included in the response  so  that  the  remaining  results  can  be
+          retrieved.
+
+       --next-token (string)
+          An optional pagination token provided by a previous request. If this
+          parameter is specified, the response includes  only  records  beyond
+          the token, up to the value specified by MaxRecords .
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To describe dimension keys
+
+       This  example requests the names of all wait events. The data is summa-
+       rized by event name, and the aggregate values of those events over  the
+       specified time period.
+
+       Command:
+
+          aws pi describe-dimension-keys --service-type RDS --identifier db-LKCGOBK26374TPTDFXOIWVCPPM --start-time 1527026400 --end-time 1527080400 --metric db.load.avg --group-by '{"Group":"db.wait_event"}'
+
+       Output:
+
+          {
+              "AlignedEndTime": 1.5270804E9,
+              "AlignedStartTime": 1.5270264E9,
+              "Keys": [
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/synch/mutex/innodb/aurora_lock_thread_slot_futex"},
+                      "Total": 0.05906906851195666
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/io/aurora_redo_log_flush"},
+                      "Total": 0.015824722186149193
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "CPU"},
+                      "Total": 0.008014396230265477
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/io/aurora_respond_to_client"},
+                      "Total": 0.0036361612526204477
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/io/table/sql/handler"},
+                      "Total": 0.0019108398419382965
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/synch/cond/mysys/my_thread_var::suspend"},
+                      "Total": 8.533847837782684E-4
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/io/file/csv/data"},
+                      "Total": 6.864181956477376E-4
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "Unknown"},
+                      "Total": 3.895887056379051E-4
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/synch/mutex/sql/FILE_AS_TABLE::LOCK_shim_lists"},
+                      "Total": 3.710368625122906E-5
+                  },
+                  {
+                      "Dimensions": {"db.wait_event.name": "wait/lock/table/sql/handler"},
+                      "Total": 0
+                  }
+              ]
+          }
+
+OUTPUT
+       AlignedStartTime -> (timestamp)
+          The start time for the returned dimension keys, after alignment to a
+          granular boundary (as specified by PeriodInSeconds ).  AlignedStart-
+          Time  will  be less than or equal to the value of the user-specified
+          StartTime .
+
+       AlignedEndTime -> (timestamp)
+          The end time for the returned dimension keys, after alignment  to  a
+          granular boundary (as specified by PeriodInSeconds ). AlignedEndTime
+          will be greater than or equal to the  value  of  the  user-specified
+          Endtime .
+
+       PartitionKeys -> (list)
+          If  PartitionBy  was  present in the request, PartitionKeys contains
+          the breakdown of dimension keys by the specified partitions.
+
+          (structure)
+              If PartitionBy was specified in a DescribeDimensionKeys request,
+              the  dimensions  are  returned  in an array. Each element in the
+              array specifies one dimension.
+
+              Dimensions -> (map)
+                 A dimension map that contains the dimensions for this  parti-
+                 tion.
+
+                 key -> (string)
+
+                 value -> (string)
+
+       Keys -> (list)
+          The dimension keys that were requested.
+
+          (structure)
+              An  object  that includes the requested dimension key values and
+              aggregated metric values within a dimension group.
+
+              Dimensions -> (map)
+                 A map of name-value pairs for the dimensions in the group.
+
+                 key -> (string)
+
+                 value -> (string)
+
+              Total -> (double)
+                 The aggregated metric value  for  the  dimensions,  over  the
+                 requested time range.
+
+              AdditionalMetrics -> (map)
+                 A map that contains the value for each additional metric.
+
+                 key -> (string)
+
+                 value -> (double)
+
+              Partitions -> (list)
+                 If  PartitionBy  was  specified,  PartitionKeys  contains the
+                 dimensions that were.
+
+                 (double)
+
+       NextToken -> (string)
+          A pagination token that indicates  the  response  didnt  return  all
+          available  records  because MaxRecords was specified in the previous
+          request. To get the remaining records, specify NextToken in a  sepa-
+          rate request with this value.
+
+
+
+                                                     DESCRIBE-DIMENSION-KEYS()

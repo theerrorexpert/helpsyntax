@@ -1,0 +1,12 @@
+mwaa create-cli-token
+mwaa create-environment
+mwaa create-web-login-token
+mwaa delete-environment
+mwaa get-environment
+mwaa help
+mwaa list-environments
+mwaa list-tags-for-resource
+mwaa publish-metrics
+mwaa tag-resource
+mwaa untag-resource
+mwaa update-environment

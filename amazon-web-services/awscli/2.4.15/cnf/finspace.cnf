@@ -1,0 +1,9 @@
+finspace create-environment
+finspace delete-environment
+finspace get-environment
+finspace help
+finspace list-environments
+finspace list-tags-for-resource
+finspace tag-resource
+finspace untag-resource
+finspace update-environment

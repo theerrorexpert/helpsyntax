@@ -1,0 +1,95 @@
+CREATE-DEFAULT-ROLE()                                    CREATE-DEFAULT-ROLE()
+
+
+
+NAME
+       create-default-role -
+
+DESCRIPTION
+       Creates  the default IAM role  which will be used by Lifecycle service.
+       If the role does not exist, create-default-role will automatically cre-
+       ate  it  and set its policy. If the role has been already created, cre-
+       ate-default-role will not update its policy.
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-default-role
+          [--iam-endpoint <value>]
+          [--resource-type <value>]
+
+OPTIONS
+       --iam-endpoint (string)
+          The IAM endpoint to call for creating the roles.  This  is  optional
+          and should only be specified when a custom endpoint should be called
+          for IAM operations.
+
+       --resource-type (string)
+          The resource type for which the role needs to be created. The avail-
+          able  options are 'snapshot' and 'image'. This parameter defaults to
+          'snapshot'.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To create the required IAM role for Amazon DLM
+
+       Amazon DLM  creates  the  AWSDataLifecycleManagerDefaultRole  role  the
+       first  time that you create a lifecycle policy using the AWS Management
+       Console. If you are not using the console, you can  use  the  following
+       command to create this role.
+
+          aws dlm create-default-role
+
+       Output:
+
+          {
+              "RolePolicy": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                      {
+                          "Effect": "Allow",
+                          "Action": [
+                              "ec2:CreateSnapshot",
+                              "ec2:CreateSnapshots",
+                              "ec2:DeleteSnapshot",
+                              "ec2:DescribeInstances",
+                              "ec2:DescribeVolumes",
+                              "ec2:DescribeSnapshots"
+                          ],
+                          "Resource": "*"
+                      },
+                      {
+                          "Effect": "Allow",
+                          "Action": [
+                              "ec2:CreateTags"
+                          ],
+                          "Resource": "arn:aws:ec2:*::snapshot/*"
+                      }
+                  ]
+              },
+              "Role": {
+                  "Path": "/",
+                  "RoleName": "AWSDataLifecycleManagerDefaultRole",
+                  "RoleId": "AROA012345678901EXAMPLE",
+                  "Arn": "arn:aws:iam::123456789012:role/AWSDataLifecycleManagerDefaultRole",
+                  "CreateDate": "2019-05-29T17:47:18Z",
+                  "AssumeRolePolicyDocument": {
+                      "Version": "2012-10-17",
+                      "Statement": [
+                          {
+                              "Sid": "",
+                              "Effect": "Allow",
+                              "Principal": {
+                                  "Service": "dlm.amazonaws.com"
+                              },
+                              "Action": "sts:AssumeRole"
+                          }
+                      ]
+                  }
+              }
+          }
+
+
+
+                                                         CREATE-DEFAULT-ROLE()

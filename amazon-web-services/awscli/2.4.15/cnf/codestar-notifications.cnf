@@ -1,0 +1,14 @@
+codestar-notifications create-notification-rule
+codestar-notifications delete-notification-rule
+codestar-notifications delete-target
+codestar-notifications describe-notification-rule
+codestar-notifications help
+codestar-notifications list-event-types
+codestar-notifications list-notification-rules
+codestar-notifications list-tags-for-resource
+codestar-notifications list-targets
+codestar-notifications subscribe
+codestar-notifications tag-resource
+codestar-notifications unsubscribe
+codestar-notifications untag-resource
+codestar-notifications update-notification-rule

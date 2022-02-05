@@ -1,0 +1,462 @@
+CREATE-GROUP()                                                  CREATE-GROUP()
+
+
+
+NAME
+       create-group -
+
+DESCRIPTION
+       Creates  a  resource group with the specified name and description. You
+       can optionally include a resource query, or  a  service  configuration.
+       For  more information about constructing a resource query, see Create a
+       tag-based group in Resource Groups . For more information about service
+       configurations, see Service configurations for resource groups .
+          Minimum permissions
+
+       To run this command, you must have the following permissions:
+
+       o resource-groups:CreateGroup
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-group
+          --name <value>
+          [--description <value>]
+          [--resource-query <value>]
+          [--tags <value>]
+          [--configuration <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --name (string)
+          The name of the group, which is the identifier of the group in other
+          operations. You can't change the name of a resource group after  you
+          create  it.  A  resource group name can consist of letters, numbers,
+          hyphens, periods, and underscores. The name cannot start with AWS or
+          aws  ;  these  are  reserved.  A  resource group name must be unique
+          within each AWS Region in your AWS account.
+
+       --description (string)
+          The description of the resource group. Descriptions can  consist  of
+          letters, numbers, hyphens, underscores, periods, and spaces.
+
+       --resource-query (structure)
+          The  resource  query that determines which AWS resources are members
+          of this group. For more  information  about  resource  queries,  see
+          Create a tag-based group in Resource Groups .
+
+          NOTE:
+              A resource group can contain either a ResourceQuery or a Config-
+              uration , but not both.
+
+          Type -> (string)
+              The type of the query. You can use the following values:
+
+              o
+                *
+                CLOUDFORMATION_STACK_1_0: * Specifies that the Query  contains
+                an ARN for a CloudFormation stack.
+
+              o ``TAG_FILTERS_1_0:``  * Specifies that the ``Query`` parameter
+                contains a JSON string that represents a collection of  simple
+                tag  filters for resource types and tags. The JSON string uses
+                a    syntax    similar     to     the     ``     `GetResources
+                <https://docs.aws.amazon.com/resourcegroupstagging/lat-
+                est/APIReference/API_GetResources.html>`__ ``  operation,  but
+                uses  only  the `` `ResourceTypeFilters <https://docs.aws.ama-
+                zon.com/resourcegroupstagging/latest/APIReference/API_GetRe-
+                sources.html#resourcegrouptagging-GetRe-
+                sources-request-ResourceTypeFilters>`__ `` and ``  `TagFilters
+                <https://docs.aws.amazon.com/resourcegroupstagging/lat-
+                est/APIReference/API_GetResources.html#resourcegrouptag-
+                ging-GetResources-request-TagFiltersTagFilters>`__  `` fields.
+                If you specify more than one  tag  key,  only  resources  that
+                match  all  tag keys, and at least one value of each specified
+                tag key, are returned in your query. If you specify more  than
+                one  value  for a tag key, a resource matches the filter if it
+                has a tag key value that matches *any of the specified values.
+                For example, consider the following sample query for resources
+                that have two tags, Stage and Version , with two values  each:
+                [{"Stage":["Test","Deploy"]},{"Version":["1","2"]}]        The
+                results of this query could include the following.
+
+                o An  EC2  instance  that  has   the   following   two   tags:
+                  {"Stage":"Deploy"} , and {"Version":"2"}
+
+                o An   S3   bucket   that   has   the   following   two  tags:
+                  {"Stage":"Test"} , and {"Version":"1"}
+
+              The query would not include the following items in the  results,
+              however.
+
+                 o An   EC2   instance   that  has  only  the  following  tag:
+                   {"Stage":"Deploy"} . The instance does not have all of  the
+                   tag  keys  specified  in the filter, so it is excluded from
+                   the results.
+
+                 o An  RDS  database  that  has  the   following   two   tags:
+                   {"Stage":"Archived"} and {"Version":"4"}   The database has
+                   all of the tag keys, but none of those keys has an  associ-
+                   ated  value that matches at least one of the specified val-
+                   ues in the filter.
+
+          Query -> (string)
+              The query that defines a group or a search.
+
+       Shorthand Syntax:
+
+          Type=string,Query=string
+
+       JSON Syntax:
+
+          {
+            "Type": "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+            "Query": "string"
+          }
+
+       --tags (map)
+          The tags to add to the group. A tag is key-value pair string.
+
+          key -> (string)
+
+          value -> (string)
+
+       Shorthand Syntax:
+
+          KeyName1=string,KeyName2=string
+
+       JSON Syntax:
+
+          {"string": "string"
+            ...}
+
+       --configuration (list)
+          A configuration associates the resource group with  an  AWS  service
+          and specifies how the service can interact with the resources in the
+          group. A configuration is an array of   GroupConfigurationItem  ele-
+          ments.  For  details about the syntax of service configurations, see
+          Service configurations for resource groups .
+
+          NOTE:
+              A resource  group  can  contain  either  a  Configuration  or  a
+              ResourceQuery , but not both.
+
+          (structure)
+              An  item in a group configuration. A group service configuration
+              can have one or more items. For details about group service con-
+              figuration  syntax,  see  Service  configurations  for  resource
+              groups .
+
+              Type -> (string)
+                 Specifies the type of group  configuration  item.  Each  item
+                 must  have  a  unique  value for type . For the list of types
+                 that you can specify for a configuration item, see  Supported
+                 resource types and parameters .
+
+              Parameters -> (list)
+                 A collection of parameters for this group configuration item.
+                 For the list of parameters that you can use with each config-
+                 uration  item  type, see Supported resource types and parame-
+                 ters .
+
+                 (structure)
+                     A parameter for a group configuration item.  For  details
+                     about  group  service  configuration  syntax, see Service
+                     configurations for resource groups .
+
+                     Name -> (string)
+                        The name of the group configuration parameter. For the
+                        list of parameters that you can use with each configu-
+                        ration item type, see  Supported  resource  types  and
+                        parameters .
+
+                     Values -> (list)
+                        The  value  or  values  to  be  used for the specified
+                        parameter. For the list of values  you  can  use  with
+                        each  parameter,  see  Supported  resource  types  and
+                        parameters .
+
+                        (string)
+
+       JSON Syntax:
+
+          [
+            {
+              "Type": "string",
+              "Parameters": [
+                {
+                  "Name": "string",
+                  "Values": ["string", ...]
+                }
+                ...
+              ]
+            }
+            ...
+          ]
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       Example 1: To create a tag-based resource group
+
+       The following create-group example creates a tag-based  resource  group
+       of  Amazon  EC2  instances in the current region. It's based on a query
+       for resources that are tagged with the key Name,  and  the  value  Web-
+       Servers.  The  group  name is tbq-WebServer. The query is in a separate
+       JSON file that is passed to the command.
+
+          aws resource-groups create-group \
+              --name tbq-WebServer \
+              --resource-query file://query.json
+
+       Contents of query.json:
+
+          {
+              "Type": "TAG_FILTERS_1_0",
+              "Query": "{\"ResourceTypeFilters\":[\"AWS::EC2::Instance\"],\"TagFilters\":[{\"Key\":\"Name\", \"Values\":[\"WebServers\"]}]}"
+          }
+
+       Output:
+
+          {
+              "Group": {
+                  "GroupArn": "arn:aws:resource-groups:us-west-2:123456789012:group/tbq-WebServer",
+                  "Name": "tbq-WebServer"
+              },
+              "ResourceQuery": {
+                  "Type": "TAG_FILTERS_1_0",
+                  "Query": "{\"ResourceTypeFilters\":[\"AWS::EC2::Instance\"],\"TagFilters\":[{\"Key\":\"Name\", \"Values\":[\"WebServers\"]}]}"
+              }
+          }
+
+       Example 2: To create a CloudFormation stack-based resource group
+
+       The  following  create-group  example  creates  an  AWS  CloudFormation
+       stack-based   resource   group  named  sampleCFNstackgroup.  The  query
+       includes all resources in the specified CloudFormation stack  that  are
+       supported by AWS Resource Groups.
+
+          aws resource-groups create-group \
+              --name cbq-CFNstackgroup \
+              --resource-query file://query.json
+
+       Contents of query.json:
+
+          {
+              "Type": "CLOUDFORMATION_STACK_1_0",
+              "Query": "{\"ResourceTypeFilters\":[\"AWS::AllSupported\"],\"StackIdentifier\":\"arn:aws:cloudformation:us-west-2:123456789012:stack/MyCFNStack/1415z9z0-z39z-11z8-97z5-500z212zz6fz\"}"
+          }
+
+       Output:
+
+          {
+              "Group": {
+                  "GroupArn": "arn:aws:resource-groups:us-west-2:123456789012:group/cbq-CFNstackgroup",
+                  "Name": "cbq-CFNstackgroup"
+              },
+              "ResourceQuery": {
+                  "Type": "CLOUDFORMATION_STACK_1_0",
+                  "Query": "{\"ResourceTypeFilters\":[\"AWS::AllSupported\"],\"StackIdentifier\":\"arn:aws:cloudformation:us-east-2:123456789012:stack/MyCFNStack/1415z9z0-z39z-11z8-97z5-500z212zz6fz\"}"}'
+              }
+          }
+
+       For more information, see Create Groups in the AWS Resource Groups User
+       Guide.
+
+OUTPUT
+       Group -> (structure)
+          The description of the resource group.
+
+          GroupArn -> (string)
+              The ARN of the resource group.
+
+          Name -> (string)
+              The name of the resource group.
+
+          Description -> (string)
+              The description of the resource group.
+
+       ResourceQuery -> (structure)
+          The resource query associated with the group. For  more  information
+          about  resource  queries,  see  Create a tag-based group in Resource
+          Groups .
+
+          Type -> (string)
+              The type of the query. You can use the following values:
+
+              o
+                *
+                CLOUDFORMATION_STACK_1_0: * Specifies that the Query  contains
+                an ARN for a CloudFormation stack.
+
+              o ``TAG_FILTERS_1_0:``  * Specifies that the ``Query`` parameter
+                contains a JSON string that represents a collection of  simple
+                tag  filters for resource types and tags. The JSON string uses
+                a    syntax    similar     to     the     ``     `GetResources
+                <https://docs.aws.amazon.com/resourcegroupstagging/lat-
+                est/APIReference/API_GetResources.html>`__ ``  operation,  but
+                uses  only  the `` `ResourceTypeFilters <https://docs.aws.ama-
+                zon.com/resourcegroupstagging/latest/APIReference/API_GetRe-
+                sources.html#resourcegrouptagging-GetRe-
+                sources-request-ResourceTypeFilters>`__ `` and ``  `TagFilters
+                <https://docs.aws.amazon.com/resourcegroupstagging/lat-
+                est/APIReference/API_GetResources.html#resourcegrouptag-
+                ging-GetResources-request-TagFiltersTagFilters>`__  `` fields.
+                If you specify more than one  tag  key,  only  resources  that
+                match  all  tag keys, and at least one value of each specified
+                tag key, are returned in your query. If you specify more  than
+                one  value  for a tag key, a resource matches the filter if it
+                has a tag key value that matches *any of the specified values.
+                For example, consider the following sample query for resources
+                that have two tags, Stage and Version , with two values  each:
+                [{"Stage":["Test","Deploy"]},{"Version":["1","2"]}]        The
+                results of this query could include the following.
+
+                o An  EC2  instance  that  has   the   following   two   tags:
+                  {"Stage":"Deploy"} , and {"Version":"2"}
+
+                o An   S3   bucket   that   has   the   following   two  tags:
+                  {"Stage":"Test"} , and {"Version":"1"}
+
+              The query would not include the following items in the  results,
+              however.
+
+                 o An   EC2   instance   that  has  only  the  following  tag:
+                   {"Stage":"Deploy"} . The instance does not have all of  the
+                   tag  keys  specified  in the filter, so it is excluded from
+                   the results.
+
+                 o An  RDS  database  that  has  the   following   two   tags:
+                   {"Stage":"Archived"} and {"Version":"4"}   The database has
+                   all of the tag keys, but none of those keys has an  associ-
+                   ated  value that matches at least one of the specified val-
+                   ues in the filter.
+
+          Query -> (string)
+              The query that defines a group or a search.
+
+       Tags -> (map)
+          The tags associated with the group.
+
+          key -> (string)
+
+          value -> (string)
+
+       GroupConfiguration -> (structure)
+          The service configuration associated with the  resource  group.  For
+          details  about  the  syntax  of a service configuration, see Service
+          configurations for resource groups .
+
+          Configuration -> (list)
+              The configuration currently associated with  the  group  and  in
+              effect.
+
+              (structure)
+                 An  item in a group configuration. A group service configura-
+                 tion can have one or more items. For details about group ser-
+                 vice  configuration  syntax,  see  Service configurations for
+                 resource groups .
+
+                 Type -> (string)
+                     Specifies the type of group configuration item. Each item
+                     must have a unique value for type . For the list of types
+                     that you  can  specify  for  a  configuration  item,  see
+                     Supported resource types and parameters .
+
+                 Parameters -> (list)
+                     A  collection  of parameters for this group configuration
+                     item. For the list of parameters that you  can  use  with
+                     each  configuration  item  type,  see  Supported resource
+                     types and parameters .
+
+                     (structure)
+                        A  parameter  for  a  group  configuration  item.  For
+                        details  about group service configuration syntax, see
+                        Service configurations for resource groups .
+
+                        Name -> (string)
+                            The name of the group configuration parameter. For
+                            the  list of parameters that you can use with each
+                            configuration item type,  see  Supported  resource
+                            types and parameters .
+
+                        Values -> (list)
+                            The  value  or values to be used for the specified
+                            parameter. For the list of values you can use with
+                            each  parameter,  see Supported resource types and
+                            parameters .
+
+                            (string)
+
+          ProposedConfiguration -> (list)
+              If present, the new configuration that  is  in  the  process  of
+              being applied to the group.
+
+              (structure)
+                 An  item in a group configuration. A group service configura-
+                 tion can have one or more items. For details about group ser-
+                 vice  configuration  syntax,  see  Service configurations for
+                 resource groups .
+
+                 Type -> (string)
+                     Specifies the type of group configuration item. Each item
+                     must have a unique value for type . For the list of types
+                     that you  can  specify  for  a  configuration  item,  see
+                     Supported resource types and parameters .
+
+                 Parameters -> (list)
+                     A  collection  of parameters for this group configuration
+                     item. For the list of parameters that you  can  use  with
+                     each  configuration  item  type,  see  Supported resource
+                     types and parameters .
+
+                     (structure)
+                        A  parameter  for  a  group  configuration  item.  For
+                        details  about group service configuration syntax, see
+                        Service configurations for resource groups .
+
+                        Name -> (string)
+                            The name of the group configuration parameter. For
+                            the  list of parameters that you can use with each
+                            configuration item type,  see  Supported  resource
+                            types and parameters .
+
+                        Values -> (list)
+                            The  value  or values to be used for the specified
+                            parameter. For the list of values you can use with
+                            each  parameter,  see Supported resource types and
+                            parameters .
+
+                            (string)
+
+          Status -> (string)
+              The current status of an attempt to update the group  configura-
+              tion.
+
+          FailureReason -> (string)
+              If present, the reason why a request to update the group config-
+              uration failed.
+
+
+
+                                                                CREATE-GROUP()

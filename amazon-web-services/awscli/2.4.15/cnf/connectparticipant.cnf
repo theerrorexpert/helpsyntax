@@ -1,0 +1,9 @@
+connectparticipant complete-attachment-upload
+connectparticipant create-participant-connection
+connectparticipant disconnect-participant
+connectparticipant get-attachment
+connectparticipant get-transcript
+connectparticipant help
+connectparticipant send-event
+connectparticipant send-message
+connectparticipant start-attachment-upload

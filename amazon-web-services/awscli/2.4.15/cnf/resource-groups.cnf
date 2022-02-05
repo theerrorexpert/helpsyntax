@@ -1,0 +1,17 @@
+resource-groups create-group
+resource-groups delete-group
+resource-groups get-group
+resource-groups get-group-configuration
+resource-groups get-group-query
+resource-groups get-tags
+resource-groups group-resources
+resource-groups help
+resource-groups list-group-resources
+resource-groups list-groups
+resource-groups put-group-configuration
+resource-groups search-resources
+resource-groups tag
+resource-groups ungroup-resources
+resource-groups untag
+resource-groups update-group
+resource-groups update-group-query

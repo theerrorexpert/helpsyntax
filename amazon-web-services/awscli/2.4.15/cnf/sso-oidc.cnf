@@ -1,0 +1,4 @@
+sso-oidc create-token
+sso-oidc help
+sso-oidc register-client
+sso-oidc start-device-authorization

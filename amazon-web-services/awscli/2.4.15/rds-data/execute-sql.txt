@@ -1,0 +1,294 @@
+EXECUTE-SQL()                                                    EXECUTE-SQL()
+
+
+
+NAME
+       execute-sql -
+
+DESCRIPTION
+       Runs one or more SQL statements.
+
+       WARNING:
+          This  operation is deprecated. Use the BatchExecuteStatement or Exe-
+          cuteStatement operation.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            execute-sql
+          --aws-secret-store-arn <value>
+          [--database <value>]
+          --db-cluster-or-instance-arn <value>
+          [--schema <value>]
+          --sql-statements <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --aws-secret-store-arn (string)
+          The Amazon Resource Name (ARN) of the secret that enables access  to
+          the DB cluster.
+
+       --database (string)
+          The name of the database.
+
+       --db-cluster-or-instance-arn (string)
+          The ARN of the Aurora Serverless DB cluster.
+
+       --schema (string)
+          The name of the database schema.
+
+       --sql-statements (string)
+          One or more SQL statements to run on the DB cluster.
+
+          You  can  separate  SQL  statements from each other with a semicolon
+          (;). Any valid SQL statement is permitted,  including  data  defini-
+          tion, data manipulation, and commit statements.
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       sqlStatementResults -> (list)
+          The results of the SQL statement or statements.
+
+          (structure)
+              The result of a SQL statement.
+                 <important> <p>This data type is deprecated.</p> </important>
+
+              numberOfRecordsUpdated -> (long)
+                 The number of records updated by a SQL statement.
+
+              resultFrame -> (structure)
+                 The result set of the SQL statement.
+
+                 records -> (list)
+                     The records in the result set.
+
+                     (structure)
+                        A record returned by a call.
+
+                        values -> (list)
+                            The values returned in the record.
+
+                            (structure)
+                               Contains the value of a column.
+                                   <important> <p>This  data  type  is  depre-
+                                   cated.</p> </important>
+
+                               arrayValues -> (list)
+                                   An array of column values.
+
+                                   (structure)
+                                      Contains the value of a column.
+                                          <important>  <p>This  data  type  is
+                                          deprecated.</p> </important>
+
+                                      arrayValues -> (list)
+                                          An array of column values.
+
+                                          ( ... recursive ... )
+
+                                      bigIntValue -> (long)
+                                          A value for a column of big  integer
+                                          data type.
+
+                                      bitValue -> (boolean)
+                                          A  value  for  a  column of BIT data
+                                          type.
+
+                                      blobValue -> (blob)
+                                          A value for a column  of  BLOB  data
+                                          type.
+
+                                      doubleValue -> (double)
+                                          A  value for a column of double data
+                                          type.
+
+                                      intValue -> (integer)
+                                          A value for a column of integer data
+                                          type.
+
+                                      isNull -> (boolean)
+                                          A NULL value.
+
+                                      realValue -> (float)
+                                          A  value  for  a column of real data
+                                          type.
+
+                                      stringValue -> (string)
+                                          A value for a column of string  data
+                                          type.
+
+                                      structValue -> (structure)
+                                          A  value for a column of STRUCT data
+                                          type.
+
+                                          attributes -> (list)
+                                             The attributes  returned  in  the
+                                             record.
+
+                                             ( ... recursive ... )
+
+                               bigIntValue -> (long)
+                                   A  value  for  a column of big integer data
+                                   type.
+
+                               bitValue -> (boolean)
+                                   A value for a column of BIT data type.
+
+                               blobValue -> (blob)
+                                   A value for a column of BLOB data type.
+
+                               doubleValue -> (double)
+                                   A value for a column of double data type.
+
+                               intValue -> (integer)
+                                   A value for a column of integer data  type.
+
+                               isNull -> (boolean)
+                                   A NULL value.
+
+                               realValue -> (float)
+                                   A value for a column of real data type.
+
+                               stringValue -> (string)
+                                   A value for a column of string data type.
+
+                               structValue -> (structure)
+                                   A value for a column of STRUCT data type.
+
+                                   attributes -> (list)
+                                      The attributes returned in the record.
+
+                                      (structure)
+                                          Contains the value of a column.
+                                             <important>  <p>This data type is
+                                             deprecated.</p> </important>
+
+                                          arrayValues -> (list)
+                                             An array of column values.
+
+                                             ( ... recursive ... )
+
+                                          bigIntValue -> (long)
+                                             A value for a column of big inte-
+                                             ger data type.
+
+                                          bitValue -> (boolean)
+                                             A  value for a column of BIT data
+                                             type.
+
+                                          blobValue -> (blob)
+                                             A value for a column of BLOB data
+                                             type.
+
+                                          doubleValue -> (double)
+                                             A  value  for  a column of double
+                                             data type.
+
+                                          intValue -> (integer)
+                                             A value for a column  of  integer
+                                             data type.
+
+                                          isNull -> (boolean)
+                                             A NULL value.
+
+                                          realValue -> (float)
+                                             A value for a column of real data
+                                             type.
+
+                                          stringValue -> (string)
+                                             A value for a  column  of  string
+                                             data type.
+
+                                          structValue -> (structure)
+                                             A  value  for  a column of STRUCT
+                                             data type.
+
+                                             attributes -> (list)
+                                                 The  attributes  returned  in
+                                                 the record.
+
+                                                 ( ... recursive ... )
+
+                 resultSetMetadata -> (structure)
+                     The result-set metadata in the result set.
+
+                     columnCount -> (long)
+                        The number of columns in the result set.
+
+                     columnMetadata -> (list)
+                        The metadata of the columns in the result set.
+
+                        (structure)
+                            Contains the metadata for a column.
+
+                            arrayBaseColumnType -> (integer)
+                               The type of the column.
+
+                            isAutoIncrement -> (boolean)
+                               A  value  that  indicates  whether  the  column
+                               increments automatically.
+
+                            isCaseSensitive -> (boolean)
+                               A value that indicates whether  the  column  is
+                               case-sensitive.
+
+                            isCurrency -> (boolean)
+                               A  value that indicates whether the column con-
+                               tains currency values.
+
+                            isSigned -> (boolean)
+                               A value that indicates whether an integer  col-
+                               umn is signed.
+
+                            label -> (string)
+                               The label for the column.
+
+                            name -> (string)
+                               The name of the column.
+
+                            nullable -> (integer)
+                               A  value  that  indicates whether the column is
+                               nullable.
+
+                            precision -> (integer)
+                               The precision value of a decimal number column.
+
+                            scale -> (integer)
+                               The scale value of a decimal number column.
+
+                            schemaName -> (string)
+                               The name of the schema that owns the table that
+                               includes the column.
+
+                            tableName -> (string)
+                               The name of the table that includes the column.
+
+                            type -> (integer)
+                               The type of the column.
+
+                            typeName -> (string)
+                               The  database-specific data type of the column.
+
+
+
+                                                                 EXECUTE-SQL()

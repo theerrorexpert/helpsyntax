@@ -1,0 +1,136 @@
+ADD-PERMISSION()                                              ADD-PERMISSION()
+
+
+
+NAME
+       add-permission -
+
+DESCRIPTION
+       Adds  a  permission  to  a queue for a specific principal . This allows
+       sharing access to the queue.
+
+       When you create a queue, you have full control access  rights  for  the
+       queue.  Only you, the owner of the queue, can grant or deny permissions
+       to the queue. For more information about these permissions,  see  Allow
+       Developers to Write Messages to a Shared Queue in the Amazon SQS Devel-
+       oper Guide .
+
+       NOTE:
+
+          o AddPermission  generates  a  policy  for  you.  You  can  use   ``
+            SetQueueAttributes `` to upload your policy. For more information,
+            see Using Custom Policies with the Amazon SQS Access  Policy  Lan-
+            guage in the Amazon SQS Developer Guide .
+
+          o An Amazon SQS policy can have a maximum of 7 actions.
+
+          o To  remove  the ability to change queue permissions, you must deny
+            permission  to  the  AddPermission  ,   RemovePermission   ,   and
+            SetQueueAttributes actions in your IAM policy.
+
+       Some  actions take lists of parameters. These lists are specified using
+       the param.n notation. Values of n are integers  starting  from  1.  For
+       example, a parameter list with two elements looks like this:
+          &AttributeName.1=first
+
+          &AttributeName.2=second
+
+       NOTE:
+          Cross-account  permissions  don't  apply  to  this  action. For more
+          information, see Grant cross-account permissions to  a  role  and  a
+          user name in the Amazon SQS Developer Guide .
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            add-permission
+          --queue-url <value>
+          --label <value>
+          --aws-account-ids <value>
+          --actions <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --queue-url (string)
+          The URL of the Amazon SQS queue to which permissions are added.
+
+          Queue URLs and names are case-sensitive.
+
+       --label (string)
+          The  unique  identification  of  the  permission you're setting (for
+          example, AliceSendMessage ). Maximum 80 characters. Allowed  charac-
+          ters  include alphanumeric characters, hyphens (- ), and underscores
+          (_ ).
+
+       --aws-account-ids (list)
+          The Amazon Web Services account numbers of the principals who are to
+          receive  permission.  For  information about locating the Amazon Web
+          Services account identification, see Your Amazon Web Services  Iden-
+          tifiers in the Amazon SQS Developer Guide .
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+       --actions (list)
+          The  action  the  client wants to allow for the specified principal.
+          Valid values: the name of any action or * .
+
+          For more information about these actions, see Overview  of  Managing
+          Access  Permissions  to Your Amazon Simple Queue Service Resource in
+          the Amazon SQS Developer Guide .
+
+          Specifying SendMessage , DeleteMessage , or  ChangeMessageVisibility
+          for ActionName.n also grants permissions for the corresponding batch
+          versions of those actions: SendMessageBatch ,  DeleteMessageBatch  ,
+          and ChangeMessageVisibilityBatch .
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+       --cli-input-json  |  --cli-input-yaml (string) Reads arguments from the
+       JSON string provided. The JSON string follows the  format  provided  by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line, those values will override the JSON-provided values.  It  is  not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the string will be taken literally. This may  not  be  specified  along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton  (string)  Prints  a  JSON skeleton to standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample  input  YAML that can be used with --cli-input-yaml. If provided
+       with the value output, it validates the command inputs  and  returns  a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To add a permission to a queue
+
+       This  example enables the specified AWS account to send messages to the
+       specified queue.
+
+       Command:
+
+          aws sqs add-permission --queue-url https://sqs.us-east-1.amazonaws.com/80398EXAMPLE/MyQueue --label SendMessagesFromMyQueue --aws-account-ids 12345EXAMPLE --actions SendMessage
+
+       Output:
+
+          None.
+
+OUTPUT
+       None
+
+
+
+                                                              ADD-PERMISSION()

@@ -1,0 +1,190 @@
+ADD-TAGS-TO-RESOURCE()                                  ADD-TAGS-TO-RESOURCE()
+
+
+
+NAME
+       add-tags-to-resource -
+
+DESCRIPTION
+       Adds  or  overwrites  one or more tags for the specified resource. Tags
+       are metadata that you can assign  to  your  documents,  managed  nodes,
+       maintenance  windows,  Parameter Store parameters, and patch baselines.
+       Tags enable you to categorize your resources  in  different  ways,  for
+       example,  by purpose, owner, or environment. Each tag consists of a key
+       and an optional value, both of which you define. For example, you could
+       define  a  set  of tags for your account's managed nodes that helps you
+       track each node's owner and stack level. For example:
+
+       o Key=Owner,Value=DbAdmin
+
+       o Key=Owner,Value=SysAdmin
+
+       o Key=Owner,Value=Dev
+
+       o Key=Stack,Value=Production
+
+       o Key=Stack,Value=Pre-Production
+
+       o Key=Stack,Value=Test
+
+       Each resource can have a maximum of 50 tags.
+
+       We recommend that you devise a set of tag keys that  meets  your  needs
+       for  each  resource  type.  Using a consistent set of tag keys makes it
+       easier for you to manage your resources. You can search and filter  the
+       resources based on the tags you add. Tags don't have any semantic mean-
+       ing to and are interpreted strictly as a string of characters.
+
+       For more information about using tags with Amazon Elastic Compute Cloud
+       (Amazon  EC2)  instances,  see Tagging your Amazon EC2 resources in the
+       Amazon EC2 User Guide .
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            add-tags-to-resource
+          --resource-type <value>
+          --resource-id <value>
+          --tags <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --resource-type (string)
+          Specifies the type of resource you are tagging.
+
+          NOTE:
+              The  ManagedInstance  type  for  this  API  operation   is   for
+              on-premises managed nodes. You must specify the name of the man-
+              aged node in the following format: mi-*ID_number* `` . For exam-
+              ple, ``mi-1a2b3c4d5e6f .
+
+          Possible values:
+
+          o Document
+
+          o ManagedInstance
+
+          o MaintenanceWindow
+
+          o Parameter
+
+          o PatchBaseline
+
+          o OpsItem
+
+          o OpsMetadata
+
+       --resource-id (string)
+          The resource ID you want to tag.
+
+          Use the ID of the resource. Here are some examples:
+              MaintenanceWindow : mw-012345abcde
+
+              PatchBaseline : pb-012345abcde
+
+              OpsMetadata  object:  ResourceID for tagging is created from the
+              Amazon Resource Name (ARN) for the object. Specifically, Resour-
+              ceID  is  created  from  the  strings  that  come after the word
+              opsmetadata in the ARN. For example, an OpsMetadata object  with
+              an      ARN     of     arn:aws:ssm:us-east-2:1234567890:opsmeta-
+              data/aws/ssm/MyGroup/appmanager  has  a  ResourceID  of   either
+              aws/ssm/MyGroup/appmanager or /aws/ssm/MyGroup/appmanager .
+
+          For the Document and Parameter values, use the name of the resource.
+              ManagedInstance : mi-012345abcde
+
+          NOTE:
+              The ManagedInstance type for this  API  operation  is  only  for
+              on-premises managed nodes. You must specify the name of the man-
+              aged node in the following format: mi-*ID_number* `` . For exam-
+              ple, ``mi-1a2b3c4d5e6f .
+
+       --tags (list)
+          One or more tags. The value parameter is required.
+
+          WARNING:
+              Don't enter personally identifiable information in this field.
+
+          (structure)
+              Metadata  that you assign to your Amazon Web Services resources.
+              Tags enable you to categorize your resources in different  ways,
+              for  example,  by  purpose, owner, or environment. In Amazon Web
+              Services Systems Manager, you can apply tags to Systems  Manager
+              documents  (SSM  documents), managed nodes, maintenance windows,
+              parameters, patch baselines, OpsItems, and OpsMetadata.
+
+              Key -> (string)
+                 The name of the tag.
+
+              Value -> (string)
+                 The value of the tag.
+
+       Shorthand Syntax:
+
+          Key=string,Value=string ...
+
+       JSON Syntax:
+
+          [
+            {
+              "Key": "string",
+              "Value": "string"
+            }
+            ...
+          ]
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To add tags to a maintenance window
+
+       The following add-tags-to-resource example adds a tag to the  specified
+       maintenance window.
+
+          aws ssm add-tags-to-resource \
+              --resource-type "MaintenanceWindow" \
+              --resource-id "mw-03eb9db428EXAMPLE" \
+              --tags "Key=Stack,Value=Production"
+
+       This command produces no output.
+
+       To add tags to a parameter
+
+       The  following  add-tags-to-resource  example  adds  two tags to to the
+       specified parameter.
+
+          aws ssm add-tags-to-resource \
+              --resource-type "Parameter" \
+              --resource-id "My-Parameter" \
+              --tags '[{"Key":"Region","Value":"East"},{"Key":"Environment", "Value":"Production"}]'
+
+       This command produces no output.
+
+       For more information, see Tagging Systems Manager Parameters in the AWS
+       Systems Manager User Guide.
+
+OUTPUT
+       None
+
+
+
+                                                        ADD-TAGS-TO-RESOURCE()

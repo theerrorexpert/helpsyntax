@@ -1,6 +1,0 @@
-usage: aws [-h] [--profile PROFILE] [--debug]
-
-optional arguments:
-  -h, --help         show this help message and exit
-  --profile PROFILE
-  --debug

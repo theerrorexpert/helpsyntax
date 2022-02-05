@@ -1,0 +1,94 @@
+ASSOCIATE-WEB-ACL()                                        ASSOCIATE-WEB-ACL()
+
+
+
+NAME
+       associate-web-acl -
+
+DESCRIPTION
+       Associates  a  web ACL with a regional application resource, to protect
+       the resource. A regional application can be an  Application  Load  Bal-
+       ancer (ALB), an Amazon API Gateway REST API, or an AppSync GraphQL API.
+
+       For Amazon CloudFront, don't use this call. Instead,  use  your  Cloud-
+       Front distribution configuration. To associate a web ACL, in the Cloud-
+       Front call UpdateDistribution , set  the  web  ACL  ID  to  the  Amazon
+       Resource   Name   (ARN)   of   the   web   ACL.  For  information,  see
+       UpdateDistribution .
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            associate-web-acl
+          --web-acl-arn <value>
+          --resource-arn <value>
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --web-acl-arn (string)
+          The Amazon Resource Name (ARN) of the web ACL that you want to asso-
+          ciate with the resource.
+
+       --resource-arn (string)
+          The Amazon Resource Name (ARN) of the resource to associate with the
+          web ACL.
+
+          The ARN must be in one of the following formats:
+
+          o For an Application Load Balancer:
+            ``
+            arn:aws:elasticloadbalancing:region     :account-id      :loadbal-
+            ancer/app/load-balancer-name /load-balancer-id ``
+
+          o For an Amazon API Gateway REST API:
+            ``
+            arn:aws:apigateway:region ::/restapis/api-id /stages/stage-name ``
+
+          o For an AppSync GraphQL API:
+            ``
+            arn:aws:appsync:region :account-id :apis/GraphQLApiId ``
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+EXAMPLES
+       To associate a web ACL with a regional AWS resource
+
+       The following associate-web-acl example associates  the  specified  web
+       ACL with an Application Load Balancer.
+
+          aws wafv2 associate-web-acl \
+              --web-acl-arn arn:aws:wafv2:us-west-2:123456789012:regional/webacl/test-cli/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 \
+              --resource-arn arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/waf-cli-alb/1ea17125f8b25a2a \
+              --region us-west-2
+
+       This command produces no output.
+
+       For  more information, see Associating or Disassociating a Web ACL with
+       an AWS Resource in the AWS WAF, AWS Firewall Manager,  and  AWS  Shield
+       Advanced Developer Guide.
+
+OUTPUT
+       None
+
+
+
+                                                           ASSOCIATE-WEB-ACL()

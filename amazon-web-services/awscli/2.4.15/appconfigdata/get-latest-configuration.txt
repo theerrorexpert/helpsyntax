@@ -1,0 +1,68 @@
+GET-LATEST-CONFIGURATION()                          GET-LATEST-CONFIGURATION()
+
+
+
+NAME
+       get-latest-configuration -
+
+DESCRIPTION
+       Retrieves  the latest deployed configuration. This API may return empty
+       Configuration data if the client already has the  latest  version.  See
+       StartConfigurationSession  to  obtain  an  InitialConfigurationToken to
+       call this API.
+
+       WARNING:
+          Each call to GetLatestConfiguration returns a new ConfigurationToken
+          (NextPollConfigurationToken in the response). This new token MUST be
+          provided to the next call to GetLatestConfiguration when polling for
+          configuration updates.
+
+          To  avoid  excess charges, we recommend that you include the Client-
+          ConfigurationVersion value with every  call  to  GetConfiguration  .
+          This value must be saved on your client. Subsequent calls to GetCon-
+          figuration must pass this value by using the ClientConfigurationVer-
+          sion parameter.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            get-latest-configuration
+          --configuration-token <value>
+          <outfile>
+
+OPTIONS
+       --configuration-token (string)
+          Token  describing the current state of the configuration session. To
+          obtain a token, first call the StartConfigurationSession  API.  Note
+          that every call to GetLatestConfiguration will return a new Configu-
+          rationToken (NextPollConfigurationToken in the response) and MUST be
+          provided to subsequent GetLatestConfiguration API calls.
+
+       outfile (string) Filename where the content will be saved
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       Configuration -> (blob)
+          The  data  of  the configuration. Note that this may be empty if the
+          client already has the latest version of configuration.
+
+       ContentType -> (string)
+          A standard MIME type describing the format of the configuration con-
+          tent.
+
+       NextPollConfigurationToken -> (string)
+          The  latest  token describing the current state of the configuration
+          session. This MUST be provided to the next call to GetLatestConfigu-
+          ration.
+
+       NextPollIntervalInSeconds -> (integer)
+          The amount of time the client should wait before polling for config-
+          uration updates again. See  RequiredMinimumPollIntervalInSeconds  to
+          set the desired poll interval.
+
+
+
+                                                    GET-LATEST-CONFIGURATION()

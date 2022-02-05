@@ -1,0 +1,5 @@
+meteringmarketplace batch-meter-usage
+meteringmarketplace help
+meteringmarketplace meter-usage
+meteringmarketplace register-usage
+meteringmarketplace resolve-customer

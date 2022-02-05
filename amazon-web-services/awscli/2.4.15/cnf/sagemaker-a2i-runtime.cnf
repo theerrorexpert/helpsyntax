@@ -1,0 +1,6 @@
+sagemaker-a2i-runtime delete-human-loop
+sagemaker-a2i-runtime describe-human-loop
+sagemaker-a2i-runtime help
+sagemaker-a2i-runtime list-human-loops
+sagemaker-a2i-runtime start-human-loop
+sagemaker-a2i-runtime stop-human-loop

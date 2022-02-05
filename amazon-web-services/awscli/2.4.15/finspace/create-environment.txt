@@ -1,0 +1,192 @@
+CREATE-ENVIRONMENT()                                      CREATE-ENVIRONMENT()
+
+
+
+NAME
+       create-environment -
+
+DESCRIPTION
+       Create a new FinSpace environment.
+
+       See also: AWS API Documentation
+
+       See 'aws help' for descriptions of global parameters.
+
+SYNOPSIS
+            create-environment
+          --name <value>
+          [--description <value>]
+          [--kms-key-id <value>]
+          [--tags <value>]
+          [--federation-mode <value>]
+          [--federation-parameters <value>]
+          [--superuser-parameters <value>]
+          [--data-bundles <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+
+OPTIONS
+       --name (string)
+          The name of the FinSpace environment to be created.
+
+       --description (string)
+          The description of the FinSpace environment to be created.
+
+       --kms-key-id (string)
+          The KMS key id to encrypt your data in the FinSpace environment.
+
+       --tags (map)
+          Add tags to your FinSpace environment.
+
+          key -> (string)
+
+          value -> (string)
+
+       Shorthand Syntax:
+
+          KeyName1=string,KeyName2=string
+
+       JSON Syntax:
+
+          {"string": "string"
+            ...}
+
+       --federation-mode (string)
+          Authentication mode for the environment.
+
+          o FEDERATED - Users access FinSpace through Single Sign On (SSO) via
+            your Identity provider.
+
+          o LOCAL - Users access  FinSpace  via  email  and  password  managed
+            within the FinSpace environment.
+
+          Possible values:
+
+          o FEDERATED
+
+          o LOCAL
+
+       --federation-parameters (structure)
+          Configuration information when authentication mode is FEDERATED.
+
+          samlMetadataDocument -> (string)
+              SAML 2.0 Metadata document from identity provider (IdP).
+
+          samlMetadataURL -> (string)
+              Provide  the  metadata URL from your SAML 2.0 compliant identity
+              provider (IdP).
+
+          applicationCallBackURL -> (string)
+              The redirect or sign-in URL that should be entered into the SAML
+              2.0 compliant identity provider configuration (IdP).
+
+          federationURN -> (string)
+              The  Uniform  Resource  Name  (URN).  Also  referred  as Service
+              Provider URN or Audience URI or Service Provider Entity ID.
+
+          federationProviderName -> (string)
+              Name of the identity provider (IdP).
+
+          attributeMap -> (map)
+              SAML attribute name and value. The name must always be Email and
+              the  value  should  be  set to the attribute definition in which
+              user email is set. For example, name would be  Email  and  value
+              http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailad-
+              dress . Please check your SAML 2.0 compliant  identity  provider
+              (IdP) documentation for details.
+
+              key -> (string)
+
+              value -> (string)
+
+       Shorthand Syntax:
+
+          samlMetadataDocument=string,samlMetadataURL=string,applicationCallBackURL=string,federationURN=string,federationProviderName=string,attributeMap={KeyName1=string,KeyName2=string}
+
+       JSON Syntax:
+
+          {
+            "samlMetadataDocument": "string",
+            "samlMetadataURL": "string",
+            "applicationCallBackURL": "string",
+            "federationURN": "string",
+            "federationProviderName": "string",
+            "attributeMap": {"string": "string"
+              ...}
+          }
+
+       --superuser-parameters (structure)
+          Configuration information for the superuser.
+
+          emailAddress -> (string)
+              The email address of the superuser.
+
+          firstName -> (string)
+              The first name of the superuser.
+
+          lastName -> (string)
+              The last name of the superuser.
+
+       Shorthand Syntax:
+
+          emailAddress=string,firstName=string,lastName=string
+
+       JSON Syntax:
+
+          {
+            "emailAddress": "string",
+            "firstName": "string",
+            "lastName": "string"
+          }
+
+       --data-bundles (list)
+          The  list  of  Amazon  Resource  Names  (ARN) of the data bundles to
+          install. Currently supported data bundle ARNs:
+
+          o arn:aws:finspace:${Region}::data-bundle/capital-markets-sample   -
+            Contains  sample  Capital  Markets  datasets,  categories and con-
+            trolled vocabularies.
+
+          o arn:aws:finspace:${Region}::data-bundle/taq (default)  -  Contains
+            trades and quotes data in addition to sample Capital Markets data.
+
+          (string)
+              The Amazon Resource Name (ARN) of the data bundle.
+
+       Syntax:
+
+          "string" "string" ...
+
+       --cli-input-json | --cli-input-yaml (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       --generate-cli-skeleton. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with --cli-input-yaml.
+
+       --generate-cli-skeleton (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value input, prints a sample input JSON that can be used as an argument
+       for --cli-input-json. Similarly, if provided yaml-input it will print a
+       sample input YAML that can be used with --cli-input-yaml.  If  provided
+       with  the  value  output, it validates the command inputs and returns a
+       sample output JSON for that command.
+
+       See 'aws help' for descriptions of global parameters.
+
+OUTPUT
+       environmentId -> (string)
+          The unique identifier for FinSpace environment that you created.
+
+       environmentArn -> (string)
+          The Amazon Resource Name (ARN) of the FinSpace environment that  you
+          created.
+
+       environmentUrl -> (string)
+          The  sign-in url for the web application of the FinSpace environment
+          you created.
+
+
+
+                                                          CREATE-ENVIRONMENT()

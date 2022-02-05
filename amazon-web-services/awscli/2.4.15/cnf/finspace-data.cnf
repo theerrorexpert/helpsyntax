@@ -1,0 +1,15 @@
+finspace-data create-changeset
+finspace-data create-data-view
+finspace-data create-dataset
+finspace-data delete-dataset
+finspace-data get-changeset
+finspace-data get-data-view
+finspace-data get-dataset
+finspace-data get-programmatic-access-credentials
+finspace-data get-working-location
+finspace-data help
+finspace-data list-changesets
+finspace-data list-data-views
+finspace-data list-datasets
+finspace-data update-changeset
+finspace-data update-dataset

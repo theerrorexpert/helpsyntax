@@ -1,0 +1,5 @@
+identitystore describe-group
+identitystore describe-user
+identitystore help
+identitystore list-groups
+identitystore list-users
